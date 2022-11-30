@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { CoffeeSymbol } from '../coffeeSymbol/CoffeeSymbol';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as userActions from '../../usersStore/users.actions';
 
@@ -9,6 +9,7 @@ const Registration = ({ createUser }) => {
   const [fullname, setFullname] = useState('');
   const [number, setNumber] = useState('');
   const [password, setPassword] = useState('');
+  let navigate = useNavigate();
 
   const handleSubmit = e => {
     e.preventDefault();
