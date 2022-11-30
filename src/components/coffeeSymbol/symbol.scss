@@ -1,0 +1,33 @@
+.coffee__symbol {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  &-container {
+    display: flex;
+  }
+  &-rect {
+    background-color: #321d0b;
+    border-radius: 47.0226px 47.0226px 14px 47.0226px;
+    transform: rotate(45deg);
+    height: 100px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &-img {
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+.home {
+  position: absolute;
+  left: calc(50% - 50px);
+  top: -60px;
+}
+
+.flex {
+  position: static;
+  margin-bottom: 20px;
+  margin-top: 100px;
+}

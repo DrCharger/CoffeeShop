@@ -1,0 +1,56 @@
+form {
+  width: 90%;
+  margin: 0 5%;
+}
+.login-main {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-size: 1em;
+  align-items: center;
+  &-headline {
+    font-size: 2em;
+    margin-top: 30px;
+    color: #321d0b;
+  }
+  &-text {
+    text-align: start;
+    color: grey;
+    display: flex;
+    &__center {
+      margin: auto;
+    }
+    &__register {
+      color: orange;
+      text-decoration: none !important;
+    }
+  }
+  &-input {
+    width: 100%;
+    height: 40px;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    font-size: 1.5em;
+    margin: 10px 0 10px;
+    &__submit {
+      width: 100%;
+      height: 15%;
+      background-color: #321d0b;
+      color: #fff;
+      border-radius: 40px;
+      margin: 40px 0 10px;
+      font-size: 1.5em;
+
+      &:hover {
+        border-radius: 10px;
+        transition: 0.5s ease-out;
+        cursor: pointer;
+      }
+    }
+  }
+  &-forgot {
+    color: orange;
+    text-align: end;
+  }
+}
