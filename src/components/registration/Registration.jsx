@@ -10,11 +10,8 @@ const Registration = ({ createUser }) => {
   const [number, setNumber] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = () => {
-    setEmail('');
-    setPassword('');
-    setFullname('');
-    setNumber('');
+  const handleSubmit = e => {
+    e.preventDefault();
     const newUser = {
       email,
       fullname,
@@ -22,13 +19,18 @@ const Registration = ({ createUser }) => {
       password,
     };
     createUser(newUser);
+    navigate('/login');
+    setEmail('');
+    setPassword('');
+    setFullname('');
+    setNumber('');
   };
 
   return (
     <div className="login-main">
       <CoffeeSymbol text="flex" />
       <h3 className="login-main-headline">REGISTER</h3>
-      <form onSubmit={handleSubmit} action="/login">
+      <form onSubmit={handleSubmit}>
         <div className="login-main-text">Fullname</div>
         <input
           type="text"
