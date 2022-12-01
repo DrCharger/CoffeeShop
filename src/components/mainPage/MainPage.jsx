@@ -7,16 +7,28 @@ import PopularBrand from './popularBrand/PopularBrand';
 import Shop from './shop/Shop';
 import './mainPage.scss';
 import Navbar from './navbar/Navbar';
+import { Routes, Route } from 'react-router-dom';
+import DetailShop from '../detailShop/DetailShop';
 
 const MainPage = ({ myUser }) => {
   return (
     <div className="main-shop__page">
-      <Header fullname={myUser.fullname} />
-      <MainImg />
-      <Recomended />
       <Navbar />
-      <PopularBrand />
-      <Shop />
+      <Routes>
+        <Route
+          path="*"
+          element={
+            <>
+              <Header fullname={myUser.fullname} />
+              <MainImg />
+              <Recomended />
+              <PopularBrand />
+              <Shop />
+            </>
+          }
+        />
+        <Route path={`/shop/:id`} element={<DetailShop />} />
+      </Routes>
     </div>
   );
 };

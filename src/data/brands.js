@@ -6,13 +6,16 @@ export const brands = [
   {
     id: '01',
     img: bucks,
+    name: 'starbucks',
   },
   {
     id: '02',
     img: jiva,
+    name: 'jiva',
   },
   {
     id: '03',
     img: hati,
+    name: 'hati',
   },
 ];

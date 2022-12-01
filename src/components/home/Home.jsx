@@ -25,7 +25,7 @@ export const Home = () => {
         />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Registration />} />
-        <Route path="/main" element={<MainPage />} />
+        <Route path="/main/*" element={<MainPage />} />
       </Routes>
     </div>
   );

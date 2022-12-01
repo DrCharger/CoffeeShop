@@ -2,6 +2,7 @@ import React from 'react';
 import like from '../../../img/Like.png';
 import cart from '../../../img/korzina.png';
 import { recomended } from '../../../data/recs';
+import { Link } from 'react-router-dom';
 
 const Recomended = () => {
   return (

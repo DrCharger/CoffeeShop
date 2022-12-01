@@ -1,4 +1,8 @@
 import star from '../img/shops/star.png';
+import bigstar from '../img/shops/BigStar.png';
+import bigkfc from '../img/shops/Bigkfc.jpg';
+import bigmoonsoon from '../img/shops/Bigmoonsoon.jpg';
+import bigsemasa from '../img/shops/BigSemasa.jpg';
 import KFC from '../img/shops/KFC.png';
 import moonsoon from '../img/shops/moonsoon.png';
 import semasa from '../img/shops/semasa.png';
@@ -7,7 +11,8 @@ export const shops = [
   {
     id: '01',
     img: star,
-    name: 'Startbucks',
+    bigImg: bigstar,
+    name: 'Starbucks',
     loc: 'CSB Mail',
     rait: 4.5,
     likes: 342,
@@ -15,10 +20,12 @@ export const shops = [
     deliv: 5,
     delStart: '10',
     delFinish: '22',
+    url: 'starbucks',
   },
   {
     id: '02',
     img: KFC,
+    bigImg: bigkfc,
     name: 'KFC Coffee',
     loc: 'Kartini Street',
     rait: 4.3,
@@ -27,10 +34,12 @@ export const shops = [
     deliv: 6,
     delStart: '10',
     delFinish: '24',
+    url: 'kfc',
   },
   {
     id: '03',
     img: moonsoon,
+    bigImg: bigmoonsoon,
     name: 'MoonSoon Coffee',
     loc: '',
     rait: 4.0,
@@ -39,10 +48,12 @@ export const shops = [
     deliv: 3,
     delStart: '12',
     delFinish: '20',
+    url: 'moonsoon',
   },
   {
     id: '04',
     img: semasa,
+    bigImg: bigsemasa,
     name: 'Semasa Coffee',
     loc: '',
     rait: 4.7,
@@ -51,5 +62,6 @@ export const shops = [
     deliv: 7,
     delStart: '09',
     delFinish: '23',
+    url: 'semasa',
   },
 ];
