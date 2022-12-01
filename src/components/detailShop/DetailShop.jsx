@@ -4,10 +4,13 @@ import { useParams } from 'react-router-dom';
 import { shops } from '../../data/shops';
 import { Link } from 'react-router-dom';
 import ShopInfo from '../mainPage/shop/info/ShopInfo';
+import Grid from '@mui/material/Grid';
 import ArrowBackIosNewTwoToneIcon from '@mui/icons-material/ArrowBackIosNewTwoTone';
 import { menu } from '../../data/menu';
 import './details.scss';
 import classNames from 'classnames';
+import { allList } from '../../data/recs';
+import RecItem from '../mainPage/recomended/RecItem';
 
 const DetailShop = () => {
   const [menuId, setMenuId] = useState('01');
@@ -48,6 +51,17 @@ const DetailShop = () => {
             {el.text}
           </button>
         ))}
+      </div>
+      <div className="details-main-list">
+        <Grid container spacing={2}>
+          {allList
+            .find(el => el.id === menuId)
+            .prods.map(el => (
+              <Grid key={el.id} item xs={6}>
+                <RecItem el={el} />
+              </Grid>
+            ))}
+        </Grid>
       </div>
     </div>
   );
