@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const RecItem = ({ el }) => {
   return (
     <figure key={el.id}>
-      <img src={el.img} alt="cappuchino" />
+      <img src={el.img} alt="cappuchino" className="figure-img" />
       <div className="flex-figure">
         <div>
           <figcaption className="recomended-products-text">{el.text}</figcaption>
