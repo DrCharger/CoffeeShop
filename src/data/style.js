@@ -6,4 +6,5 @@ export const style = {
   bottom: 20,
   backgroundColor: '#543820',
   opacity: 1,
+  zIndex: 999,
 };
