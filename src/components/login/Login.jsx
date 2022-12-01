@@ -10,9 +10,6 @@ const Login = ({ getUsers, users, setUser }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   let navigate = useNavigate();
-
-  console.log(users);
-
   useEffect(() => {
     getUsers();
   }, []);
