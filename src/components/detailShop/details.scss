@@ -43,15 +43,15 @@
         border: 2px solid #ff9314;
         color: #ff9314;
         box-shadow: none;
-        &:active {
-          background-color: transparent;
-          border: 2px solid #ff9314;
-          color: #ff9314;
-          box-shadow: none;
-        }
       }
     }
   }
+}
+.active {
+  background-color: transparent;
+  border: 2px solid #ff9314;
+  color: #ff9314;
+  box-shadow: none;
 }
 
 .else {

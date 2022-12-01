@@ -7,6 +7,7 @@ import ShopInfo from '../mainPage/shop/info/ShopInfo';
 import ArrowBackIosNewTwoToneIcon from '@mui/icons-material/ArrowBackIosNewTwoTone';
 import { menu } from '../../data/menu';
 import './details.scss';
+import classNames from 'classnames';
 
 const DetailShop = () => {
   const [menuId, setMenuId] = useState('01');
@@ -39,7 +40,11 @@ const DetailShop = () => {
       </div>
       <div className="details-main-menu">
         {menu.map(el => (
-          <button key={el.id} className="details-main-menu-btn" onClick={() => setMenuId(el.id)}>
+          <button
+            key={el.id}
+            className={classNames('details-main-menu-btn', { active: el.id === menuId })}
+            onClick={() => setMenuId(el.id)}
+          >
             {el.text}
           </button>
         ))}
