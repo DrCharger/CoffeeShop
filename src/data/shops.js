@@ -2,7 +2,7 @@ import star from '../img/shops/star.png';
 import bigstar from '../img/shops/BigStar.png';
 import bigkfc from '../img/shops/Bigkfc.jpg';
 import bigmoonsoon from '../img/shops/Bigmoonsoon.jpg';
-import bigsemasa from '../img/shops/BigSemasa.jpg';
+import bigsemasa from '../img/shops/Bigsemasa.jpg';
 import KFC from '../img/shops/KFC.png';
 import moonsoon from '../img/shops/moonsoon.png';
 import semasa from '../img/shops/semasa.png';
