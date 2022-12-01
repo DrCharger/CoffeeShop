@@ -6,6 +6,7 @@ import deliver from '../../../img/shops/icons/deliver.png';
 import clock from '../../../img/shops/icons/clock.png';
 
 import './shop.scss';
+import classNames from 'classnames';
 
 const Shop = () => {
   return (
@@ -13,7 +14,7 @@ const Shop = () => {
       <h4>Coffee Shop</h4>
       <ul className="shops__list">
         {shops.map(shop => (
-          <li key={shop.id} className="shops__list-items">
+          <li key={shop.id} className={classNames('shops__list-items', { last: shop.id === '04' })}>
             <div className="shops__list-items__logo">
               <img src={shop.img} alt="logo" />
             </div>

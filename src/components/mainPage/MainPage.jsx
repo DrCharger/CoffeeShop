@@ -6,6 +6,7 @@ import Recomended from './recomended/Recomended';
 import PopularBrand from './popularBrand/PopularBrand';
 import Shop from './shop/Shop';
 import './mainPage.scss';
+import Navbar from './navbar/Navbar';
 
 const MainPage = ({ myUser }) => {
   return (
@@ -13,6 +14,7 @@ const MainPage = ({ myUser }) => {
       <Header fullname={myUser.fullname} />
       <MainImg />
       <Recomended />
+      <Navbar />
       <PopularBrand />
       <Shop />
     </div>
