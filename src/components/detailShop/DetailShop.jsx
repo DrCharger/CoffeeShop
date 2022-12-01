@@ -1,17 +1,19 @@
 import { Button } from '@mui/material';
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { shops } from '../../data/shops';
 import { Link } from 'react-router-dom';
 import ShopInfo from '../mainPage/shop/info/ShopInfo';
 import ArrowBackIosNewTwoToneIcon from '@mui/icons-material/ArrowBackIosNewTwoTone';
+import { menu } from '../../data/menu';
 import './details.scss';
 
 const DetailShop = () => {
+  const [menuId, setMenuId] = useState('01');
   const { id } = useParams();
 
   const myShop = shops.find(({ url }) => url === id);
-  console.log(myShop);
+  console.log(menuId);
   return (
     <div className="details-main">
       <div className="details-main__img">
@@ -34,6 +36,13 @@ const DetailShop = () => {
         <div className="details-main-info">
           <ShopInfo shop={myShop} />
         </div>
+      </div>
+      <div className="details-main-menu">
+        {menu.map(el => (
+          <button key={el.id} className="details-main-menu-btn" onClick={() => setMenuId(el.id)}>
+            {el.text}
+          </button>
+        ))}
       </div>
     </div>
   );

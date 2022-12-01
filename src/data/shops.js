@@ -6,6 +6,8 @@ import bigsemasa from '../img/shops/BigSemasa.jpg';
 import KFC from '../img/shops/KFC.png';
 import moonsoon from '../img/shops/moonsoon.png';
 import semasa from '../img/shops/semasa.png';
+import jiva from '../img/logo/jiva.png';
+import hati from '../img/logo/hati.png';
 
 export const shops = [
   {
@@ -52,6 +54,34 @@ export const shops = [
   },
   {
     id: '04',
+    img: jiva,
+    bigImg: '',
+    name: 'Jiva Coffee',
+    loc: 'Kyiv Ukraine',
+    rait: 3.5,
+    likes: 408,
+    way: 0.1,
+    deliv: 1.9,
+    delStart: '12',
+    delFinish: '20',
+    url: 'jiva',
+  },
+  {
+    id: '05',
+    img: hati,
+    bigImg: '',
+    name: 'Hati Coffee',
+    loc: '',
+    rait: 4.9,
+    likes: 134,
+    way: 3.2,
+    deliv: 3.4,
+    delStart: '12',
+    delFinish: '20',
+    url: 'hati',
+  },
+  {
+    id: '06',
     img: semasa,
     bigImg: bigsemasa,
     name: 'Semasa Coffee',
