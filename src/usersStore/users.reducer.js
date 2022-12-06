@@ -1,9 +1,10 @@
-import { USERS_LIST_RECIEVED, SHOW_SPINNER, SELECTED_USER } from './users.actions';
+import { USERS_LIST_RECIEVED, SHOW_SPINNER, SELECTED_USER, COFFEE_LIST_ID } from './users.actions';
 
 const initialState = {
   usersList: [],
   isFetching: false,
   user: '',
+  coffeeId: '01',
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -23,6 +24,11 @@ const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         user: action.payload.user,
+      };
+    case COFFEE_LIST_ID:
+      return {
+        ...state,
+        coffeeId: action.payload.id,
       };
     default:
       return state;

@@ -1,9 +1,10 @@
 import * as usersGateWays from './users.gateWays';
 import { usersSelector } from './users.selectors';
 
-export const USERS_LIST_RECIEVED = 'TASKS_LIST_RECIEVED';
+export const USERS_LIST_RECIEVED = 'USERS_LIST_RECIEVED';
 export const SHOW_SPINNER = 'SHOW_SPINNER';
 export const SELECTED_USER = 'SELECTED_USER';
+export const COFFEE_LIST_ID = 'COFFEE_LIST_ID';
 
 export const showSpinner = () => {
   return {
@@ -16,6 +17,15 @@ export const setUserInfo = user => {
     type: SELECTED_USER,
     payload: {
       user,
+    },
+  };
+};
+
+export const getCoffeeListId = id => {
+  return {
+    type: COFFEE_LIST_ID,
+    payload: {
+      id,
     },
   };
 };

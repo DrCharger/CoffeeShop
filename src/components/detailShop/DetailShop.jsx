@@ -14,10 +14,10 @@ import RecItem from '../mainPage/recomended/RecItem';
 
 const DetailShop = () => {
   const [menuId, setMenuId] = useState('01');
-  const { id } = useParams();
+  const { shop } = useParams();
   let navigate = useNavigate();
 
-  const myShop = shops.find(({ url }) => url === id);
+  const myShop = shops.find(({ url }) => url === shop);
   return (
     <div className="details-main">
       <div className="details-main__img">
@@ -59,7 +59,7 @@ const DetailShop = () => {
             .find(el => el.id === menuId)
             .prods.map(el => (
               <Grid key={el.id} item xs={6}>
-                <Link to={`${el.url_name}`}>
+                <Link to={`${menuId}/${el.url_name}`}>
                   <RecItem el={el} />
                 </Link>
               </Grid>

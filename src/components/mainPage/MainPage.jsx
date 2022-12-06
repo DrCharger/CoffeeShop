@@ -28,8 +28,8 @@ const MainPage = ({ myUser }) => {
             </>
           }
         />
-        <Route path={`/shop/:id`} element={<DetailShop />} />
-        <Route path={`/shop/:id/:coffee`} element={<DetailCoffee />} />
+        <Route path={`/shop/:shop`} element={<DetailShop />} />
+        <Route path={`/shop/:shop/:id/:coffee`} element={<DetailCoffee />} />
       </Routes>
     </div>
   );
