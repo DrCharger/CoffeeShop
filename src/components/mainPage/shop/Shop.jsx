@@ -16,7 +16,7 @@ const Shop = () => {
               <div className="shops__list-items__logo">
                 <img src={shop.img} alt="logo" />
               </div>
-              <ShopInfo shop={shop} />
+              <ShopInfo info={shop} />
             </li>
           </Link>
         ))}

@@ -6,21 +6,24 @@ import deliver from '../../../../img/shops/icons/deliver.png';
 import clock from '../../../../img/shops/icons/clock.png';
 import classNames from 'classnames';
 
-const ShopInfo = ({ shop }) => {
-  const { id } = useParams();
+const ShopInfo = ({ info }) => {
+  const { shop } = useParams();
+  const { name, loc, way, rait, likes, deliv, delStart, delFinish } = info;
+
+  console.log(shop);
 
   return (
     <div className="shops__list-items__info">
-      <div className={classNames('else', { 'shops__list-items__name': id === undefined })}>
-        {shop.name} - {shop.loc}
+      <div className={classNames('else', { 'shops__list-items__name': shop === undefined })}>
+        {name} - {loc}
       </div>
-      <div className={classNames({ 'shops__list-items__text': id === undefined }, 'else-text')}>
-        <img src={location} alt="logo" /> {shop.way} km * <img src={yellowStar} alt="logo" />{' '}
-        {shop.rait} ({shop.likes})
+      <div className={classNames({ 'shops__list-items__text': shop === undefined }, 'else-text')}>
+        <img src={location} alt="logo" /> {way} km * <img src={yellowStar} alt="logo" /> {rait} (
+        {likes})
       </div>
-      <div className={classNames({ 'shops__list-items__text': id === undefined }, 'else-text')}>
-        <img src={deliver} alt="deliv" />$ {shop.deliv}.00 * .
-        <img src={clock} alt="clock" /> .{shop.delStart}.00 - {shop.delFinish}.00
+      <div className={classNames({ 'shops__list-items__text': shop === undefined }, 'else-text')}>
+        <img src={deliver} alt="deliv" />$ {deliv}.00 * .
+        <img src={clock} alt="clock" /> .{delStart}.00 - {delFinish}.00
       </div>
     </div>
   );

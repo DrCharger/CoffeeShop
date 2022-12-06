@@ -39,7 +39,7 @@ const DetailShop = () => {
           />
         </div>
         <div className="details-main-info">
-          <ShopInfo shop={myShop} />
+          <ShopInfo info={myShop} />
         </div>
       </div>
       <div className="details-main-menu">
@@ -59,7 +59,7 @@ const DetailShop = () => {
             .find(el => el.id === menuId)
             .prods.map(el => (
               <Grid key={el.id} item xs={6}>
-                <Link to={`${menuId}/${el.url_name}`}>
+                <Link to={`/shop/${menuId}/${el.url_name}`}>
                   <RecItem el={el} />
                 </Link>
               </Grid>

@@ -6,6 +6,7 @@ import { Route, Routes } from 'react-router-dom';
 import Login from '../login/Login';
 import Registration from '../registration/Registration';
 import MainPage from '../mainPage/MainPage';
+import DetailCoffee from '../detailCoffee/DetailCoffee';
 
 export const Home = () => {
   return (
@@ -26,6 +27,7 @@ export const Home = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Registration />} />
         <Route path="/main/*" element={<MainPage />} />
+        <Route path={`/shop/:id/:coffee`} element={<DetailCoffee />} />
       </Routes>
     </div>
   );
