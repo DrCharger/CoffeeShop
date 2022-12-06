@@ -78,6 +78,15 @@
         align-items: center;
       }
     }
+    &__order-btn {
+      margin-top: 20px;
+      background-color: #321d0b;
+      box-shadow: 0px 4px 23px rgba(129, 129, 129, 0.25);
+      border-radius: 10px;
+      width: 100%;
+      color: #fff;
+      height: 35px;
+    }
   }
 }
 h5 {

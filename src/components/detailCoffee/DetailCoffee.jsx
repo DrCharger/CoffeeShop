@@ -80,7 +80,7 @@ const DetailCoffee = () => {
             +
           </button>
         </div>
-        <Button variant="contained">ADD TO BUSKET</Button>
+        <button className="details-description__order-btn">ADD TO BUSKET</button>
       </div>
     </div>
   );
