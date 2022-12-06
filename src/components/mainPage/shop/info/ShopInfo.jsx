@@ -8,7 +8,6 @@ import classNames from 'classnames';
 
 const ShopInfo = ({ shop }) => {
   const { id } = useParams();
-  console.log(id);
 
   return (
     <div className="shops__list-items__info">

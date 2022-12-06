@@ -1,6 +1,6 @@
 import { Button } from '@mui/material';
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { shops } from '../../data/shops';
 import { Link } from 'react-router-dom';
 import ShopInfo from '../mainPage/shop/info/ShopInfo';
@@ -15,14 +15,14 @@ import RecItem from '../mainPage/recomended/RecItem';
 const DetailShop = () => {
   const [menuId, setMenuId] = useState('01');
   const { id } = useParams();
+  let navigate = useNavigate();
 
   const myShop = shops.find(({ url }) => url === id);
-  console.log(menuId);
   return (
     <div className="details-main">
       <div className="details-main__img">
         <img src={myShop.bigImg} alt="logo" className="details-main__img-url" />
-        <Link to={'/main'}>
+        <div>
           <Button
             variant="contained"
             startIcon={<ArrowBackIosNewTwoToneIcon />}
@@ -35,8 +35,9 @@ const DetailShop = () => {
               marginLeft: '5%',
               opacity: 0.7,
             }}
+            onClick={() => navigate(-1)}
           />
-        </Link>
+        </div>
         <div className="details-main-info">
           <ShopInfo shop={myShop} />
         </div>
@@ -58,7 +59,9 @@ const DetailShop = () => {
             .find(el => el.id === menuId)
             .prods.map(el => (
               <Grid key={el.id} item xs={6}>
-                <RecItem el={el} />
+                <Link to={`${el.url_name}`}>
+                  <RecItem el={el} />
+                </Link>
               </Grid>
             ))}
         </Grid>

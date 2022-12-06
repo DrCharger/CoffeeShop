@@ -9,6 +9,7 @@ import './mainPage.scss';
 import Navbar from './navbar/Navbar';
 import { Routes, Route } from 'react-router-dom';
 import DetailShop from '../detailShop/DetailShop';
+import DetailCoffee from '../detailCoffee/DetailCoffee';
 
 const MainPage = ({ myUser }) => {
   return (
@@ -28,6 +29,7 @@ const MainPage = ({ myUser }) => {
           }
         />
         <Route path={`/shop/:id`} element={<DetailShop />} />
+        <Route path={`/shop/:id/:coffee`} element={<DetailCoffee />} />
       </Routes>
     </div>
   );
