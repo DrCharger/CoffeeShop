@@ -14,10 +14,12 @@ const DetailCoffee = () => {
   const myCoffee = allList
     .find(param => param.id === params.id)
     .prods.find(el => el.url_name === params.coffee);
-
-  console.log(myCoffee);
-
   const sugarLevel = ['Normal', 'Less Sugar'];
+
+  const toTheBasket = () => {
+    navigate('/basket');
+  };
+
   return (
     <div className="details-main">
       <div className="details-main__img">
@@ -80,7 +82,9 @@ const DetailCoffee = () => {
             +
           </button>
         </div>
-        <button className="details-description__order-btn">ADD TO BUSKET</button>
+        <button className="details-description__order-btn" onClick={toTheBasket}>
+          ADD TO BUSKET
+        </button>
       </div>
     </div>
   );

@@ -47,18 +47,18 @@ export const getUsersList = () => {
   return thunkAction;
 };
 
-// export const updateUsersList = userId => {
-//   const thunkAction = function (dispatch, getState) {
-//     dispatch(showSpinner());
-//     const state = getState();
-//     const userList = tasksSelector(state);
-//     const user = userList.find(user => user.id === userId);
-//     const updatedUser = { ...user, done: !user.done };
+export const updateUsersList = userId => {
+  const thunkAction = function (dispatch, getState) {
+    // dispatch(showSpinner());
+    const state = getState();
+    const userList = tasksSelector(state);
+    const user = userList.find(user => user.id === userId);
+    const updatedUser = { ...user, done: !user.done };
 
-//     usersGateWays.updateUser(userId, updatedUser).then(() => dispatch(getUsersList()));
-//   };
-//   return thunkAction;
-// };
+    usersGateWays.updateUser(userId, updatedUser).then(() => dispatch(getUsersList()));
+  };
+  return thunkAction;
+};
 
 export const deleteUsersList = userId => {
   const thunkAction = function (dispatch) {

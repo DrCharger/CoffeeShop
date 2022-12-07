@@ -7,6 +7,7 @@ import Login from '../login/Login';
 import Registration from '../registration/Registration';
 import MainPage from '../mainPage/MainPage';
 import DetailCoffee from '../detailCoffee/DetailCoffee';
+import Basket from '../basket/Basket';
 
 export const Home = () => {
   return (
@@ -28,6 +29,7 @@ export const Home = () => {
         <Route path="/register" element={<Registration />} />
         <Route path="/main/*" element={<MainPage />} />
         <Route path={`/shop/:id/:coffee`} element={<DetailCoffee />} />
+        <Route path="/basket" element={<Basket />} />
       </Routes>
     </div>
   );
