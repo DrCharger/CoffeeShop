@@ -30,8 +30,27 @@
       }
     }
     &-description {
-      flex-grow: 1;
+      display: flex;
+      width: 80%;
       margin: 10px;
+      justify-content: space-between;
+      & div h4 {
+        margin: 0;
+        font-size: 16px;
+        line-height: 21px;
+        color: #321d0b;
+        margin-bottom: 10px;
+      }
+      & div div {
+        font-size: 12px;
+        line-height: 18px;
+        color: #939393;
+      }
+    }
+    &-edit {
+      font-size: 12px;
+      line-height: 18px;
+      color: #ff9314;
     }
   }
   &__order-btn {
@@ -40,8 +59,24 @@
     border-radius: 10px;
     width: 90%;
     color: #fff;
-    height: 35px;
+    height: 45px;
     position: absolute;
     bottom: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    &__quantity {
+      background: #323232;
+      border-radius: 50%;
+      height: 30px;
+      width: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &__price {
+      background: #323232;
+      padding: 3px;
+    }
   }
 }

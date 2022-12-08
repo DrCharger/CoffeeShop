@@ -4,7 +4,7 @@ import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-import AssignmentTwoToneIcon from '@mui/icons-material/AssignmentTwoTone';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import { style } from '../../../data/style.js';
 
@@ -34,7 +34,7 @@ const Navbar = () => {
       <BottomNavigationAction
         label="Basket"
         value="Basket"
-        icon={<AssignmentTwoToneIcon />}
+        icon={<ShoppingCartOutlinedIcon />}
         sx={{ color: '#fff' }}
         onClick={() => navigate('basket')}
       />

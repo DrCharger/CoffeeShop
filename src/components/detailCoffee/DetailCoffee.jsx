@@ -6,6 +6,11 @@ import { allList } from '../../data/recs';
 import './detailsCoffee.scss';
 import { connect } from 'react-redux';
 import { getOrderInfo } from '../../usersStore/users.actions';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 const DetailCoffee = ({ getOrder }) => {
   let navigate = useNavigate();
@@ -13,6 +18,7 @@ const DetailCoffee = ({ getOrder }) => {
   const [level, setLevel] = useState(false);
   const [counter, setCounter] = useState(1);
   const [comment, setComment] = useState('');
+  const [open, setOpen] = useState(false);
 
   const myCoffee = allList
     .find(param => param.id === params.id)
@@ -20,6 +26,7 @@ const DetailCoffee = ({ getOrder }) => {
   const sugarLevel = ['Normal', 'Less Sugar'];
 
   const toTheBasket = () => {
+    setOpen(true);
     const toBasket = {
       level,
       counter,
@@ -27,7 +34,13 @@ const DetailCoffee = ({ getOrder }) => {
       myCoffee,
     };
     getOrder(toBasket);
-    navigate(-1);
+  };
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
   };
 
   return (
@@ -98,6 +111,11 @@ const DetailCoffee = ({ getOrder }) => {
         <button className="details-description__order-btn" onClick={toTheBasket}>
           ADD TO BUSKET
         </button>
+        <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
+          <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+            {counter} items added to the shopping cart!
+          </Alert>
+        </Snackbar>
       </div>
     </div>
   );

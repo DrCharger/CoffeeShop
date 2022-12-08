@@ -8,9 +8,11 @@ import ArrowBackIosNewTwoToneIcon from '@mui/icons-material/ArrowBackIosNewTwoTo
 import './basket.scss';
 
 const Basket = ({ order }) => {
-  console.log(order);
   let navigate = useNavigate();
 
+  let pricer = order
+    .map(({ myCoffee }) => Number(myCoffee.price.split(' ')[1]))
+    .reduce((acc, el) => acc + el, 0);
   return (
     <div className="basket">
       <div className="basket-first">
@@ -36,11 +38,19 @@ const Basket = ({ order }) => {
             <img src={item.myCoffee.img} alt="logo" />
           </figure>
           <div className="basket-child-description">
-            <h4>{item.myCoffee.text}</h4>
+            <div>
+              <h4>{item.myCoffee.text}</h4>
+              <div>{item.counter} items</div>
+            </div>
+            <div className="basket-child-edit">Edit</div>
           </div>
         </div>
       ))}
-      <button className="basket__order-btn">ORDER</button>
+      <button className="basket__order-btn" onClick={() => navigate('checkout')}>
+        <div className="basket__order-btn__quantity">{order.length}</div>
+        Go to Checkout
+        <div className="basket__order-btn__price">$ {pricer}</div>
+      </button>
     </div>
   );
 };

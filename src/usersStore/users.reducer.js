@@ -11,20 +11,7 @@ const initialState = {
   isFetching: false,
   user: '',
   coffeeId: '01',
-  order: [
-    {
-      level: false,
-      counter: 2,
-      comment: '',
-      myCoffee: { id: '01', text: 'test', price: '$ 5.32', img: '//' },
-    },
-    {
-      level: false,
-      counter: 2,
-      comment: '',
-      myCoffee: { id: '02', text: 'test', price: '$ 5.32', img: '//' },
-    },
-  ],
+  order: [],
 };
 
 const usersReducer = (state = initialState, action) => {
