@@ -16,13 +16,13 @@ export const Home = () => {
         <Route
           path="/"
           element={
-            <>
+            <div>
               <figure className="main-img">
                 <img src={coffee} alt="coffee" />
               </figure>
               <CoffeeSymbol text="home" />
               <h1 className="main-text">Coffee Now</h1>
-            </>
+            </div>
           }
         />
         <Route path="/login" element={<Login />} />

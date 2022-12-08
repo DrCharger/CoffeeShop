@@ -11,10 +11,10 @@ import { Routes, Route } from 'react-router-dom';
 import DetailShop from '../detailShop/DetailShop';
 import Basket from '../basket/Basket';
 
-const MainPage = ({ myUser }) => {
+const MainPage = ({ myUser, order }) => {
   return (
     <div className="main-shop__page">
-      <Navbar />
+      <Navbar order={order} />
       <Routes>
         <Route
           path="*"
@@ -38,6 +38,7 @@ const MainPage = ({ myUser }) => {
 const mapState = state => {
   return {
     myUser: state.usersList.user,
+    order: state.usersList.order,
   };
 };
 

@@ -32,6 +32,7 @@ const DetailCoffee = ({ getOrder }) => {
       counter,
       comment,
       myCoffee,
+      id: Math.floor(Math.random() * 1000000),
     };
     getOrder(toBasket);
   };

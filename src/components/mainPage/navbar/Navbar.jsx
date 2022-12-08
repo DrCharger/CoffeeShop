@@ -6,9 +6,10 @@ import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
+import Badge from '@mui/material/Badge';
 import { style } from '../../../data/style.js';
 
-const Navbar = () => {
+const Navbar = ({ order }) => {
   const [value, setValue] = useState('recents');
   let navigate = useNavigate();
 
@@ -31,13 +32,19 @@ const Navbar = () => {
         icon={<SearchOutlinedIcon />}
         sx={{ color: '#fff' }}
       />
+
       <BottomNavigationAction
         label="Basket"
         value="Basket"
-        icon={<ShoppingCartOutlinedIcon />}
+        icon={
+          <Badge badgeContent={order.length} color="error">
+            <ShoppingCartOutlinedIcon />
+          </Badge>
+        }
         sx={{ color: '#fff' }}
         onClick={() => navigate('basket')}
       />
+
       <BottomNavigationAction
         label="Profile"
         value="profile"

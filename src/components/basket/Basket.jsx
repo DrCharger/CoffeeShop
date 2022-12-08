@@ -13,6 +13,8 @@ const Basket = ({ order }) => {
   let pricer = order
     .map(({ myCoffee }) => Number(myCoffee.price.split(' ')[1]))
     .reduce((acc, el) => acc + el, 0);
+
+  console.log(order);
   return (
     <div className="basket">
       <div className="basket-first">
@@ -33,7 +35,7 @@ const Basket = ({ order }) => {
         <h4 className="basket-header">My Basket</h4>
       </div>
       {order.map(item => (
-        <div key={item.myCoffee.id} className="basket-child">
+        <div key={`${item.myCoffee.id}.${item.id}`} className="basket-child">
           <figure className="basket-child-img">
             <img src={item.myCoffee.img} alt="logo" />
           </figure>
