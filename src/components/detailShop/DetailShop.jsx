@@ -34,13 +34,14 @@ const DetailShop = () => {
               padding: 0,
               marginLeft: '5%',
               opacity: 0.7,
+              paddingLeft: '9px',
             }}
             onClick={() => navigate(-1)}
           />
         </div>
-        <div className="details-main-info">
-          <ShopInfo info={myShop} />
-        </div>
+      </div>{' '}
+      <div className="details-main-info">
+        <ShopInfo info={myShop} />
       </div>
       <div className="details-main-menu">
         {menu.map(el => (

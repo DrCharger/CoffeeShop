@@ -1,10 +1,30 @@
-import { USERS_LIST_RECIEVED, SHOW_SPINNER, SELECTED_USER, COFFEE_LIST_ID } from './users.actions';
+import {
+  USERS_LIST_RECIEVED,
+  SHOW_SPINNER,
+  SELECTED_USER,
+  COFFEE_LIST_ID,
+  ORDER_LIST,
+} from './users.actions';
 
 const initialState = {
   usersList: [],
   isFetching: false,
   user: '',
   coffeeId: '01',
+  order: [
+    {
+      level: false,
+      counter: 2,
+      comment: '',
+      myCoffee: { id: '01', text: 'test', price: '$ 5.32', img: '//' },
+    },
+    {
+      level: false,
+      counter: 2,
+      comment: '',
+      myCoffee: { id: '02', text: 'test', price: '$ 5.32', img: '//' },
+    },
+  ],
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -13,6 +33,11 @@ const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         isFetching: true,
+      };
+    case ORDER_LIST:
+      return {
+        ...state,
+        order: state.order.concat(action.payload.order),
       };
     case USERS_LIST_RECIEVED:
       return {

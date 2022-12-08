@@ -9,6 +9,7 @@ import './mainPage.scss';
 import Navbar from './navbar/Navbar';
 import { Routes, Route } from 'react-router-dom';
 import DetailShop from '../detailShop/DetailShop';
+import Basket from '../basket/Basket';
 
 const MainPage = ({ myUser }) => {
   return (
@@ -28,6 +29,7 @@ const MainPage = ({ myUser }) => {
           }
         />
         <Route path={`/shop/:shop`} element={<DetailShop />} />
+        <Route path="/basket" element={<Basket />} />
       </Routes>
     </div>
   );

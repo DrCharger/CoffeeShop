@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
@@ -9,6 +10,7 @@ import { style } from '../../../data/style.js';
 
 const Navbar = () => {
   const [value, setValue] = useState('recents');
+  let navigate = useNavigate();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -21,6 +23,7 @@ const Navbar = () => {
         value="home"
         icon={<HomeOutlinedIcon />}
         sx={{ color: '#fff' }}
+        onClick={() => navigate('/main')}
       />
       <BottomNavigationAction
         label="Search"
@@ -29,10 +32,11 @@ const Navbar = () => {
         sx={{ color: '#fff' }}
       />
       <BottomNavigationAction
-        label="Menu"
-        value="menu"
+        label="Basket"
+        value="Basket"
         icon={<AssignmentTwoToneIcon />}
         sx={{ color: '#fff' }}
+        onClick={() => navigate('basket')}
       />
       <BottomNavigationAction
         label="Profile"

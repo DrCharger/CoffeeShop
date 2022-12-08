@@ -5,6 +5,7 @@ export const USERS_LIST_RECIEVED = 'USERS_LIST_RECIEVED';
 export const SHOW_SPINNER = 'SHOW_SPINNER';
 export const SELECTED_USER = 'SELECTED_USER';
 export const COFFEE_LIST_ID = 'COFFEE_LIST_ID';
+export const ORDER_LIST = 'ORDER_LIST';
 
 export const showSpinner = () => {
   return {
@@ -17,6 +18,15 @@ export const setUserInfo = user => {
     type: SELECTED_USER,
     payload: {
       user,
+    },
+  };
+};
+
+export const getOrderInfo = order => {
+  return {
+    type: ORDER_LIST,
+    payload: {
+      order,
     },
   };
 };

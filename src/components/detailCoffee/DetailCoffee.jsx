@@ -4,12 +4,15 @@ import { Button } from '@mui/material';
 import ArrowBackIosNewTwoToneIcon from '@mui/icons-material/ArrowBackIosNewTwoTone';
 import { allList } from '../../data/recs';
 import './detailsCoffee.scss';
+import { connect } from 'react-redux';
+import { getOrderInfo } from '../../usersStore/users.actions';
 
-const DetailCoffee = () => {
+const DetailCoffee = ({ getOrder }) => {
   let navigate = useNavigate();
   let params = useParams();
   const [level, setLevel] = useState(false);
   const [counter, setCounter] = useState(1);
+  const [comment, setComment] = useState('');
 
   const myCoffee = allList
     .find(param => param.id === params.id)
@@ -17,7 +20,14 @@ const DetailCoffee = () => {
   const sugarLevel = ['Normal', 'Less Sugar'];
 
   const toTheBasket = () => {
-    navigate('/basket');
+    const toBasket = {
+      level,
+      counter,
+      comment,
+      myCoffee,
+    };
+    getOrder(toBasket);
+    navigate(-1);
   };
 
   return (
@@ -36,6 +46,7 @@ const DetailCoffee = () => {
               padding: 0,
               marginLeft: '5%',
               opacity: 0.7,
+              paddingLeft: '9px',
             }}
             onClick={() => navigate(-1)}
           />
@@ -64,7 +75,9 @@ const DetailCoffee = () => {
           name="details"
           id="1"
           placeholder="E.g. Delivery time"
-        ></textarea>
+          value={comment}
+          onChange={e => setComment(e.target.value)}
+        />
         <div className="details-description__counter">
           <button
             className="details-description__counter-btn"
@@ -90,4 +103,8 @@ const DetailCoffee = () => {
   );
 };
 
-export default DetailCoffee;
+const mapDispatch = {
+  getOrder: getOrderInfo,
+};
+
+export default connect(null, mapDispatch)(DetailCoffee);

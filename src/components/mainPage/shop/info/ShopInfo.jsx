@@ -9,9 +9,6 @@ import classNames from 'classnames';
 const ShopInfo = ({ info }) => {
   const { shop } = useParams();
   const { name, loc, way, rait, likes, deliv, delStart, delFinish } = info;
-
-  console.log(shop);
-
   return (
     <div className="shops__list-items__info">
       <div className={classNames('else', { 'shops__list-items__name': shop === undefined })}>

@@ -1,74 +1,89 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { CoffeeSymbol } from '../coffeeSymbol/CoffeeSymbol';
 import { Link, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as userActions from '../../usersStore/users.actions';
+import { useForm } from 'react-hook-form';
+import { pass, email } from '../../data/valid';
 
 const Registration = ({ createUser }) => {
-  const [email, setEmail] = useState('');
-  const [fullname, setFullname] = useState('');
-  const [number, setNumber] = useState('');
-  const [password, setPassword] = useState('');
   let navigate = useNavigate();
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    const newUser = {
-      email,
-      fullname,
-      number,
-      password,
-    };
-    createUser(newUser);
+  const {
+    register,
+    formState: { errors, isValid },
+    handleSubmit,
+    reset,
+  } = useForm({
+    mode: 'onChange',
+  });
+
+  const onSubmit = data => {
+    createUser(data);
     navigate('/login');
-    setEmail('');
-    setPassword('');
-    setFullname('');
-    setNumber('');
+    reset;
   };
 
   return (
     <div className="login-main">
       <CoffeeSymbol text="flex" />
       <h3 className="login-main-headline">REGISTER</h3>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="login-main-text">Fullname</div>
         <input
           type="text"
           className="login-main-input"
           placeholder="John Doe"
-          value={fullname}
-          onChange={e => setFullname(e.target.value)}
-          required
+          {...register('fullname', {
+            required: 'Name is required',
+            pattern: /[A-Za-z]/,
+            minLength: 4,
+          })}
         />
+        <div className="error">{errors?.fullname && <p>Invalid Name</p>}</div>
         <div className="login-main-text">Email</div>
         <input
           type="text"
           className="login-main-input"
           placeholder="example@gmail.com"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-          required
+          {...register('email', {
+            required: 'Email is required',
+            pattern: email,
+          })}
         />
+        <div className="error">
+          {errors?.email && <p>{errors?.email?.message || 'Invalid Email'}</p>}
+        </div>
         <div className="login-main-text">Phone Number</div>
         <input
-          type="text"
+          type="tel"
           className="login-main-input"
-          placeholder="+38(0**)000-00-00"
-          value={number}
-          onChange={e => setNumber(e.target.value)}
-          required
+          {...register('number', {
+            value: '+380',
+            maxLength: 13,
+          })}
         />
+        <div className="error">{errors?.number && <p>Invalid Phone-number</p>}</div>
+
         <div className="login-main-text">Password</div>
         <input
           type="password"
           className="login-main-input"
           placeholder="********"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-          required
+          {...register('password', {
+            required: 'Type password',
+            pattern: pass,
+          })}
         />
-        <input type="submit" className="login-main-input__submit" />
+        <div className="error">
+          {errors?.password && (
+            <p>
+              {errors?.password?.message ||
+                'Password must containe Upper-,Lower- letters, and number'}
+            </p>
+          )}
+        </div>
+        <input type="submit" className="login-main-input__submit" disabled={!isValid} />
         <div className="login-main-text">
           <span className="login-main-text__center">
             Already have an account?{' '}
