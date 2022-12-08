@@ -1,11 +1,11 @@
-# Kyiv-Airport-Project
+# Coffee-Shop-Project
 
-## AirPort start code
+## Shop start code
 
 ### To start:
-Kyiv Airport Project on React-Redux
+Coffee Shop Project on React-Redux
 
-https://rad-biscotti-318e58.netlify.app
+https://gilded-kringle-ac60d9.netlify.app
 
 The tech stack is:
 
