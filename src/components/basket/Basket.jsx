@@ -6,15 +6,20 @@ import { useNavigate } from 'react-router-dom';
 import ArrowBackIosNewTwoToneIcon from '@mui/icons-material/ArrowBackIosNewTwoTone';
 
 import './basket.scss';
+import { useState } from 'react';
+import CustomModal from '../modal/CustomModal';
 
 const Basket = ({ order }) => {
   let navigate = useNavigate();
+  const [open, setOpen] = useState(false);
 
   let pricer = order
     .map(({ myCoffee }) => Number(myCoffee.price.split(' ')[1]))
     .reduce((acc, el) => acc + el, 0);
 
   console.log(order);
+  const handleClose = () => setOpen(false);
+
   return (
     <div className="basket">
       <div className="basket-first">
@@ -43,8 +48,12 @@ const Basket = ({ order }) => {
             <div>
               <h4>{item.myCoffee.text}</h4>
               <div>{item.counter} items</div>
+              <div>Sugar level: {item.level}</div>
             </div>
-            <div className="basket-child-edit">Edit</div>
+            <div className="basket-child-edit" data-id={item.id} onClick={() => setOpen(true)}>
+              Edit
+            </div>
+            <CustomModal open={open} handleClose={handleClose} />
           </div>
         </div>
       ))}

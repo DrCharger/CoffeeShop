@@ -3,7 +3,7 @@ export const style = {
   margin: '0 5%',
   borderRadius: '10px',
   position: 'fixed',
-  bottom: 20,
+  top: '90vh',
   backgroundColor: '#543820',
   opacity: 1,
   zIndex: 999,

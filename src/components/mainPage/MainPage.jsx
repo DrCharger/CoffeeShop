@@ -14,7 +14,6 @@ import Basket from '../basket/Basket';
 const MainPage = ({ myUser, order }) => {
   return (
     <div className="main-shop__page">
-      <Navbar order={order} />
       <Routes>
         <Route
           path="*"
@@ -31,6 +30,7 @@ const MainPage = ({ myUser, order }) => {
         <Route path={`/shop/:shop`} element={<DetailShop />} />
         <Route path="/basket" element={<Basket />} />
       </Routes>
+      <Navbar order={order} />
     </div>
   );
 };
