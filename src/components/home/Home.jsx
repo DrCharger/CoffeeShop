@@ -7,8 +7,10 @@ import Login from '../login/Login';
 import Registration from '../registration/Registration';
 import MainPage from '../mainPage/MainPage';
 import DetailCoffee from '../detailCoffee/DetailCoffee';
+import BasketRouter from '../basket/BasketRouter';
+import { connect } from 'react-redux';
 
-export const Home = () => {
+const Home = ({ myUser, order }) => {
   return (
     <div className="main">
       <Routes>
@@ -26,9 +28,19 @@ export const Home = () => {
         />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Registration />} />
-        <Route path="/main/*" element={<MainPage />} />
-        <Route path={`/shop/:id/:coffee`} element={<DetailCoffee />} />
+        <Route path="/main/*" element={<MainPage myUser={myUser} order={order} />} />
+        <Route path={`/details/:shop/:id/:coffee`} element={<DetailCoffee />} />
+        <Route path="/basket/*" element={<BasketRouter myUser={myUser} />} />
       </Routes>
     </div>
   );
 };
+
+const mapState = state => {
+  return {
+    myUser: state.usersList.user,
+    order: state.usersList.order,
+  };
+};
+
+export default connect(mapState)(Home);

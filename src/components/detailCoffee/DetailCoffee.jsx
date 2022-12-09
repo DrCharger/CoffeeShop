@@ -19,15 +19,16 @@ const DetailCoffee = ({ getOrder }) => {
   const [counter, setCounter] = useState(1);
   const [comment, setComment] = useState('');
   const [open, setOpen] = useState(false);
+  const sugarLevel = ['Normal', 'Less Sugar'];
 
   const myCoffee = allList
-    .find(param => param.id === params.id)
+    .find(item => item.id === params.id)
     .prods.find(el => el.url_name === params.coffee);
-  const sugarLevel = ['Normal', 'Less Sugar'];
 
   const toTheBasket = () => {
     setOpen(true);
     const toBasket = {
+      shop: params.shop,
       level,
       counter,
       comment,
@@ -112,7 +113,7 @@ const DetailCoffee = ({ getOrder }) => {
         <button className="details-description__order-btn" onClick={toTheBasket}>
           ADD TO BUSKET
         </button>
-        <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
+        <Snackbar open={open} autoHideDuration={1000} onClose={handleClose}>
           <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
             {counter} items added to the shopping cart!
           </Alert>

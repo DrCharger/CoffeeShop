@@ -60,7 +60,7 @@ const DetailShop = () => {
             .find(el => el.id === menuId)
             .prods.map(el => (
               <Grid key={el.id} item xs={6}>
-                <Link to={`/shop/${menuId}/${el.url_name}`}>
+                <Link to={`/details/${shop}/${menuId}/${el.url_name}`}>
                   <RecItem el={el} />
                 </Link>
               </Grid>

@@ -11,7 +11,7 @@ const Shop = () => {
       <h4>Coffee Shop</h4>
       <ul className="shops__list">
         {shops.map(shop => (
-          <Link to={`shop/${shop.url}`} key={shop.id}>
+          <Link to={`${shop.url}`} key={shop.id}>
             <li className={classNames('shops__list-items', { last: shop.id === '06' })}>
               <div className="shops__list-items__logo">
                 <img src={shop.img} alt="logo" />

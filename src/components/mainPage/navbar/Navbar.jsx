@@ -42,7 +42,7 @@ const Navbar = ({ order }) => {
           </Badge>
         }
         sx={{ color: '#fff' }}
-        onClick={() => navigate('basket')}
+        onClick={() => navigate('/basket')}
       />
 
       <BottomNavigationAction

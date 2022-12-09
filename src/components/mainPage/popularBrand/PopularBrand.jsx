@@ -9,7 +9,7 @@ const PopularBrand = () => {
       <h4>Popular brand</h4>
       <ul className="popular__list">
         {brands.map(({ img, id, name }) => (
-          <Link to={`shop/${name}`} key={id}>
+          <Link to={`${name}`} key={id}>
             <li className="popular__list-items">
               <img src={img} alt="logo" />
             </li>

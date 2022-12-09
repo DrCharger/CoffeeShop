@@ -7,6 +7,7 @@ export const SELECTED_USER = 'SELECTED_USER';
 export const COFFEE_LIST_ID = 'COFFEE_LIST_ID';
 export const ORDER_LIST = 'ORDER_LIST';
 export const UPDATE_ORDER_LIST = 'UPDATE_ORDER_LIST';
+export const ORDERED = 'ORDERED';
 
 export const showSpinner = () => {
   return {
@@ -31,6 +32,15 @@ export const getOrderInfo = order => {
     },
   };
 };
+export const orderedCoffee = data => {
+  return {
+    type: ORDERED,
+    payload: {
+      data,
+    },
+  };
+};
+
 export const updateOrderInfo = order => {
   return {
     type: UPDATE_ORDER_LIST,
@@ -68,12 +78,10 @@ export const getUsersList = () => {
 
 export const updateUsersList = userId => {
   const thunkAction = function (dispatch, getState) {
-    // dispatch(showSpinner());
     const state = getState();
-    const userList = tasksSelector(state);
+    const userList = state.usersList.usersList;
     const user = userList.find(user => user.id === userId);
-    const updatedUser = { ...user, done: !user.done };
-
+    const updatedUser = { ...user, order: state.usersList.ordered };
     usersGateWays.updateUser(userId, updatedUser).then(() => dispatch(getUsersList()));
   };
   return thunkAction;

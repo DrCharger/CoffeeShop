@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import Header from './header/Header';
 import MainImg from './mainimg/MainImg';
 import Recomended from './recomended/Recomended';
@@ -9,7 +8,6 @@ import './mainPage.scss';
 import Navbar from './navbar/Navbar';
 import { Routes, Route } from 'react-router-dom';
 import DetailShop from '../detailShop/DetailShop';
-import Basket from '../basket/Basket';
 
 const MainPage = ({ myUser, order }) => {
   return (
@@ -27,19 +25,11 @@ const MainPage = ({ myUser, order }) => {
             </>
           }
         />
-        <Route path={`/shop/:shop`} element={<DetailShop />} />
-        <Route path="/basket" element={<Basket />} />
+        <Route path={`:shop`} element={<DetailShop />} />
       </Routes>
       <Navbar order={order} />
     </div>
   );
 };
 
-const mapState = state => {
-  return {
-    myUser: state.usersList.user,
-    order: state.usersList.order,
-  };
-};
-
-export default connect(mapState)(MainPage);
+export default MainPage;
