@@ -80,3 +80,16 @@
     }
   }
 }
+
+.quantity {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  & button {
+    margin: 0 10px;
+    background-color: #321d0b;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+  }
+}

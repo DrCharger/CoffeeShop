@@ -1,9 +1,11 @@
 import React from 'react';
 import like from '../../../img/Like.png';
 import cart from '../../../img/korzina.png';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const RecItem = ({ el }) => {
+  let navigate = useNavigate();
+
   return (
     <figure key={el.id}>
       <img src={el.img} alt="cappuchino" className="figure-img" />

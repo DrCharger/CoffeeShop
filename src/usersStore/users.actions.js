@@ -6,6 +6,7 @@ export const SHOW_SPINNER = 'SHOW_SPINNER';
 export const SELECTED_USER = 'SELECTED_USER';
 export const COFFEE_LIST_ID = 'COFFEE_LIST_ID';
 export const ORDER_LIST = 'ORDER_LIST';
+export const UPDATE_ORDER_LIST = 'UPDATE_ORDER_LIST';
 
 export const showSpinner = () => {
   return {
@@ -25,6 +26,14 @@ export const setUserInfo = user => {
 export const getOrderInfo = order => {
   return {
     type: ORDER_LIST,
+    payload: {
+      order,
+    },
+  };
+};
+export const updateOrderInfo = order => {
+  return {
+    type: UPDATE_ORDER_LIST,
     payload: {
       order,
     },

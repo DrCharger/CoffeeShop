@@ -4,6 +4,7 @@ import {
   SELECTED_USER,
   COFFEE_LIST_ID,
   ORDER_LIST,
+  UPDATE_ORDER_LIST,
 } from './users.actions';
 
 const initialState = {
@@ -25,6 +26,11 @@ const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         order: state.order.concat(action.payload.order),
+      };
+    case UPDATE_ORDER_LIST:
+      return {
+        ...state,
+        order: action.payload.order,
       };
     case USERS_LIST_RECIEVED:
       return {

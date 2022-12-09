@@ -15,7 +15,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 const DetailCoffee = ({ getOrder }) => {
   let navigate = useNavigate();
   let params = useParams();
-  const [level, setLevel] = useState(false);
+  const [level, setLevel] = useState('Normal');
   const [counter, setCounter] = useState(1);
   const [comment, setComment] = useState('');
   const [open, setOpen] = useState(false);
