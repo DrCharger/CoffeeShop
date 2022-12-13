@@ -1,14 +1,16 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import ArrowBackIosNewTwoToneIcon from '@mui/icons-material/ArrowBackIosNewTwoTone';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { shops } from '../../data/shops';
-import { connect } from 'react-redux';
-import { ordered, orderedCoffee, updateUsersList } from '../../usersStore/users.actions';
+import loc from '../../img/checkout/Location.png';
+import deliv from '../../img/checkout/moped.png';
+import LocalAtmIcon from '@mui/icons-material/LocalAtm';
+import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
 
 import './checkout.scss';
 
-const Checkout = ({ order, myUser, totalPrice, finalOrder, ordering }) => {
+const Checkout = ({ order, totalPrice, ordering }) => {
   let navigate = useNavigate();
 
   const thisShop = shops.find(el => el.url === order[0].shop);
@@ -24,9 +26,6 @@ const Checkout = ({ order, myUser, totalPrice, finalOrder, ordering }) => {
     navigate('super');
   };
 
-  // useEffect(() => {
-  //   finalOrder(myUser.id);
-  // }, []);
   return (
     <div>
       <section className="checkout">
@@ -55,16 +54,16 @@ const Checkout = ({ order, myUser, totalPrice, finalOrder, ordering }) => {
       <div className="checkout-text">Delivery to:</div>
       <section className="checkout-delivery">
         <div className="checkout-delivery-container border">
-          <img src="" alt="loc" />
+          <img src={loc} alt="loc" />
           <p>
             <span>Kyiv, Ukraine</span>
             <br />
             <span>Kyiv, Obolon, street</span>
           </p>
-          <img src="" alt="arr" />
+          <ArrowForwardIosOutlinedIcon sx={{ color: 'grey' }} />
         </div>
         <div className="checkout-delivery-container bottom">
-          <img src="" alt="loc" />
+          <img src={deliv} alt="loc" />
           <p>Delivery</p>
           <span>Change Options</span>
         </div>
@@ -98,8 +97,8 @@ const Checkout = ({ order, myUser, totalPrice, finalOrder, ordering }) => {
       </section>
       <div className="checkout-text">Payment Details:</div>
       <section className="checkout-payment">
-        <div>
-          <img src="" alt="$" />
+        <div className="checkout-payment__cash">
+          <LocalAtmIcon sx={{ color: 'orange', fontSize: '25px' }} />
           <span>Cash</span>
         </div>
         <div className="checkout-payment__total">Total: $ {+thisShop.deliv + +totalPrice}</div>
@@ -111,9 +110,4 @@ const Checkout = ({ order, myUser, totalPrice, finalOrder, ordering }) => {
   );
 };
 
-const mapDispatch = {
-  finalOrder: updateUsersList,
-  ordering: orderedCoffee,
-};
-
-export default connect(null, mapDispatch)(Checkout);
+export default Checkout;

@@ -10,6 +10,7 @@ import { Routes, Route } from 'react-router-dom';
 import DetailShop from '../detailShop/DetailShop';
 
 const MainPage = ({ myUser, order }) => {
+  console.log(myUser);
   return (
     <div className="main-shop__page">
       <Routes>
@@ -19,7 +20,7 @@ const MainPage = ({ myUser, order }) => {
             <>
               <Header fullname={myUser.fullname} />
               <MainImg />
-              <Recomended />
+              <Recomended forYou={myUser.Orders} />
               <PopularBrand />
               <Shop />
             </>

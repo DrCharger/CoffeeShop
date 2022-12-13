@@ -110,12 +110,15 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    & div span {
-      margin-left: 12px;
+    &__cash {
       font-size: 14px;
       line-height: 21px;
       color: #321d0b;
       font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 25%;
     }
     &__total {
       font-size: 18px;

@@ -1,56 +1,28 @@
 import {
   USERS_LIST_RECIEVED,
-  SHOW_SPINNER,
   SELECTED_USER,
   COFFEE_LIST_ID,
   ORDER_LIST,
   UPDATE_ORDER_LIST,
-  ORDERED,
+  FAVOURITES,
 } from './users.actions';
 
 const initialState = {
-  usersList: [],
-  isFetching: false,
-  user: '',
+  user: { fullname: 'test', id: '1' },
   coffeeId: '01',
-  order: [
-    {
-      comment: '',
-      counter: 1,
-      id: 984919,
-      level: 'Normal',
-      shop: 'starbucks',
-      myCoffee: {
-        id: 'hot-04',
-        img: '/src/img/Americano.png',
-        price: '$ 4.00',
-        text: 'Americano',
-        url_name: 'americano',
-      },
-    },
-  ],
-  ordered: [],
+  order: [],
+  favourite: ['Hello'],
+  usersList: [],
 };
 
 const usersReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SHOW_SPINNER:
-      return {
-        ...state,
-        isFetching: true,
-      };
-    case ORDER_LIST:
+    case ORDER_LIST: //
       return {
         ...state,
         order: state.order.concat(action.payload.order),
       };
-    case ORDERED: {
-      return {
-        ...state,
-        ordered: state.ordered.concat(action.payload.data),
-      };
-    }
-    case UPDATE_ORDER_LIST:
+    case UPDATE_ORDER_LIST: //
       return {
         ...state,
         order: action.payload.order,
@@ -59,7 +31,6 @@ const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         usersList: action.payload.usersList,
-        isFetching: false,
       };
     case SELECTED_USER:
       return {
@@ -70,6 +41,11 @@ const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         coffeeId: action.payload.id,
+      };
+    case FAVOURITES:
+      return {
+        ...state,
+        favourite: action.payload.favor,
       };
     default:
       return state;

@@ -2,18 +2,12 @@ import * as usersGateWays from './users.gateWays';
 import { usersSelector } from './users.selectors';
 
 export const USERS_LIST_RECIEVED = 'USERS_LIST_RECIEVED';
-export const SHOW_SPINNER = 'SHOW_SPINNER';
 export const SELECTED_USER = 'SELECTED_USER';
 export const COFFEE_LIST_ID = 'COFFEE_LIST_ID';
 export const ORDER_LIST = 'ORDER_LIST';
 export const UPDATE_ORDER_LIST = 'UPDATE_ORDER_LIST';
 export const ORDERED = 'ORDERED';
-
-export const showSpinner = () => {
-  return {
-    type: SHOW_SPINNER,
-  };
-};
+export const FAVOURITES = 'FAVOURITES';
 
 export const setUserInfo = user => {
   return {
@@ -24,19 +18,20 @@ export const setUserInfo = user => {
   };
 };
 
+export const setFavourites = favor => {
+  return {
+    type: SELECTED_USER,
+    payload: {
+      favor,
+    },
+  };
+};
+
 export const getOrderInfo = order => {
   return {
     type: ORDER_LIST,
     payload: {
       order,
-    },
-  };
-};
-export const orderedCoffee = data => {
-  return {
-    type: ORDERED,
-    payload: {
-      data,
     },
   };
 };
@@ -70,7 +65,6 @@ export const usersListRecieved = usersList => {
 
 export const getUsersList = () => {
   const thunkAction = function (dispatch) {
-    dispatch(showSpinner());
     usersGateWays.fetchUsersList().then(userData => dispatch(usersListRecieved(userData)));
   };
   return thunkAction;
@@ -81,16 +75,12 @@ export const updateUsersList = userId => {
     const state = getState();
     const userList = state.usersList.usersList;
     const user = userList.find(user => user.id === userId);
-    const updatedUser = { ...user, order: state.usersList.ordered };
+    const updatedUser = {
+      ...user,
+      Orders: user.Orders.concat(state.usersList.order),
+      Favourites: user.Favourites.concat(state.usersList.favourite),
+    };
     usersGateWays.updateUser(userId, updatedUser).then(() => dispatch(getUsersList()));
-  };
-  return thunkAction;
-};
-
-export const deleteUsersList = userId => {
-  const thunkAction = function (dispatch) {
-    dispatch(showSpinner());
-    usersGateWays.deleteUser(userId).then(() => dispatch(getUsersList()));
   };
   return thunkAction;
 };
@@ -100,7 +90,6 @@ export const createUsersList = user => {
     if (user === '') {
       return null;
     }
-    dispatch(showSpinner());
     const newUser = {
       fullname: user.fullname,
       password: user.password,
