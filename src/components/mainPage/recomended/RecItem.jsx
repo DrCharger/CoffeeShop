@@ -3,7 +3,7 @@ import like from '../../../img/Like.png';
 import cart from '../../../img/korzina.png';
 import { useNavigate } from 'react-router-dom';
 
-const RecItem = ({ el }) => {
+const RecItem = ({ el, shop, url, menuId }) => {
   let navigate = useNavigate();
 
   return (
@@ -14,7 +14,10 @@ const RecItem = ({ el }) => {
           <figcaption className="recomended-products-text">{el.text}</figcaption>
           <figcaption className="recomended-products-price">{el.price}</figcaption>
         </div>
-        <div className="recomended-products-cart">
+        <div
+          className="recomended-products-cart"
+          onClick={() => navigate(`/details/${shop}/${menuId}/${url}`)}
+        >
           <img src={cart} alt="buy it" />
         </div>
       </div>

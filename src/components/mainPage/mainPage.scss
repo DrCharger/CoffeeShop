@@ -102,7 +102,7 @@
       width: 30px;
       background-color: #321d0b;
       border-radius: 8px;
-      margin: 15px 0;
+      margin: 15px 5px;
     }
     &-cart img {
       margin: 8px;
@@ -127,6 +127,8 @@
 }
 .flex-figure {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 figure {

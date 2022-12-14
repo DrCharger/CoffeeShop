@@ -2,7 +2,6 @@ import { Button } from '@mui/material';
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { shops } from '../../data/shops';
-import { Link } from 'react-router-dom';
 import ShopInfo from '../mainPage/shop/info/ShopInfo';
 import Grid from '@mui/material/Grid';
 import ArrowBackIosNewTwoToneIcon from '@mui/icons-material/ArrowBackIosNewTwoTone';
@@ -60,9 +59,7 @@ const DetailShop = () => {
             .find(el => el.id === menuId)
             .prods.map(el => (
               <Grid key={el.id} item xs={6}>
-                <Link to={`/details/${shop}/${menuId}/${el.url_name}`}>
-                  <RecItem el={el} />
-                </Link>
+                <RecItem el={el} shop={shop} menuId={menuId} url={el.url_name} />
               </Grid>
             ))}
         </Grid>

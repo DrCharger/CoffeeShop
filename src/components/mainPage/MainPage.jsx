@@ -10,7 +10,6 @@ import { Routes, Route } from 'react-router-dom';
 import DetailShop from '../detailShop/DetailShop';
 
 const MainPage = ({ myUser, order }) => {
-  console.log(myUser);
   return (
     <div className="main-shop__page">
       <Routes>

@@ -1,20 +1,43 @@
-import React, { useState } from 'react';
+import React from 'react';
 import RecItem from './RecItem';
 import { recomended } from '../../../data/recs';
-import { Link } from 'react-router-dom';
+import { reducer, findMax, reccomend } from '../../../data/utilits';
 
 const Recomended = ({ forYou }) => {
-  const [menuId, setMenuId] = useState('01');
+  let recsArr = [];
+  let objCoffeeItem = reducer(forYou.map(el => el.orderedCoffee));
+  let maxCountShop = findMax(reducer(forYou.map(el => el.shop)));
 
-  console.log(forYou);
-  const recs = recomended;
-
+  if (Object.keys(objCoffeeItem).length < 2) {
+    recsArr = recomended;
+    maxCountShop = 'starbucks';
+  } else {
+    const max = findMax(objCoffeeItem);
+    const objAfterMax = Object.entries(objCoffeeItem).filter(el => !el.includes(max));
+    const newA = Object.assign({}, objCoffeeItem);
+    newA[max] = 0;
+    const max2 = findMax(
+      objCoffeeItem,
+      newA,
+      objAfterMax.map(el => el[1]),
+    );
+    recsArr.push(
+      reccomend.find(el => el.text === max),
+      reccomend.find(el => el.text === max2),
+    );
+  }
   return (
     <section className="recomended">
       <h4 className="recomended-head">Recomended for you</h4>
       <div className="recomended-products">
-        {recs.map(el => (
-          <RecItem key={el.id} el={el} />
+        {recsArr.map(el => (
+          <RecItem
+            key={el.id}
+            el={el}
+            shop={maxCountShop.toLowerCase()}
+            menuId={'01'}
+            url={el.url_name}
+          />
         ))}
       </div>
     </section>

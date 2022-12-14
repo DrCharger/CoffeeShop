@@ -8,7 +8,14 @@ import {
 } from './users.actions';
 
 const initialState = {
-  user: { fullname: 'test', id: '1' },
+  user: {
+    fullname: 'test',
+    id: '1',
+    email: 'ad',
+    number: 'test',
+    password: 'ad',
+    Orders: [],
+  },
   coffeeId: '01',
   order: [],
   favourite: ['Hello'],

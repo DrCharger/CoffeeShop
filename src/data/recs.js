@@ -12,16 +12,19 @@ import strawberry from '../img/strawbery.jpg';
 
 export const recomended = [
   {
-    id: '01',
+    id: 'hot-01',
     img: Cappuchino,
     text: 'Cappuchino Short',
     price: '$ 5.00',
+    url_name: 'cappuchino',
   },
   {
-    id: '02',
+    id: 'hot-02',
     img: mochiato,
     text: 'Caramel Machiato',
     price: '$ 3.00',
+    shop: 'Starbucks',
+    url_name: 'machiato',
   },
 ];
 
