@@ -8,6 +8,7 @@ export const ORDER_LIST = 'ORDER_LIST';
 export const UPDATE_ORDER_LIST = 'UPDATE_ORDER_LIST';
 export const ORDERED = 'ORDERED';
 export const FAVOURITES = 'FAVOURITES';
+export const FAVOURITES__MINUS = 'FAVOURITES__MINUS';
 
 export const setUserInfo = user => {
   return {
@@ -20,9 +21,18 @@ export const setUserInfo = user => {
 
 export const setFavourites = favor => {
   return {
-    type: SELECTED_USER,
+    type: FAVOURITES,
     payload: {
       favor,
+    },
+  };
+};
+
+export const minusFavourites = id => {
+  return {
+    type: FAVOURITES__MINUS,
+    payload: {
+      id,
     },
   };
 };
@@ -70,6 +80,17 @@ export const getUsersList = () => {
   return thunkAction;
 };
 
+export const getMyUser = userId => {
+  const thunkAction = function (dispatch) {
+    usersGateWays.fetchUsersList().then(userData => {
+      console.log(userData);
+      console.log(userId);
+      return dispatch(setUserInfo(userData.find(el => el.id === userId)));
+    });
+  };
+  return thunkAction;
+};
+
 export const updateUsersList = userId => {
   const thunkAction = function (dispatch, getState) {
     const state = getState();
@@ -80,7 +101,7 @@ export const updateUsersList = userId => {
       Orders: user.Orders.concat(state.usersList.order),
       Favourites: user.Favourites.concat(state.usersList.favourite),
     };
-    usersGateWays.updateUser(userId, updatedUser).then(() => dispatch(getUsersList()));
+    usersGateWays.updateUser(userId, updatedUser).then(() => dispatch(getMyUser(userId)));
   };
   return thunkAction;
 };

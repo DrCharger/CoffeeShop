@@ -5,6 +5,7 @@ import {
   ORDER_LIST,
   UPDATE_ORDER_LIST,
   FAVOURITES,
+  FAVOURITES__MINUS,
 } from './users.actions';
 
 const initialState = {
@@ -15,21 +16,22 @@ const initialState = {
     number: 'test',
     password: 'ad',
     Orders: [],
+    Favourites: [],
   },
   coffeeId: '01',
   order: [],
-  favourite: ['Hello'],
+  favourite: [],
   usersList: [],
 };
 
 const usersReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ORDER_LIST: //
+    case ORDER_LIST:
       return {
         ...state,
         order: state.order.concat(action.payload.order),
       };
-    case UPDATE_ORDER_LIST: //
+    case UPDATE_ORDER_LIST:
       return {
         ...state,
         order: action.payload.order,
@@ -52,7 +54,12 @@ const usersReducer = (state = initialState, action) => {
     case FAVOURITES:
       return {
         ...state,
-        favourite: action.payload.favor,
+        favourite: state.favourite.concat(action.payload.favor),
+      };
+    case FAVOURITES__MINUS:
+      return {
+        ...state,
+        favourite: state.favourite.filter(el => el.id !== action.payload.id),
       };
     default:
       return state;

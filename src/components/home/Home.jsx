@@ -11,6 +11,7 @@ import BasketRouter from '../basket/BasketRouter';
 import { connect } from 'react-redux';
 
 const Home = ({ myUser, order }) => {
+  console.log(myUser);
   return (
     <div className="main">
       <Routes>
