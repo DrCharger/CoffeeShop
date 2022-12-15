@@ -7,7 +7,6 @@ const Recomended = ({ forYou }) => {
   let recsArr = [];
   let objCoffeeItem = reducer(forYou.map(el => el.orderedCoffee));
   let maxCountShop = findMax(reducer(forYou.map(el => el.shop)));
-
   if (Object.keys(objCoffeeItem).length < 2) {
     recsArr = recomended;
     maxCountShop = 'starbucks';
@@ -26,6 +25,7 @@ const Recomended = ({ forYou }) => {
       reccomend.find(el => el.text === max2),
     );
   }
+
   return (
     <section className="recomended">
       <h4 className="recomended-head">Recomended for you</h4>

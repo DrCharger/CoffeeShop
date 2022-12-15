@@ -1,7 +1,7 @@
 import { allList } from './recs';
 
 export const reducer = arr =>
-  arr.flat().reduce((acc, el) => {
+  arr.flat(3).reduce((acc, el) => {
     acc[el] = (acc[el] || 0) + 1;
     return acc;
   }, {});
