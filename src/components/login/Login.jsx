@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { getUsersList, setUserInfo } from '../../usersStore/users.actions';
 import { connect } from 'react-redux';
 import './login.scss';
+import { setItem } from '../../data/local';
 
 const Login = ({ getUsers, users, setUser }) => {
   let navigate = useNavigate();
@@ -25,6 +26,7 @@ const Login = ({ getUsers, users, setUser }) => {
     const finded = users.find(user => user.email === data.email && user.password === data.password);
     if (finded !== undefined) {
       setUser(finded);
+      setItem('user', finded);
       navigate('/main');
       reset;
     } else {

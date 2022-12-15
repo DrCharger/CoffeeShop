@@ -8,16 +8,10 @@ import {
   FAVOURITES__MINUS,
 } from './users.actions';
 
+import { getItem } from '../data/local';
+
 const initialState = {
-  user: {
-    fullname: 'test',
-    id: '1',
-    email: 'ad',
-    number: 'test',
-    password: 'ad',
-    Orders: [],
-    Favourites: [],
-  },
+  user: getItem('user'),
   coffeeId: '01',
   order: [],
   favourite: [],

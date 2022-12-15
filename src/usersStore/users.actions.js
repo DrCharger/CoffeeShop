@@ -83,8 +83,6 @@ export const getUsersList = () => {
 export const getMyUser = userId => {
   const thunkAction = function (dispatch) {
     usersGateWays.fetchUsersList().then(userData => {
-      console.log(userData);
-      console.log(userId);
       return dispatch(setUserInfo(userData.find(el => el.id === userId)));
     });
   };

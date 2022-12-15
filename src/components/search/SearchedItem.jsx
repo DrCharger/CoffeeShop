@@ -13,9 +13,6 @@ const SearchedItem = ({ param }) => {
     .map(el => el.prods)
     .flat()
     .find(el => el.url_name.toLowerCase().includes(param.toLowerCase()));
-
-  console.log(isShop);
-  console.log(isProd);
   if (isMenu !== undefined) {
     return <CoffeeGrid allList={allList} itemId={isMenu.id} />;
   }
