@@ -17,6 +17,6 @@ export const menu = [
   },
   {
     id: '05',
-    text: 'Coctails',
+    text: 'Burgers',
   },
 ];

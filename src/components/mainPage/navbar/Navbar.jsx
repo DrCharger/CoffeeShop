@@ -31,6 +31,7 @@ const Navbar = ({ order }) => {
         value="search"
         icon={<SearchOutlinedIcon />}
         sx={{ color: '#fff' }}
+        onClick={() => navigate('search')}
       />
 
       <BottomNavigationAction

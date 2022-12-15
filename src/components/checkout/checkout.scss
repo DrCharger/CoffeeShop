@@ -3,6 +3,10 @@
   align-items: center;
   background-color: #fff;
   padding: 0 5%;
+  &-relative {
+    position: relative;
+    padding-bottom: 80px;
+  }
   &-text {
     font-size: 14px;
     line-height: 40px;

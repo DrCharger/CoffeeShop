@@ -3,13 +3,12 @@ import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { shops } from '../../data/shops';
 import ShopInfo from '../mainPage/shop/info/ShopInfo';
-import Grid from '@mui/material/Grid';
 import ArrowBackIosNewTwoToneIcon from '@mui/icons-material/ArrowBackIosNewTwoTone';
 import { menu } from '../../data/menu';
 import './details.scss';
 import classNames from 'classnames';
 import { allList } from '../../data/recs';
-import RecItem from '../mainPage/recomended/RecItem';
+import CoffeeGrid from '../coffeeGrid/CoffeeGrid';
 
 const DetailShop = () => {
   const [menuId, setMenuId] = useState('01');
@@ -53,17 +52,7 @@ const DetailShop = () => {
           </button>
         ))}
       </div>
-      <div className="details-main-list">
-        <Grid container spacing={2}>
-          {allList
-            .find(el => el.id === menuId)
-            .prods.map(el => (
-              <Grid key={el.id} item xs={6}>
-                <RecItem el={el} shop={shop} menuId={menuId} url={el.url_name} />
-              </Grid>
-            ))}
-        </Grid>
-      </div>
+      <CoffeeGrid allList={allList} itemId={menuId} shop={shop} />
     </div>
   );
 };

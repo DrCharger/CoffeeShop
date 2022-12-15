@@ -27,7 +27,7 @@ const Checkout = ({ order, totalPrice, ordering }) => {
   };
 
   return (
-    <div>
+    <div className="checkout-relative">
       <section className="checkout">
         <Button
           variant="contained"

@@ -1,0 +1,21 @@
+import React from 'react';
+import Grid from '@mui/material/Grid';
+import RecItem from '../mainPage/recomended/RecItem';
+
+const CoffeeGrid = ({ allList, itemId, shop = 'starbucks' }) => {
+  return (
+    <div className="details-main-list">
+      <Grid container spacing={2}>
+        {allList
+          .find(el => el.id === itemId)
+          .prods.map(el => (
+            <Grid key={el.id} item xs={6}>
+              <RecItem el={el} shop={shop} menuId={itemId} url={el.url_name} />
+            </Grid>
+          ))}
+      </Grid>
+    </div>
+  );
+};
+
+export default CoffeeGrid;

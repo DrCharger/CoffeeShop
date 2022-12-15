@@ -8,6 +8,7 @@ import './mainPage.scss';
 import Navbar from './navbar/Navbar';
 import { Routes, Route } from 'react-router-dom';
 import DetailShop from '../detailShop/DetailShop';
+import Search from '../search/Search';
 
 const MainPage = ({ myUser, order }) => {
   return (
@@ -26,6 +27,7 @@ const MainPage = ({ myUser, order }) => {
           }
         />
         <Route path={`:shop`} element={<DetailShop />} />
+        <Route path="/search" element={<Search />} />
       </Routes>
       <Navbar order={order} />
     </div>
