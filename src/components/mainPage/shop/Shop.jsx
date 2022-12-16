@@ -2,7 +2,6 @@ import React from 'react';
 import { shops } from '../../../data/shops';
 import { Link } from 'react-router-dom';
 import './shop.scss';
-import classNames from 'classnames';
 import ShopInfo from './info/ShopInfo';
 
 const Shop = () => {

@@ -2,11 +2,11 @@ import React, { useEffect } from 'react';
 import { CoffeeSymbol } from '../coffeeSymbol/CoffeeSymbol';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { getUsersList, setUserInfo } from '../../usersStore/users.actions';
+import { getUsersList, setFavourites, setUserInfo } from '../../usersStore/users.actions';
 import { connect } from 'react-redux';
 import './login.scss';
 
-const Login = ({ getUsers, users, setUser }) => {
+const Login = ({ getUsers, users, setUser, setFavour }) => {
   let navigate = useNavigate();
   const {
     register,
@@ -25,6 +25,7 @@ const Login = ({ getUsers, users, setUser }) => {
     const finded = users.find(user => user.email === data.email && user.password === data.password);
     if (finded !== undefined) {
       setUser(finded);
+      setFavour(finded.favourites);
       navigate('/main');
       reset;
     } else {
@@ -84,6 +85,7 @@ const mapState = state => {
 const mapDispatch = {
   getUsers: getUsersList,
   setUser: setUserInfo,
+  setFavour: setFavourites,
 };
 
 export default connect(mapState, mapDispatch)(Login);

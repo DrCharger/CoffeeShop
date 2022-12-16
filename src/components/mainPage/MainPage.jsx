@@ -11,6 +11,7 @@ import DetailShop from '../detailShop/DetailShop';
 import Search from '../search/Search';
 
 const MainPage = ({ myUser, order }) => {
+  console.log(myUser);
   return (
     <div className="main-shop__page">
       <Routes>

@@ -16,7 +16,7 @@ const initialState = {
     number: 'test',
     password: 'ad',
     Orders: [],
-    Favourites: [],
+    favourites: [],
   },
   coffeeId: '01',
   order: [],

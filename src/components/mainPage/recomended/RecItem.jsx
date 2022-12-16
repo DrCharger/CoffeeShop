@@ -1,20 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 import like from '../../../img/Like.png';
 import cart from '../../../img/korzina.png';
 import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { minusFavourites, setFavourites } from '../../../usersStore/users.actions';
+import { minusFavourites, setFavourites, updateUsersList } from '../../../usersStore/users.actions';
 
-const RecItem = ({ el, shop, url, menuId, getLiked, liked, minusLiked }) => {
+const RecItem = ({ el, shop, url, menuId, getLiked, liked, minusLiked, updater, myUser }) => {
   let navigate = useNavigate();
   const btn = liked.map(item => item.id).includes(el.id);
 
   const handlePlus = () => {
     getLiked(el);
+    updater(myUser.id);
   };
 
   const handleMinus = () => {
     minusLiked(el.id);
+    updater(myUser.id);
   };
 
   console.log(liked);
@@ -56,6 +58,7 @@ const mapState = state => {
 const mapDispatch = {
   getLiked: setFavourites,
   minusLiked: minusFavourites,
+  updater: updateUsersList,
 };
 
 export default connect(mapState, mapDispatch)(RecItem);
