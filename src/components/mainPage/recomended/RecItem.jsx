@@ -19,7 +19,6 @@ const RecItem = ({ el, shop, url, menuId, getLiked, liked, minusLiked, updater, 
     updater(myUser.id);
   };
 
-  console.log(liked);
   return (
     <figure key={el.id}>
       <img src={el.img} alt="cappuchino" className="figure-img" />
