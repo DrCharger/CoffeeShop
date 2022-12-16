@@ -51,6 +51,7 @@ const Navbar = ({ order }) => {
         value="profile"
         icon={<PersonOutlineIcon />}
         sx={{ color: '#fff' }}
+        onClick={() => navigate('profile')}
       />
     </BottomNavigation>
   );

@@ -1,0 +1,40 @@
+.profile {
+  width: 100%;
+  background-color: #fff;
+  min-height: 100vh;
+  padding: 10% 5%;
+  &-avatar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    & h5 {
+      margin-top: 10px;
+    }
+  }
+  &__tools {
+    margin-top: 50px;
+
+    &-container {
+      margin-top: 15px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      &__bg {
+        background: #e8e8e8;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 5px;
+      }
+      & span {
+        margin-left: 15px;
+        font-size: 14px;
+        line-height: 21px;
+        color: #2d2d2d;
+        flex-grow: 1;
+      }
+    }
+  }
+}
