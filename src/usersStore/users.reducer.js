@@ -5,17 +5,23 @@ import {
   ORDER_LIST,
   UPDATE_ORDER_LIST,
   FAVOURITES,
-  FAVOURITES__MINUS,
+  MINUS_FAVOURITES,
 } from './users.actions';
 
-import { getItem } from '../data/local';
-
 const initialState = {
-  user: getItem('user'),
+  user: {
+    fullname: 'test',
+    id: '1',
+    email: 'ad',
+    number: 'test',
+    password: 'ad',
+    Orders: [],
+    Favourites: [],
+  },
   coffeeId: '01',
   order: [],
-  favourite: [],
   usersList: [],
+  liked: [],
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -48,12 +54,12 @@ const usersReducer = (state = initialState, action) => {
     case FAVOURITES:
       return {
         ...state,
-        favourite: state.favourite.concat(action.payload.favor),
+        liked: state.liked.concat(action.payload.liked),
       };
-    case FAVOURITES__MINUS:
+    case MINUS_FAVOURITES:
       return {
         ...state,
-        favourite: state.favourite.filter(el => el.id !== action.payload.id),
+        liked: state.liked.filter(item => item.id !== action.payload.id),
       };
     default:
       return state;

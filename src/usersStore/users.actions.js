@@ -8,7 +8,7 @@ export const ORDER_LIST = 'ORDER_LIST';
 export const UPDATE_ORDER_LIST = 'UPDATE_ORDER_LIST';
 export const ORDERED = 'ORDERED';
 export const FAVOURITES = 'FAVOURITES';
-export const FAVOURITES__MINUS = 'FAVOURITES__MINUS';
+export const MINUS_FAVOURITES = 'MINUS_FAVOURITES';
 
 export const setUserInfo = user => {
   return {
@@ -19,18 +19,18 @@ export const setUserInfo = user => {
   };
 };
 
-export const setFavourites = favor => {
+export const setFavourites = liked => {
   return {
     type: FAVOURITES,
     payload: {
-      favor,
+      liked,
     },
   };
 };
 
 export const minusFavourites = id => {
   return {
-    type: FAVOURITES__MINUS,
+    type: MINUS_FAVOURITES,
     payload: {
       id,
     },
@@ -97,7 +97,6 @@ export const updateUsersList = userId => {
     const updatedUser = {
       ...user,
       Orders: user.Orders.concat(state.usersList.order),
-      Favourites: user.Favourites.concat(state.usersList.favourite),
     };
     usersGateWays.updateUser(userId, updatedUser).then(() => dispatch(getMyUser(userId)));
   };

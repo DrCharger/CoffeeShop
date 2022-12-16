@@ -25,7 +25,6 @@ const Recomended = ({ forYou }) => {
       reccomend.find(el => el.text === max2),
     );
   }
-
   return (
     <section className="recomended">
       <h4 className="recomended-head">Recomended for you</h4>
@@ -35,7 +34,7 @@ const Recomended = ({ forYou }) => {
             key={el.id}
             el={el}
             shop={maxCountShop.toLowerCase()}
-            menuId={'01'}
+            menuId={el.parentId}
             url={el.url_name}
           />
         ))}

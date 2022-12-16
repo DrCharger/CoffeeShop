@@ -1,24 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import like from '../../../img/Like.png';
 import cart from '../../../img/korzina.png';
 import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { minusFavourites, setFavourites, updateUsersList } from '../../../usersStore/users.actions';
+import { minusFavourites, setFavourites } from '../../../usersStore/users.actions';
 
-const RecItem = ({ el, shop, url, menuId, setFavourites, update, myUser, minus }) => {
+const RecItem = ({ el, shop, url, menuId, getLiked, liked, minusLiked }) => {
   let navigate = useNavigate();
+  const btn = liked.map(item => item.id).includes(el.id);
 
-  const handleYesHeart = () => {
-    setFavourites(el);
-    update(myUser.id);
-  };
-  const handleNoHeart = () => {
-    minus(el.id);
-    update(myUser.id);
+  const handlePlus = () => {
+    getLiked(el);
   };
 
-  const { Favourites } = myUser;
-  const btn = Favourites.map(item => item.id).includes(el.id);
+  const handleMinus = () => {
+    minusLiked(el.id);
+  };
+
+  console.log(liked);
   return (
     <figure key={el.id}>
       <img src={el.img} alt="cappuchino" className="figure-img" />
@@ -35,11 +34,11 @@ const RecItem = ({ el, shop, url, menuId, setFavourites, update, myUser, minus }
         </div>
       </div>
       {!btn ? (
-        <div className="recomended-products-heart" onClick={handleYesHeart}>
+        <div className="recomended-products-heart" onClick={handlePlus}>
           <img src={like} alt="Like-heart" />
         </div>
       ) : (
-        <div className="recomended-products-heart__clicked" onClick={handleNoHeart}>
+        <div className="recomended-products-heart__clicked" onClick={handleMinus}>
           <img src={like} alt="Like-heart" />
         </div>
       )}
@@ -50,13 +49,13 @@ const RecItem = ({ el, shop, url, menuId, setFavourites, update, myUser, minus }
 const mapState = state => {
   return {
     myUser: state.usersList.user,
+    liked: state.usersList.liked,
   };
 };
 
 const mapDispatch = {
-  setFavourites: setFavourites,
-  update: updateUsersList,
-  minus: minusFavourites,
+  getLiked: setFavourites,
+  minusLiked: minusFavourites,
 };
 
 export default connect(mapState, mapDispatch)(RecItem);
