@@ -94,7 +94,6 @@ export const updateUsersList = userId => {
     const state = getState();
     const userList = state.usersList.usersList;
     const user = userList.find(user => user.id === userId);
-    console.log(user);
     const updatedUser = {
       ...user,
       Orders: user.Orders.concat(state.usersList.order),

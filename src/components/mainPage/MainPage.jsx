@@ -9,7 +9,7 @@ import Navbar from './navbar/Navbar';
 import { Routes, Route } from 'react-router-dom';
 import DetailShop from '../detailShop/DetailShop';
 import Search from '../search/Search';
-import Profile from '../profile/Profile';
+import ProfileRouter from '../profile/ProfileRouter';
 
 const MainPage = ({ myUser, order }) => {
   return (
@@ -29,7 +29,7 @@ const MainPage = ({ myUser, order }) => {
         />
         <Route path={`:shop`} element={<DetailShop />} />
         <Route path="/search" element={<Search />} />
-        <Route path="/profile" element={<Profile myUser={myUser} />} />
+        <Route path="/profile/*" element={<ProfileRouter myUser={myUser} />} />
       </Routes>
       <Navbar order={order} />
     </div>
