@@ -7,7 +7,7 @@ import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import Badge from '@mui/material/Badge';
-import { style } from '../../../data/style.js';
+import { style, styleAction } from '../../../data/style.js';
 
 const Navbar = ({ order }) => {
   const [value, setValue] = useState('recents');
@@ -23,14 +23,14 @@ const Navbar = ({ order }) => {
         label="Home"
         value="home"
         icon={<HomeOutlinedIcon />}
-        sx={{ color: '#fff' }}
+        sx={styleAction}
         onClick={() => navigate('/main')}
       />
       <BottomNavigationAction
         label="Search"
         value="search"
         icon={<SearchOutlinedIcon />}
-        sx={{ color: '#fff' }}
+        sx={styleAction}
         onClick={() => navigate('search')}
       />
 
@@ -42,7 +42,7 @@ const Navbar = ({ order }) => {
             <ShoppingCartOutlinedIcon />
           </Badge>
         }
-        sx={{ color: '#fff' }}
+        sx={styleAction}
         onClick={() => navigate('/basket')}
       />
 
@@ -50,7 +50,7 @@ const Navbar = ({ order }) => {
         label="Profile"
         value="profile"
         icon={<PersonOutlineIcon />}
-        sx={{ color: '#fff' }}
+        sx={styleAction}
         onClick={() => navigate('profile')}
       />
     </BottomNavigation>
