@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 
-const EditLocation = ({ user, adress, update, nav }) => {
+const EditLocation = ({ user, adress, update, nav, updateServer }) => {
   const {
     register,
     formState: { errors },
@@ -16,6 +16,7 @@ const EditLocation = ({ user, adress, update, nav }) => {
       return null;
     } else {
       update(name, watch(name));
+      updateServer(user.id);
       reset;
     }
   };

@@ -34,7 +34,7 @@ export const updateUserInfo = (updateName, toUpdate) => {
 
 export const setAdress = location => {
   return {
-    type: UPDATE_ADRESS,
+    type: SET_ADRESS,
     payload: {
       location,
     },
