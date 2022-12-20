@@ -2,15 +2,15 @@ import React from 'react';
 import Avatar from '@mui/material/Avatar';
 import { stringAvatar } from './profUtilits';
 import { Routes, Route, useNavigate } from 'react-router-dom';
-
+import { updateAdressInfo, updateUserInfo, updateUsersList } from '../../usersStore/users.actions';
+import { connect } from 'react-redux';
 import './profile.scss';
 
-import Button from '@mui/material/Button';
-
 import ProfileMain from './profileMain/ProfileMain';
-import EditAccount from './EditAccount';
+import EditAccount from './editAcc/EditAccount';
+import EditLocation from './editLoc/EditLocation';
 
-const ProfileRouter = ({ myUser }) => {
+const ProfileRouter = ({ myUser, update, updateServer, adress, updateAdress }) => {
   let navigate = useNavigate();
 
   return (
@@ -21,18 +21,38 @@ const ProfileRouter = ({ myUser }) => {
       </div>
       <Routes>
         <Route path="*" element={<ProfileMain nav={navigate} />} />
-        <Route path="pencil" element={<EditAccount />} />
+        <Route
+          path="pencil"
+          element={
+            <EditAccount user={myUser} nav={navigate} update={update} updateServer={updateServer} />
+          }
+        />
+        <Route
+          path="loc"
+          element={
+            <EditLocation
+              user={myUser}
+              nav={navigate}
+              update={updateAdress}
+              updateServer={updateServer}
+              adress={adress}
+            />
+          }
+        />
       </Routes>
-
-      <Button
-        variant="contained"
-        sx={{ width: '100%', marginTop: '5%', backgroundColor: '#E4E4E4', color: '#FF8B8B' }}
-        onClick={() => navigate('/login')}
-      >
-        LOGOUT
-      </Button>
     </div>
   );
 };
+const mapState = state => {
+  return {
+    adress: state.usersList.location,
+  };
+};
 
-export default ProfileRouter;
+const mapDispatch = {
+  update: updateUserInfo,
+  updateServer: updateUsersList,
+  updateAdress: updateAdressInfo,
+};
+
+export default connect(mapState, mapDispatch)(ProfileRouter);

@@ -6,14 +6,17 @@ import {
   UPDATE_ORDER_LIST,
   FAVOURITES,
   MINUS_FAVOURITES,
+  UPDATE_USER,
+  UPDATE_ADRESS,
+  SET_ADRESS,
 } from './users.actions';
 
 const initialState = {
   user: {
-    fullname: 'test',
+    fullname: 'Adam Dor',
     id: '1',
-    email: 'ad',
-    number: 'test',
+    email: 'ad@example.com',
+    number: '380934651111',
     password: 'ad',
     Orders: [],
     favourites: [],
@@ -22,6 +25,12 @@ const initialState = {
   order: [],
   usersList: [],
   liked: [],
+  location: {
+    country: 'Ukraine',
+    city: 'Kiev',
+    street: 'Obolonska',
+    house: '17B',
+  },
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -46,6 +55,11 @@ const usersReducer = (state = initialState, action) => {
         ...state,
         user: action.payload.user,
       };
+    case UPDATE_USER:
+      return {
+        ...state,
+        user: { ...state.user, [action.payload.updateName]: action.payload.toUpdate },
+      };
     case COFFEE_LIST_ID:
       return {
         ...state,
@@ -60,6 +74,16 @@ const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         liked: state.liked.filter(item => item.id !== action.payload.id),
+      };
+    case SET_ADRESS:
+      return {
+        ...state,
+        location: action.payload.location,
+      };
+    case UPDATE_ADRESS:
+      return {
+        ...state,
+        location: { ...state.location, [action.payload.updateName]: action.payload.toUpdate },
       };
     default:
       return state;

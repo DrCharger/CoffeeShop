@@ -11,7 +11,7 @@ import DetailShop from '../detailShop/DetailShop';
 import Search from '../search/Search';
 import ProfileRouter from '../profile/ProfileRouter';
 
-const MainPage = ({ myUser, order }) => {
+const MainPage = ({ myUser, order, location }) => {
   return (
     <div className="main-shop__page">
       <Routes>
@@ -19,7 +19,7 @@ const MainPage = ({ myUser, order }) => {
           path="*"
           element={
             <>
-              <Header fullname={myUser.fullname} />
+              <Header fullname={myUser.fullname} loc={location} />
               <MainImg />
               <Recomended forYou={myUser.Orders} />
               <PopularBrand />

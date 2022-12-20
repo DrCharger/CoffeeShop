@@ -7,6 +7,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import NotesIcon from '@mui/icons-material/Notes';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
+import Button from '@mui/material/Button';
 
 import { profileArr } from '../../../data/profile';
 
@@ -28,6 +29,13 @@ const ProfileMain = ({ nav }) => {
           <ArrowForwardIosOutlinedIcon sx={{ color: '#8D8D8D', fontSize: 15 }} />
         </div>
       ))}
+      <Button
+        variant="contained"
+        sx={{ width: '100%', marginTop: '5%', backgroundColor: '#E4E4E4', color: '#FF8B8B' }}
+        onClick={() => navigate('/login')}
+      >
+        LOGOUT
+      </Button>
     </div>
   );
 };
