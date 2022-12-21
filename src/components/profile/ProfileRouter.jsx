@@ -10,16 +10,10 @@ import ProfileMain from './profileMain/ProfileMain';
 import EditAccount from './editAcc/EditAccount';
 import EditLocation from './editLoc/EditLocation';
 import Payment from './payment/Payment';
+import Policy from './policy/Policy';
+import About from './about/About';
 
-const ProfileRouter = ({
-  payM,
-  handleChange,
-  myUser,
-  update,
-  updateServer,
-  adress,
-  updateAdress,
-}) => {
+const ProfileRouter = ({ myUser, update, updateServer, adress, updateAdress }) => {
   let navigate = useNavigate();
 
   return (
@@ -48,10 +42,8 @@ const ProfileRouter = ({
             />
           }
         />
-        <Route
-          path="pay"
-          element={<Payment nav={navigate} payM={payM} handleChange={handleChange} />}
-        />
+        <Route path="policy" element={<Policy />} />
+        <Route path="about" element={<About />} />
       </Routes>
     </div>
   );

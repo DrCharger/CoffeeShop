@@ -31,7 +31,7 @@ const ProfileMain = ({ nav }) => {
       <Button
         variant="contained"
         sx={{ width: '100%', marginTop: '5%', backgroundColor: '#E4E4E4', color: '#FF8B8B' }}
-        onClick={() => navigate('/login')}
+        onClick={() => nav('/login')}
       >
         LOGOUT
       </Button>

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import finalImg from '../../img/checkout/yeah.png';
 import './final.scss';
+import Raiting from './Raiting';
 
 const Final = ({ myUser, finalOrder, getNewOrder }) => {
   let navigate = useNavigate();
@@ -20,6 +21,7 @@ const Final = ({ myUser, finalOrder, getNewOrder }) => {
       <p className="final-text">
         Your items has been placed and is on it is way to being processed
       </p>
+      <Raiting />
       <button className="final-btn homer" onClick={() => navigate('/main')}>
         Back To Home
       </button>
