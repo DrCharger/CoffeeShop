@@ -12,7 +12,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
-const DetailCoffee = ({ getOrder }) => {
+const DetailCoffee = ({ getOrder, discount }) => {
   let navigate = useNavigate();
   let params = useParams();
   const [level, setLevel] = useState('Normal');
@@ -25,6 +25,11 @@ const DetailCoffee = ({ getOrder }) => {
     .find(item => item.id === params.id)
     .prods.find(el => el.url_name === params.coffee);
 
+  let newPriceText = myCoffee.price;
+  if (discount !== 0) {
+    newPriceText = myCoffee.price - myCoffee.price * discount;
+  }
+
   const toTheBasket = () => {
     setOpen(true);
     const toBasket = {
@@ -33,6 +38,7 @@ const DetailCoffee = ({ getOrder }) => {
       counter,
       comment,
       myCoffee,
+      newPriceText,
       id: Math.floor(Math.random() * 1000000),
     };
     getOrder(toBasket);
@@ -72,7 +78,7 @@ const DetailCoffee = ({ getOrder }) => {
           <h3 className="details-coffee-header">{myCoffee.text}</h3>
           <h5>{myCoffee.text}</h5>
         </div>
-        <div className="details-coffee-price">{myCoffee.price}</div>
+        <div className="details-coffee-price">$ {newPriceText}</div>
       </div>
       <div className="details-sugar">
         <h3 className="details-sugar__text">Sugar level</h3>

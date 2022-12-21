@@ -10,7 +10,7 @@ const Basket = ({ order, getNewOrder, setTotal }) => {
   const [orderEdited, setItemDelete] = useState(order);
 
   let pricer = orderEdited
-    .map(item => Number(item.myCoffee.price.split(' ')[1]) * item.counter)
+    .map(item => Number(item.newPriceText) * item.counter)
     .reduce((acc, el) => acc + el, 0);
 
   const handleDelete = e => {
@@ -30,6 +30,8 @@ const Basket = ({ order, getNewOrder, setTotal }) => {
 
     getNewOrder(changed);
   };
+
+  console.log(order);
 
   return (
     <>

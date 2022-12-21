@@ -11,6 +11,8 @@ import BasketRouter from '../basket/BasketRouter';
 import { connect } from 'react-redux';
 
 const Home = ({ myUser, order, location }) => {
+  const [discount, setDiscount] = React.useState(0);
+
   return (
     <div className="main">
       <Routes>
@@ -30,10 +32,21 @@ const Home = ({ myUser, order, location }) => {
         <Route path="/register" element={<Registration />} />
         <Route
           path="/main/*"
-          element={<MainPage myUser={myUser} order={order} location={location} />}
+          element={
+            <MainPage
+              myUser={myUser}
+              order={order}
+              location={location}
+              discount={discount}
+              setDiscount={setDiscount}
+            />
+          }
         />
-        <Route path={`/details/:shop/:id/:coffee`} element={<DetailCoffee />} />
-        <Route path="/basket/*" element={<BasketRouter myUser={myUser} />} />
+        <Route path={`/details/:shop/:id/:coffee`} element={<DetailCoffee discount={discount} />} />
+        <Route
+          path="/basket/*"
+          element={<BasketRouter myUser={myUser} setDiscount={setDiscount} />}
+        />
       </Routes>
     </div>
   );

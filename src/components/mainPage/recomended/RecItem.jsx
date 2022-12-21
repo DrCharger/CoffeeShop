@@ -5,7 +5,18 @@ import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { minusFavourites, setFavourites, updateUsersList } from '../../../usersStore/users.actions';
 
-const RecItem = ({ el, shop, url, menuId, getLiked, liked, minusLiked, updater, myUser }) => {
+const RecItem = ({
+  discount,
+  el,
+  shop,
+  url,
+  menuId,
+  getLiked,
+  liked,
+  minusLiked,
+  updater,
+  myUser,
+}) => {
   let navigate = useNavigate();
   const btn = liked.map(item => item.id).includes(el.id);
 
@@ -18,6 +29,10 @@ const RecItem = ({ el, shop, url, menuId, getLiked, liked, minusLiked, updater, 
     minusLiked(el.id);
     updater(myUser.id);
   };
+  let newPriceText = el.price;
+  if (discount !== 0) {
+    newPriceText = el.price - el.price * discount;
+  }
 
   return (
     <figure key={el.id}>
@@ -25,7 +40,7 @@ const RecItem = ({ el, shop, url, menuId, getLiked, liked, minusLiked, updater, 
       <div className="flex-figure">
         <div>
           <figcaption className="recomended-products-text">{el.text}</figcaption>
-          <figcaption className="recomended-products-price">{el.price}</figcaption>
+          <figcaption className="recomended-products-price"> $ {newPriceText}</figcaption>
         </div>
         <div
           className="recomended-products-cart"

@@ -11,7 +11,7 @@ import DetailShop from '../detailShop/DetailShop';
 import Search from '../search/Search';
 import ProfileRouter from '../profile/ProfileRouter';
 
-const MainPage = ({ myUser, order, location }) => {
+const MainPage = ({ myUser, order, location, discount, setDiscount }) => {
   return (
     <div className="main-shop__page">
       <Routes>
@@ -21,15 +21,18 @@ const MainPage = ({ myUser, order, location }) => {
             <>
               <Header fullname={myUser.fullname} loc={location} />
               <MainImg />
-              <Recomended forYou={myUser.Orders} />
+              <Recomended forYou={myUser.Orders} discount={discount} />
               <PopularBrand />
               <Shop />
             </>
           }
         />
-        <Route path={`:shop`} element={<DetailShop />} />
+        <Route path={`:shop`} element={<DetailShop discount={discount} />} />
         <Route path="/search" element={<Search />} />
-        <Route path="/profile/*" element={<ProfileRouter myUser={myUser} />} />
+        <Route
+          path="/profile/*"
+          element={<ProfileRouter myUser={myUser} setDiscount={setDiscount} />}
+        />
       </Routes>
       <Navbar order={order} />
     </div>

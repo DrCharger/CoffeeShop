@@ -13,7 +13,6 @@ import { connect } from 'react-redux';
 import { setPayment } from '../../../usersStore/users.actions';
 
 const Payment = ({ setPayment, method }) => {
-  console.log(method);
   const [value, setValue] = React.useState(method);
   const [open, setOpen] = React.useState(false);
   const handleClickOpen = () => {
@@ -32,8 +31,6 @@ const Payment = ({ setPayment, method }) => {
       setPayment(value);
     }
   };
-
-  console.log(value);
   return (
     <div>
       <Button onClick={handleClickOpen} sx={{ color: '#000' }}>

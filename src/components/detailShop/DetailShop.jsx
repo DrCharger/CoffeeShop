@@ -10,7 +10,7 @@ import classNames from 'classnames';
 import { allList } from '../../data/recs';
 import CoffeeGrid from '../coffeeGrid/CoffeeGrid';
 
-const DetailShop = () => {
+const DetailShop = ({ discount }) => {
   const [menuId, setMenuId] = useState('01');
   const { shop } = useParams();
   let navigate = useNavigate();
@@ -52,7 +52,7 @@ const DetailShop = () => {
           </button>
         ))}
       </div>
-      <CoffeeGrid allList={allList} itemId={menuId} shop={shop} />
+      <CoffeeGrid allList={allList} itemId={menuId} shop={shop} discount={discount} />
     </div>
   );
 };

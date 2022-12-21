@@ -14,7 +14,6 @@ const Navbar = ({ order }) => {
   let navigate = useNavigate();
 
   const handleChange = (event, newValue) => {
-    console.log(newValue);
     setValue(newValue);
   };
 

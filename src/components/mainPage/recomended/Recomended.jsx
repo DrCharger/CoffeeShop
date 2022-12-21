@@ -3,7 +3,7 @@ import RecItem from './RecItem';
 import { recomended } from '../../../data/recs';
 import { reducer, findMax, reccomend } from '../../../data/utilits';
 
-const Recomended = ({ forYou }) => {
+const Recomended = ({ forYou, discount }) => {
   let recsArr = [];
   let objCoffeeItem = reducer(forYou.map(el => el.orderedCoffee));
   let maxCountShop = findMax(reducer(forYou.map(el => el.shop)));
@@ -31,6 +31,7 @@ const Recomended = ({ forYou }) => {
       <div className="recomended-products">
         {recsArr.map(el => (
           <RecItem
+            discount={discount}
             key={el.id}
             el={el}
             shop={maxCountShop.toLowerCase()}

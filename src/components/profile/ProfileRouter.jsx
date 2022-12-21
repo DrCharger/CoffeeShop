@@ -9,11 +9,11 @@ import './profile.scss';
 import ProfileMain from './profileMain/ProfileMain';
 import EditAccount from './editAcc/EditAccount';
 import EditLocation from './editLoc/EditLocation';
-import Payment from './payment/Payment';
 import Policy from './policy/Policy';
 import About from './about/About';
+import Rewards from './rewards/Rewards';
 
-const ProfileRouter = ({ myUser, update, updateServer, adress, updateAdress }) => {
+const ProfileRouter = ({ setDiscount, myUser, update, updateServer, adress, updateAdress }) => {
   let navigate = useNavigate();
 
   return (
@@ -44,6 +44,7 @@ const ProfileRouter = ({ myUser, update, updateServer, adress, updateAdress }) =
         />
         <Route path="policy" element={<Policy />} />
         <Route path="about" element={<About />} />
+        <Route path="rew" element={<Rewards navigate={navigate} setDiscount={setDiscount} />} />
       </Routes>
     </div>
   );

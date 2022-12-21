@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { updateOrderInfo, updateUsersList } from '../../usersStore/users.actions';
 import Final from '../final/Final';
 
-const BasketRouter = ({ order, getNewOrder, myUser, finalOrder }) => {
+const BasketRouter = ({ setDiscount, order, getNewOrder, myUser, finalOrder }) => {
   const [totalPrice, setTotal] = useState('0');
 
   return (
@@ -23,7 +23,14 @@ const BasketRouter = ({ order, getNewOrder, myUser, finalOrder }) => {
       />
       <Route
         path="checkout/super"
-        element={<Final myUser={myUser} getNewOrder={getNewOrder} finalOrder={finalOrder} />}
+        element={
+          <Final
+            myUser={myUser}
+            getNewOrder={getNewOrder}
+            finalOrder={finalOrder}
+            setDiscount={setDiscount}
+          />
+        }
       />
     </Routes>
   );
