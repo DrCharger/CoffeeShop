@@ -9,8 +9,17 @@ import './profile.scss';
 import ProfileMain from './profileMain/ProfileMain';
 import EditAccount from './editAcc/EditAccount';
 import EditLocation from './editLoc/EditLocation';
+import Payment from './payment/Payment';
 
-const ProfileRouter = ({ myUser, update, updateServer, adress, updateAdress }) => {
+const ProfileRouter = ({
+  payM,
+  handleChange,
+  myUser,
+  update,
+  updateServer,
+  adress,
+  updateAdress,
+}) => {
   let navigate = useNavigate();
 
   return (
@@ -38,6 +47,10 @@ const ProfileRouter = ({ myUser, update, updateServer, adress, updateAdress }) =
               adress={adress}
             />
           }
+        />
+        <Route
+          path="pay"
+          element={<Payment nav={navigate} payM={payM} handleChange={handleChange} />}
         />
       </Routes>
     </div>

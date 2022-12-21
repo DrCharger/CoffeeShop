@@ -9,6 +9,7 @@ import LocalAtmIcon from '@mui/icons-material/LocalAtm';
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
 
 import './checkout.scss';
+import Payment from '../profile/payment/Payment';
 
 const Checkout = ({ order, totalPrice, ordering }) => {
   let navigate = useNavigate();
@@ -99,7 +100,7 @@ const Checkout = ({ order, totalPrice, ordering }) => {
       <section className="checkout-payment">
         <div className="checkout-payment__cash">
           <LocalAtmIcon sx={{ color: 'orange', fontSize: '25px' }} />
-          <span>Cash</span>
+          <Payment />
         </div>
         <div className="checkout-payment__total">Total: $ {+thisShop.deliv + +totalPrice}</div>
       </section>

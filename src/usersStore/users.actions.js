@@ -12,6 +12,7 @@ export const FAVOURITES = 'FAVOURITES';
 export const MINUS_FAVOURITES = 'MINUS_FAVOURITES';
 export const UPDATE_ADRESS = 'UPDATE_ADRESS';
 export const SET_ADRESS = 'SET_ADRESS';
+export const PAYMENT = 'PAYMENT';
 
 export const setUserInfo = user => {
   return {
@@ -37,6 +38,15 @@ export const setAdress = location => {
     type: SET_ADRESS,
     payload: {
       location,
+    },
+  };
+};
+
+export const setPayment = method => {
+  return {
+    type: PAYMENT,
+    payload: {
+      method,
     },
   };
 };

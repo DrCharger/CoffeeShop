@@ -8,6 +8,7 @@ import {
   MINUS_FAVOURITES,
   UPDATE_USER,
   UPDATE_ADRESS,
+  PAYMENT,
   SET_ADRESS,
 } from './users.actions';
 
@@ -31,6 +32,7 @@ const initialState = {
     street: 'Obolonska',
     house: '17B',
   },
+  payment: 'Cash',
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -84,6 +86,11 @@ const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         location: { ...state.location, [action.payload.updateName]: action.payload.toUpdate },
+      };
+    case PAYMENT:
+      return {
+        ...state,
+        payment: action.payload.method,
       };
     default:
       return state;

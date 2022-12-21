@@ -10,10 +10,11 @@ import Badge from '@mui/material/Badge';
 import { style, styleAction } from '../../../data/style.js';
 
 const Navbar = ({ order }) => {
-  const [value, setValue] = useState('recents');
+  const [value, setValue] = useState('home');
   let navigate = useNavigate();
 
   const handleChange = (event, newValue) => {
+    console.log(newValue);
     setValue(newValue);
   };
 

@@ -10,11 +10,6 @@ export const profileArr = [
     text: 'Address Info',
   },
   {
-    id: '03',
-    img: 'pay',
-    text: 'Payment Method',
-  },
-  {
     id: '04',
     img: 'rew',
     text: 'Rewards or Coupon',

@@ -19,7 +19,6 @@ const ProfileMain = ({ nav }) => {
           <div className="profile__tools-container__bg">
             {el.img === 'pencil' && <BorderColorOutlinedIcon sx={{ fontSize: 20 }} />}
             {el.img === 'loc' && <RoomOutlinedIcon sx={{ fontSize: 20 }} />}
-            {el.img === 'pay' && <AccountBalanceWalletIcon sx={{ fontSize: 20 }} />}
             {el.img === 'rew' && <DiscountOutlinedIcon sx={{ fontSize: 20 }} />}
             {el.img === 'set' && <SettingsIcon sx={{ fontSize: 20 }} />}
             {el.img === 'policy' && <NotesIcon sx={{ fontSize: 20 }} />}
