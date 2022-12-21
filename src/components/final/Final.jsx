@@ -4,13 +4,13 @@ import finalImg from '../../img/checkout/yeah.png';
 import './final.scss';
 import Raiting from './Raiting';
 
-const Final = ({ myUser, finalOrder, getNewOrder, getDiscount }) => {
+const Final = ({ myUser, finalOrder, getNewOrder, setDiscount }) => {
   let navigate = useNavigate();
 
   useEffect(() => {
     finalOrder(myUser.id);
     getNewOrder([]);
-    getDiscount(0);
+    setDiscount(0);
   }, []);
 
   return (
