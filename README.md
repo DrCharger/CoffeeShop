@@ -1,9 +1,9 @@
-# Coffee-Shop-Project
+# Coffee-Shop-Mobile-Project
 
 ## Shop start code
 
 ### To start:
-Coffee Shop Project on React-Redux
+Coffee Shop only for mobile Project on React-Redux
 
 https://gilded-kringle-ac60d9.netlify.app
 
