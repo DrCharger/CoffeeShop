@@ -2,7 +2,14 @@ import React from 'react';
 import Avatar from '@mui/material/Avatar';
 import { stringAvatar } from './profUtilits';
 import { Routes, Route, useNavigate } from 'react-router-dom';
-import { updateAdressInfo, updateUserInfo, updateUsersList } from '../../usersStore/users.actions';
+import {
+  reset,
+  setAllOrders,
+  setFavourites,
+  updateAdressInfo,
+  updateUserInfo,
+  updateUsersList,
+} from '../../usersStore/users.actions';
 import { connect } from 'react-redux';
 import './profile.scss';
 
@@ -13,7 +20,15 @@ import Policy from './policy/Policy';
 import About from './about/About';
 import Rewards from './rewards/Rewards';
 
-const ProfileRouter = ({ setDiscount, myUser, update, updateServer, adress, updateAdress }) => {
+const ProfileRouter = ({
+  setDiscount,
+  myUser,
+  update,
+  updateServer,
+  adress,
+  updateAdress,
+  reset,
+}) => {
   let navigate = useNavigate();
 
   return (
@@ -23,7 +38,7 @@ const ProfileRouter = ({ setDiscount, myUser, update, updateServer, adress, upda
         <h5>{myUser.fullname}</h5>
       </div>
       <Routes>
-        <Route path="*" element={<ProfileMain nav={navigate} />} />
+        <Route path="*" element={<ProfileMain nav={navigate} reset={reset} />} />
         <Route
           path="pencil"
           element={
@@ -59,6 +74,7 @@ const mapDispatch = {
   update: updateUserInfo,
   updateServer: updateUsersList,
   updateAdress: updateAdressInfo,
+  reset: reset,
 };
 
 export default connect(mapState, mapDispatch)(ProfileRouter);

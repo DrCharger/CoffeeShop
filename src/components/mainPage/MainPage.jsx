@@ -21,7 +21,12 @@ const MainPage = ({ myUser, order, location, discount, setDiscount, allOrders, l
           path="*"
           element={
             <>
-              <Header fullname={myUser.fullname} loc={location} />
+              <Header
+                fullname={myUser.fullname}
+                loc={location}
+                orders={allOrders.length}
+                liked={liked.length}
+              />
               <MainImg />
               <Recomended forYou={myUser.Orders} discount={discount} />
               <PopularBrand />

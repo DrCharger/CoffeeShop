@@ -1,0 +1,19 @@
+.orders {
+  padding: 5%;
+  &-box {
+    padding: 5%;
+    background-color: #fff;
+    box-shadow: 0px 2px 30px rgb(0 0 0 / 50%);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &-header {
+    display: flex;
+    flex-direction: column;
+    & span {
+      margin: 5px;
+    }
+  }
+}

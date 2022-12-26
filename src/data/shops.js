@@ -8,6 +8,8 @@ import moonsoon from '../img/shops/moonsoon.png';
 import semasa from '../img/shops/semasa.png';
 import jiva from '../img/logo/jiva.png';
 import hati from '../img/logo/hati.png';
+import bigJiva from '../img/shops/jiva.jpg';
+import bigHati from '../img/shops/hati.jpg';
 
 export const shops = [
   {
@@ -55,7 +57,7 @@ export const shops = [
   {
     id: '04',
     img: jiva,
-    bigImg: '',
+    bigImg: bigJiva,
     name: 'Jiva Coffee',
     loc: 'Kyiv Ukraine',
     rait: 3.5,
@@ -69,7 +71,7 @@ export const shops = [
   {
     id: '05',
     img: hati,
-    bigImg: '',
+    bigImg: bigHati,
     name: 'Hati Coffee',
     loc: '',
     rait: 4.9,

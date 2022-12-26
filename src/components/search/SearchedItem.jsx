@@ -27,7 +27,6 @@ const SearchedItem = ({ param, discount }) => {
       </div>
     );
   }
-  console.log(isProd);
   if (isProd !== undefined) {
     return (
       <div>

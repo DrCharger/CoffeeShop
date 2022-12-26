@@ -1,7 +1,6 @@
 import React from 'react';
 import BorderColorOutlinedIcon from '@mui/icons-material/BorderColorOutlined';
 import RoomOutlinedIcon from '@mui/icons-material/RoomOutlined';
-import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import DiscountOutlinedIcon from '@mui/icons-material/DiscountOutlined';
 import SettingsIcon from '@mui/icons-material/Settings';
 import NotesIcon from '@mui/icons-material/Notes';
@@ -11,7 +10,11 @@ import Button from '@mui/material/Button';
 
 import { profileArr } from '../../../data/profile';
 
-const ProfileMain = ({ nav }) => {
+const ProfileMain = ({ nav, reset }) => {
+  const handleClick = () => {
+    reset();
+    nav('/login');
+  };
   return (
     <div className="profile__tools">
       {profileArr.map(el => (
@@ -31,7 +34,7 @@ const ProfileMain = ({ nav }) => {
       <Button
         variant="contained"
         sx={{ width: '100%', marginTop: '5%', backgroundColor: '#E4E4E4', color: '#FF8B8B' }}
-        onClick={() => nav('/login')}
+        onClick={handleClick}
       >
         LOGOUT
       </Button>

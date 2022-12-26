@@ -7,19 +7,18 @@ import loc from '../../img/checkout/Location.png';
 import deliv from '../../img/checkout/moped.png';
 import LocalAtmIcon from '@mui/icons-material/LocalAtm';
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
-
+import moment from 'moment/moment';
 import './checkout.scss';
 import Payment from '../profile/payment/Payment';
 
 const Checkout = ({ setAllOrders, order, totalPrice }) => {
   let navigate = useNavigate();
-
-  const thisShop = shops.find(el => el.url === order[0].shop);
-
+  const thisShop = shops.find(el => el.name.toLowerCase() === order[0].shop.toLowerCase());
   const handleClick = () => {
     const ordered = order.map(el => el.myCoffee.text);
     const newOrder = {
       shop: thisShop.name,
+      time: moment(new Date()).format('MMMM Do YYYY, h:mm:ss a'),
       totalPrice: +thisShop.deliv + +totalPrice,
       orderedCoffee: [ordered],
     };

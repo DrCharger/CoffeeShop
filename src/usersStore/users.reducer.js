@@ -11,15 +11,16 @@ import {
   PAYMENT,
   SET_ADRESS,
   ALL_ORDERS,
+  RESET,
 } from './users.actions';
 
 const initialState = {
   user: {
     fullname: 'Adam Dor',
-    id: '1',
-    email: 'ad@example.com',
-    number: '380934651111',
-    password: 'ad',
+    id: 'test',
+    email: 'test@test.com',
+    number: '+380934651111',
+    password: 'test',
     Orders: [],
     favourites: [],
   },
@@ -93,6 +94,12 @@ const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         allOrders: state.allOrders.concat(action.payload.orders),
+      };
+    case RESET:
+      return {
+        ...state,
+        allOrders: [],
+        liked: [],
       };
     case PAYMENT:
       return {

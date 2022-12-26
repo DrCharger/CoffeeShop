@@ -14,6 +14,7 @@ export const UPDATE_ADRESS = 'UPDATE_ADRESS';
 export const SET_ADRESS = 'SET_ADRESS';
 export const PAYMENT = 'PAYMENT';
 export const ALL_ORDERS = 'ALL_ORDERS';
+export const RESET = 'RESET';
 
 export const setUserInfo = user => {
   return {
@@ -40,6 +41,11 @@ export const setAdress = location => {
     payload: {
       location,
     },
+  };
+};
+export const reset = () => {
+  return {
+    type: RESET,
   };
 };
 
