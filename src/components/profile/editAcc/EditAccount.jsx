@@ -49,7 +49,6 @@ const EditAccount = ({ user, update, updateServer, nav }) => {
             Current number: <b>{user.number}</b>
           </span>
           <div className="edit__flex">
-            <span>+380</span>
             <input
               type="tel"
               {...register('number', {
