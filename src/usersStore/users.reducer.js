@@ -12,6 +12,7 @@ import {
   SET_ADRESS,
   ALL_ORDERS,
   RESET,
+  UPDATE_RAIT,
 } from './users.actions';
 
 const initialState = {
@@ -31,6 +32,7 @@ const initialState = {
   location: {},
   payment: 'Cash',
   allOrders: [],
+  rait: '',
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -44,6 +46,11 @@ const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         order: action.payload.order,
+      };
+    case UPDATE_RAIT:
+      return {
+        ...state,
+        rait: action.payload.rait,
       };
     case USERS_LIST_RECIEVED:
       return {

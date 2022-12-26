@@ -4,7 +4,7 @@ import finalImg from '../../img/checkout/yeah.png';
 import './final.scss';
 import Raiting from './Raiting';
 
-const Final = ({ myUser, finalOrder, getNewOrder, setDiscount }) => {
+const Final = ({ myUser, finalOrder, getNewOrder, setDiscount, updateRait, getRaiting }) => {
   let navigate = useNavigate();
 
   useEffect(() => {
@@ -22,8 +22,14 @@ const Final = ({ myUser, finalOrder, getNewOrder, setDiscount }) => {
       <p className="final-text">
         Your items has been placed and is on it is way to being processed
       </p>
-      <Raiting />
-      <button className="final-btn homer" onClick={() => navigate('/main')}>
+      <Raiting updateRait={updateRait} email={myUser.email} />
+      <button
+        className="final-btn homer"
+        onClick={() => {
+          getRaiting();
+          navigate('/main');
+        }}
+      >
         Back To Home
       </button>
     </div>

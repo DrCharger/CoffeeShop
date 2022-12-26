@@ -15,6 +15,7 @@ export const SET_ADRESS = 'SET_ADRESS';
 export const PAYMENT = 'PAYMENT';
 export const ALL_ORDERS = 'ALL_ORDERS';
 export const RESET = 'RESET';
+export const UPDATE_RAIT = 'UPDATE_RAIT';
 
 export const setUserInfo = user => {
   return {
@@ -111,6 +112,14 @@ export const updateOrderInfo = order => {
     },
   };
 };
+export const updateRaiting = rait => {
+  return {
+    type: UPDATE_RAIT,
+    payload: {
+      rait,
+    },
+  };
+};
 
 export const getCoffeeListId = id => {
   return {
@@ -161,6 +170,20 @@ export const updateUsersList = userId => {
       favourites: state.usersList.liked,
     };
     usersGateWays.updateUser(userId, updatedUser).then(() => dispatch(getMyUser(userId)));
+  };
+  return thunkAction;
+};
+
+export const updateAdminRaiting = () => {
+  const thunkAction = function (dispatch, getState) {
+    const state = getState();
+    const userList = state.usersList.usersList;
+    const admin = userList.find(user => user.id === '1');
+    const updatedUser = {
+      ...admin,
+      isItGood: admin.isItGood.concat(state.usersList.rait),
+    };
+    usersGateWays.updateUser('1', updatedUser);
   };
   return thunkAction;
 };

@@ -20,7 +20,7 @@ function getLabelText(value) {
   return `${value} Star${value !== 1 ? 's' : ''}, ${labels[value]}`;
 }
 
-export default function Raiting() {
+const Raiting = ({ updateRait, email }) => {
   const [value, setValue] = React.useState(2);
   const [hover, setHover] = React.useState(-1);
 
@@ -39,6 +39,7 @@ export default function Raiting() {
         getLabelText={getLabelText}
         onChange={(event, newValue) => {
           setValue(newValue);
+          updateRait({ email: email, mark: labels[newValue] });
         }}
         onChangeActive={(event, newHover) => {
           setHover(newHover);
@@ -48,4 +49,6 @@ export default function Raiting() {
       {value !== null && <Box sx={{ ml: 2 }}>{labels[hover !== -1 ? hover : value]}</Box>}
     </Box>
   );
-}
+};
+
+export default Raiting;
