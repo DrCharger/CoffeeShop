@@ -10,9 +10,11 @@ import {
 } from '../../usersStore/users.actions';
 import { connect } from 'react-redux';
 import './login.scss';
+import Forgot from './forgot/Forgot';
 
 const Login = ({ getUsers, users, setUser, setFavour, setAdress }) => {
   let navigate = useNavigate();
+  const [open, setOpen] = React.useState(false);
   const {
     register,
     formState: { errors, isValid },
@@ -67,7 +69,9 @@ const Login = ({ getUsers, users, setUser, setFavour, setAdress }) => {
           })}
         />
         <div className="error">{errors?.password && <p>Password is Invalid</p>}</div>
-        <div className="login-main-forgot">Forgot Password?</div>
+        <div className="login-main-forgot" onClick={() => setOpen(true)}>
+          Forgot Password?
+        </div>
         <input type="submit" className="login-main-input__submit" disabled={!isValid} />
         <div className="login-main-text">
           <span className="login-main-text__center">
@@ -78,6 +82,7 @@ const Login = ({ getUsers, users, setUser, setFavour, setAdress }) => {
           </span>
         </div>
       </form>
+      <Forgot open={open} setClose={setOpen} users={users} />
     </div>
   );
 };

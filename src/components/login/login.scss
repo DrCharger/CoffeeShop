@@ -50,11 +50,16 @@ form {
     }
   }
   &-forgot {
-    color: orange;
+    color: #ffa500;
     text-align: end;
   }
 }
 
 .error {
   color: red;
+}
+
+.pass {
+  font-size: 22px;
+  color: #ffa500;
 }
