@@ -19,12 +19,19 @@ const ShopInfo = ({ info }) => {
           {name} - {loc}
         </div>
         <div className={classNames({ 'shops__list-items__text': shop === undefined }, 'else-text')}>
-          <img src={location} alt="logo" /> {way} km * <img src={yellowStar} alt="logo" /> {rait} (
-          {likes})
+          <img src={location} alt="logo" /> <span>{way} km </span>{' '}
+          <img src={yellowStar} alt="logo" />{' '}
+          <span>
+            {rait} ({likes})
+          </span>
         </div>
         <div className={classNames({ 'shops__list-items__text': shop === undefined }, 'else-text')}>
-          <img src={deliver} alt="deliv" />$ {deliv}.00 * .
-          <img src={clock} alt="clock" /> .{delStart}.00 - {delFinish}.00
+          <img src={deliver} alt="deliv" />
+          <span>$ {deliv}.00</span>
+          <img src={clock} alt="clock" />
+          <span>
+            {delStart}.00 - {delFinish}.00
+          </span>
         </div>
       </div>
     </li>

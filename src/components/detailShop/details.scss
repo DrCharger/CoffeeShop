@@ -70,7 +70,12 @@
     color: #ff9314;
     font-weight: 400;
     margin-bottom: 7px;
-    font-size: 10px;
+    font-size: 12px;
     margin-left: 10px;
+    display: flex;
+    align-items: center;
+    & span {
+      margin: 0 10px 0 2px;
+    }
   }
 }
