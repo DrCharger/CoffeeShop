@@ -28,12 +28,7 @@ const initialState = {
   order: [],
   usersList: [],
   liked: [],
-  location: {
-    country: 'COUNTRY',
-    city: 'CITY',
-    street: 'STREET',
-    house: 'HOUSE',
-  },
+  location: {},
   payment: 'Cash',
   allOrders: [],
 };

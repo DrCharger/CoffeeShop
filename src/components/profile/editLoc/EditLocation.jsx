@@ -25,13 +25,13 @@ const EditLocation = ({ user, adress, update, nav, updateServer }) => {
     <div className="edit">
       {' '}
       <h4>
-        Current Address: <b>{adress.country}</b>, <b>{adress.city}</b>, <b>{adress.street}</b>,{' '}
-        <b>{adress.house}</b>
+        Current Address: <b>{adress.country || 'Ukraine'}</b>, <b>{adress.city || 'Kiev'}</b>,{' '}
+        <b>{adress.street || 'Street'}</b>, <b>{adress.house || 'House'}</b>
       </h4>
       <div className="edit__account">
         <div>
           <input
-            placeholder={adress.country}
+            placeholder={adress.country || 'Ukraine'}
             type="text"
             {...register('country', {
               required: 'Country',
@@ -43,7 +43,7 @@ const EditLocation = ({ user, adress, update, nav, updateServer }) => {
       <div className="edit__account">
         <div>
           <input
-            placeholder={adress.city}
+            placeholder={adress.city || 'Kiev'}
             type="text"
             {...register('city', {
               required: 'City',
@@ -55,7 +55,7 @@ const EditLocation = ({ user, adress, update, nav, updateServer }) => {
       <div className="edit__account">
         <div>
           <input
-            placeholder={adress.street}
+            placeholder={adress.street || 'Street'}
             type="text"
             {...register('street', {
               required: 'Street',
@@ -67,7 +67,7 @@ const EditLocation = ({ user, adress, update, nav, updateServer }) => {
       <div className="edit__account">
         <div>
           <input
-            placeholder={adress.house}
+            placeholder={adress.house || 'House'}
             type="text"
             {...register('house', {
               required: 'Street',

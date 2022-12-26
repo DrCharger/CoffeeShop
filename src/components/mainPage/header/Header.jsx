@@ -15,8 +15,9 @@ const Header = ({ fullname, loc, orders, liked }) => {
           Hello, <span className="header-user__name">{fullname}</span>!
         </span>
         <span className="header-location">
-          <img src={location} alt="location" /> <b>{loc.country}</b>, <b>{loc.city}</b>,{' '}
-          <b>{loc.street}</b>, <b>{loc.house}</b>
+          <img src={location} alt="location" /> <b>{loc.country || 'Ukraine'}</b>,{' '}
+          <b>{loc.city || 'Kiev'}</b>, <b>{loc.street || 'Street'}</b>,{' '}
+          <b>{loc.house || 'House'}</b>
         </span>
       </div>
       <div className="header-icons">
