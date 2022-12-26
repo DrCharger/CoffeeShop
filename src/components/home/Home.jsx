@@ -10,7 +10,7 @@ import DetailCoffee from '../detailCoffee/DetailCoffee';
 import BasketRouter from '../basket/BasketRouter';
 import { connect } from 'react-redux';
 
-const Home = ({ myUser, order, location }) => {
+const Home = ({ myUser, order, location, allInfo }) => {
   const [discount, setDiscount] = React.useState(0);
 
   return (
@@ -39,6 +39,7 @@ const Home = ({ myUser, order, location }) => {
               location={location}
               discount={discount}
               setDiscount={setDiscount}
+              allInfo={allInfo}
             />
           }
         />
@@ -57,6 +58,7 @@ const mapState = state => {
     myUser: state.usersList.user,
     order: state.usersList.order,
     location: state.usersList.location,
+    allInfo: state.usersList,
   };
 };
 

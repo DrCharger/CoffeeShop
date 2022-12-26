@@ -10,6 +10,7 @@ import {
   UPDATE_ADRESS,
   PAYMENT,
   SET_ADRESS,
+  ALL_ORDERS,
 } from './users.actions';
 
 const initialState = {
@@ -33,6 +34,7 @@ const initialState = {
     house: 'HOUSE',
   },
   payment: 'Cash',
+  allOrders: [],
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -86,6 +88,11 @@ const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         location: { ...state.location, [action.payload.updateName]: action.payload.toUpdate },
+      };
+    case ALL_ORDERS:
+      return {
+        ...state,
+        allOrders: state.allOrders.concat(action.payload.orders),
       };
     case PAYMENT:
       return {

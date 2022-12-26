@@ -3,10 +3,10 @@ import { Route, Routes } from 'react-router-dom';
 import Checkout from '../checkout/Checkout';
 import Basket from './Basket';
 import { connect } from 'react-redux';
-import { updateOrderInfo, updateUsersList } from '../../usersStore/users.actions';
+import { setAllOrders, updateOrderInfo, updateUsersList } from '../../usersStore/users.actions';
 import Final from '../final/Final';
 
-const BasketRouter = ({ setDiscount, order, getNewOrder, myUser, finalOrder }) => {
+const BasketRouter = ({ setAllOrders, setDiscount, order, getNewOrder, myUser, finalOrder }) => {
   const [totalPrice, setTotal] = useState('0');
 
   return (
@@ -18,7 +18,12 @@ const BasketRouter = ({ setDiscount, order, getNewOrder, myUser, finalOrder }) =
       <Route
         path="checkout"
         element={
-          <Checkout order={order} myUser={myUser} totalPrice={totalPrice} ordering={getNewOrder} />
+          <Checkout
+            setAllOrders={setAllOrders}
+            order={order}
+            myUser={myUser}
+            totalPrice={totalPrice}
+          />
         }
       />
       <Route
@@ -44,6 +49,7 @@ const mapState = state => {
 const mapDispatch = {
   getNewOrder: updateOrderInfo,
   finalOrder: updateUsersList,
+  setAllOrders: setAllOrders,
 };
 
 export default connect(mapState, mapDispatch)(BasketRouter);

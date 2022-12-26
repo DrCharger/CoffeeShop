@@ -13,6 +13,7 @@ export const MINUS_FAVOURITES = 'MINUS_FAVOURITES';
 export const UPDATE_ADRESS = 'UPDATE_ADRESS';
 export const SET_ADRESS = 'SET_ADRESS';
 export const PAYMENT = 'PAYMENT';
+export const ALL_ORDERS = 'ALL_ORDERS';
 
 export const setUserInfo = user => {
   return {
@@ -57,6 +58,14 @@ export const updateAdressInfo = (updateName, toUpdate) => {
     payload: {
       updateName,
       toUpdate,
+    },
+  };
+};
+export const setAllOrders = orders => {
+  return {
+    type: ALL_ORDERS,
+    payload: {
+      orders,
     },
   };
 };
@@ -142,7 +151,7 @@ export const updateUsersList = userId => {
       fullname: state.usersList.user.fullname,
       number: state.usersList.user.number,
       email: state.usersList.user.email,
-      Orders: user.Orders.concat(state.usersList.order),
+      Orders: state.usersList.allOrders,
       favourites: state.usersList.liked,
     };
     usersGateWays.updateUser(userId, updatedUser).then(() => dispatch(getMyUser(userId)));

@@ -31,8 +31,6 @@ const Basket = ({ order, getNewOrder, setTotal }) => {
     getNewOrder(changed);
   };
 
-  console.log(order);
-
   return (
     <>
       <div className="basket">

@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import {
   getUsersList,
   setAdress,
+  setAllOrders,
   setFavourites,
   setUserInfo,
 } from '../../usersStore/users.actions';
@@ -12,7 +13,7 @@ import { connect } from 'react-redux';
 import './login.scss';
 import Forgot from './forgot/Forgot';
 
-const Login = ({ getUsers, users, setUser, setFavour, setAdress }) => {
+const Login = ({ setAllOrders, getUsers, users, setUser, setFavour, setAdress }) => {
   let navigate = useNavigate();
   const [open, setOpen] = React.useState(false);
   const {
@@ -32,8 +33,9 @@ const Login = ({ getUsers, users, setUser, setFavour, setAdress }) => {
     const finded = users.find(user => user.email === data.email && user.password === data.password);
     if (finded !== undefined) {
       setUser(finded);
-      setFavour(finded.favourites);
       setAdress(finded.location);
+      setFavour(finded.favourites);
+      setAllOrders(finded.Orders);
       navigate('/main');
       reset;
     } else {
@@ -98,6 +100,7 @@ const mapDispatch = {
   setUser: setUserInfo,
   setFavour: setFavourites,
   setAdress: setAdress,
+  setAllOrders: setAllOrders,
 };
 
 export default connect(mapState, mapDispatch)(Login);

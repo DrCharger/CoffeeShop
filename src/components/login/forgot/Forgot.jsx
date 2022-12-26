@@ -22,7 +22,6 @@ const Forgot = ({ open, setClose, users }) => {
     users.find(user => user.email === value) === undefined
       ? null
       : users.find(user => user.email === value).password;
-  console.log(Boolean(password));
   return (
     <Modal
       open={open}

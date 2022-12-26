@@ -11,7 +11,8 @@ import DetailShop from '../detailShop/DetailShop';
 import Search from '../search/Search';
 import ProfileRouter from '../profile/ProfileRouter';
 
-const MainPage = ({ myUser, order, location, discount, setDiscount }) => {
+const MainPage = ({ allInfo, myUser, order, location, discount, setDiscount }) => {
+  console.log(allInfo);
   return (
     <div className="main-shop__page">
       <Routes>

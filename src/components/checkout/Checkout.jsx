@@ -11,7 +11,7 @@ import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutl
 import './checkout.scss';
 import Payment from '../profile/payment/Payment';
 
-const Checkout = ({ order, totalPrice, ordering }) => {
+const Checkout = ({ setAllOrders, order, totalPrice }) => {
   let navigate = useNavigate();
 
   const thisShop = shops.find(el => el.url === order[0].shop);
@@ -23,7 +23,7 @@ const Checkout = ({ order, totalPrice, ordering }) => {
       totalPrice: +thisShop.deliv + +totalPrice,
       orderedCoffee: [ordered],
     };
-    ordering(newOrder);
+    setAllOrders(newOrder);
     navigate('super');
   };
 
