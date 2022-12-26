@@ -5,7 +5,7 @@ import time from '../../../img/time.png';
 import { useNavigate } from 'react-router-dom';
 import Badge from '@mui/material/Badge';
 
-const Header = ({ fullname, loc, orders, liked }) => {
+const Header = ({ fullname, loc, liked }) => {
   let navigate = useNavigate();
 
   return (
@@ -22,9 +22,7 @@ const Header = ({ fullname, loc, orders, liked }) => {
       </div>
       <div className="header-icons">
         <div className="header-icons-icon" onClick={() => navigate('orders')}>
-          <Badge badgeContent={orders} color="error">
-            <img src={time} alt="heart" />
-          </Badge>
+          <img src={time} alt="heart" />
         </div>
         <div className="header-icons-icon" onClick={() => navigate('favourites')}>
           <Badge badgeContent={liked} color="error">

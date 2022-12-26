@@ -9,7 +9,6 @@ import SearchedItem from './SearchedItem';
 
 const Search = ({ discount }) => {
   const [value, setValue] = useState('');
-  const [toggle, setToggle] = useState(false);
   const [open, setOpen] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   let list = getItem('searched') || [];
@@ -35,11 +34,9 @@ const Search = ({ discount }) => {
       'searched',
       list.filter(item => item !== elem),
     );
-    setToggle(!toggle);
   };
   const handleDeleteAll = () => {
     setItem('searched', []);
-    setToggle(!toggle);
   };
 
   return (

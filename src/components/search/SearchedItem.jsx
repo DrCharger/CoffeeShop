@@ -9,6 +9,9 @@ import { useNavigate } from 'react-router-dom';
 
 const SearchedItem = ({ param, discount }) => {
   let navigate = useNavigate();
+  if (param === null) {
+    return null;
+  }
   const isMenu = menu.find(el => el.text.toLowerCase().includes(param.toLowerCase()));
   const isShop = shops.find(el => el.url.toLowerCase().includes(param.toLowerCase()));
   const isProd = allList
