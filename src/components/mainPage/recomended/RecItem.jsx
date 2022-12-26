@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { minusFavourites, setFavourites, updateUsersList } from '../../../usersStore/users.actions';
 
 const RecItem = ({
-  discount,
+  discount = 0,
   el,
   shop,
   url,

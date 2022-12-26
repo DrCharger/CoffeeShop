@@ -2,8 +2,11 @@ import React from 'react';
 import location from '../../../img/Location.png';
 import heart from '../../../img/heart.png';
 import time from '../../../img/time.png';
+import { useNavigate } from 'react-router-dom';
 
 const Header = ({ fullname, loc }) => {
+  let navigate = useNavigate();
+
   return (
     <div className="header">
       <div className="header-container">
@@ -16,10 +19,10 @@ const Header = ({ fullname, loc }) => {
         </span>
       </div>
       <div className="header-icons">
-        <div className="header-icons-icon">
+        <div className="header-icons-icon" onClick={() => navigate('orders')}>
           <img src={time} alt="heart" />
         </div>
-        <div className="header-icons-icon">
+        <div className="header-icons-icon" onClick={() => navigate('favourites')}>
           <img src={heart} alt="heart" />
         </div>
       </div>

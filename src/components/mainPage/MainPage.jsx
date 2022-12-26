@@ -10,9 +10,10 @@ import { Routes, Route } from 'react-router-dom';
 import DetailShop from '../detailShop/DetailShop';
 import Search from '../search/Search';
 import ProfileRouter from '../profile/ProfileRouter';
+import Favourites from '../favourites/Favourites';
+import Orders from '../orders/Orders';
 
-const MainPage = ({ allInfo, myUser, order, location, discount, setDiscount }) => {
-  console.log(allInfo);
+const MainPage = ({ myUser, order, location, discount, setDiscount, allOrders, liked }) => {
   return (
     <div className="main-shop__page">
       <Routes>
@@ -34,6 +35,8 @@ const MainPage = ({ allInfo, myUser, order, location, discount, setDiscount }) =
           path="/profile/*"
           element={<ProfileRouter myUser={myUser} setDiscount={setDiscount} />}
         />
+        <Route path="/favourites" element={<Favourites liked={liked} />} />
+        <Route path="/orders" element={<Orders allOrders={allOrders} />} />
       </Routes>
       <Navbar order={order} />
     </div>
