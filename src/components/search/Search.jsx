@@ -7,7 +7,7 @@ import { menu } from '../../data/menu';
 import { useSearchParams } from 'react-router-dom';
 import SearchedItem from './SearchedItem';
 
-const Search = () => {
+const Search = ({ discount }) => {
   const [value, setValue] = useState('');
   const [toggle, setToggle] = useState(false);
   const [open, setOpen] = useState(false);
@@ -89,7 +89,7 @@ const Search = () => {
           <button onClick={() => handleDelete(el)}>X</button>
         </div>
       ))}
-      {open && <SearchedItem param={searchParams.get('search')} />}
+      {open && <SearchedItem param={searchParams.get('search')} discount={discount} />}
     </div>
   );
 };

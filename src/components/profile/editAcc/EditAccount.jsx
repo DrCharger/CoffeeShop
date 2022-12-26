@@ -53,8 +53,9 @@ const EditAccount = ({ user, update, updateServer, nav }) => {
             <input
               type="tel"
               {...register('number', {
-                maxLength: 9,
-                minLength: 9,
+                value: '+380',
+                maxLength: 13,
+                minLength: 13,
               })}
             />
           </div>

@@ -27,10 +27,10 @@ const initialState = {
   usersList: [],
   liked: [],
   location: {
-    country: 'Ukraine',
-    city: 'Kiev',
-    street: 'Obolonska',
-    house: '17B',
+    country: 'COUNTRY',
+    city: 'CITY',
+    street: 'STREET',
+    house: 'HOUSE',
   },
   payment: 'Cash',
 };

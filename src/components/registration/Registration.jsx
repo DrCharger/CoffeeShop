@@ -61,6 +61,7 @@ const Registration = ({ createUser }) => {
           {...register('number', {
             value: '+380',
             maxLength: 13,
+            minLength: 13,
           })}
         />
         <div className="error">{errors?.number && <p>Invalid Phone-number</p>}</div>

@@ -28,7 +28,7 @@ const MainPage = ({ myUser, order, location, discount, setDiscount }) => {
           }
         />
         <Route path={`:shop`} element={<DetailShop discount={discount} />} />
-        <Route path="/search" element={<Search />} />
+        <Route path="/search" element={<Search discount={discount} />} />
         <Route
           path="/profile/*"
           element={<ProfileRouter myUser={myUser} setDiscount={setDiscount} />}

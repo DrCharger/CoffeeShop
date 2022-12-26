@@ -35,7 +35,6 @@ const EditLocation = ({ user, adress, update, nav, updateServer }) => {
             type="text"
             {...register('country', {
               required: 'Country',
-              pattern: /[A-Za-z]/,
             })}
           />
         </div>
@@ -48,7 +47,6 @@ const EditLocation = ({ user, adress, update, nav, updateServer }) => {
             type="text"
             {...register('city', {
               required: 'City',
-              pattern: /[A-Za-z]/,
             })}
           />
         </div>
@@ -61,7 +59,6 @@ const EditLocation = ({ user, adress, update, nav, updateServer }) => {
             type="text"
             {...register('street', {
               required: 'Street',
-              pattern: /[A-Za-z]/,
             })}
           />
         </div>
@@ -74,7 +71,6 @@ const EditLocation = ({ user, adress, update, nav, updateServer }) => {
             type="text"
             {...register('house', {
               required: 'Street',
-              pattern: /[A-Za-z]/,
             })}
           />
         </div>
