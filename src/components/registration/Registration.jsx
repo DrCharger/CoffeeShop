@@ -40,7 +40,7 @@ const Registration = ({ createUser }) => {
             minLength: 4,
           })}
         />
-        <div className="error">{errors?.fullname && <p>Invalid Name</p>}</div>
+        <div className="error">{errors?.fullname && <p>Invalid Name(Min 4 letters)</p>}</div>
         <div className="login-main-text">Email</div>
         <input
           type="text"
@@ -52,7 +52,7 @@ const Registration = ({ createUser }) => {
           })}
         />
         <div className="error">
-          {errors?.email && <p>{errors?.email?.message || 'Invalid Email'}</p>}
+          {errors?.email && <p>Please type correct email or check the spaces</p>}
         </div>
         <div className="login-main-text">Phone Number</div>
         <input
@@ -66,7 +66,7 @@ const Registration = ({ createUser }) => {
         />
         <div className="error">{errors?.number && <p>Invalid Phone-number</p>}</div>
 
-        <div className="login-main-text">Password</div>
+        <div className="login-main-text">Password(don't use your real password please)</div>
         <input
           type="password"
           className="login-main-input"
