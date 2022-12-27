@@ -3,6 +3,7 @@ import RecItem from './RecItem';
 import Grid from '@mui/material/Grid';
 import { recomended } from '../../../data/recs';
 import { reducer, findMax, prods } from '../../../data/utilits';
+import './recomended.scss';
 
 const Recomended = ({ forYou, discount }) => {
   let recsArr = [];
