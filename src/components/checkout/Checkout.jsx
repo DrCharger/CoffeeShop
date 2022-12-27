@@ -1,18 +1,18 @@
 import React from 'react';
-import ArrowBackIosNewTwoToneIcon from '@mui/icons-material/ArrowBackIosNewTwoTone';
-import { Button } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
-import { shops } from '../../data/shops';
+import moment from 'moment/moment';
+import StyledButton from '../styled/StyledButton';
+import Payment from '../profile/payment/Payment';
+import CheckItem from './CheckItem';
+import LocalAtmIcon from '@mui/icons-material/LocalAtm';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
 import loc from '../../img/checkout/Location.png';
 import deliv from '../../img/checkout/moped.png';
-import LocalAtmIcon from '@mui/icons-material/LocalAtm';
-import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
-import moment from 'moment/moment';
+import { shops } from '../../data/shops';
 import './checkout.scss';
-import Payment from '../profile/payment/Payment';
 
-const Checkout = ({ setAllOrders, order, totalPrice }) => {
-  let navigate = useNavigate();
+const Checkout = ({ location, setAllOrders, order, totalPrice, navigate }) => {
+  console.log(location);
   const thisShop = shops.find(el => el.name.toLowerCase() === order[0].shop.toLowerCase());
   const handleClick = () => {
     const ordered = order.map(el => el.myCoffee.text);
@@ -23,27 +23,13 @@ const Checkout = ({ setAllOrders, order, totalPrice }) => {
       orderedCoffee: [ordered],
     };
     setAllOrders(newOrder);
-    navigate('super');
+    navigate('checkout/super');
   };
 
   return (
     <div className="checkout-relative">
       <section className="checkout">
-        <Button
-          variant="contained"
-          startIcon={<ArrowBackIosNewTwoToneIcon />}
-          sx={{
-            color: '#543820',
-            borderRadius: '50%',
-            minWidth: 35,
-            height: 35,
-            padding: 0,
-            opacity: 0.7,
-            paddingLeft: '9px',
-            backgroundColor: 'gray',
-          }}
-          onClick={() => navigate(-1)}
-        />
+        <StyledButton navigate={navigate} />
         <div className="checkout-header">
           <h4>
             {thisShop.name} - {thisShop.loc}
@@ -56,11 +42,18 @@ const Checkout = ({ setAllOrders, order, totalPrice }) => {
         <div className="checkout-delivery-container border">
           <img src={loc} alt="loc" />
           <p>
-            <span>Kyiv, Ukraine</span>
+            <span>
+              {location.city || 'City'}, {location.country || 'Ukraine'}
+            </span>
             <br />
-            <span>Kyiv, Obolon, street</span>
+            <span>
+              {location.city || 'City'}, {location.street || 'street'}, {location.house || 'house'}
+            </span>
           </p>
-          <ArrowForwardIosOutlinedIcon sx={{ color: 'grey' }} />
+          <ArrowForwardIosOutlinedIcon
+            sx={{ color: 'grey' }}
+            onClick={() => navigate('/main/profile/loc')}
+          />
         </div>
         <div className="checkout-delivery-container bottom">
           <img src={deliv} alt="loc" />
@@ -70,19 +63,13 @@ const Checkout = ({ setAllOrders, order, totalPrice }) => {
       </section>
       <div className="checkout-text">Order Summary:</div>
       <section className="checkout-summary">
-        {order.map(item => (
-          <div key={`${item.myCoffee.id}.${item.id}`} className="checkout-summary-child border">
-            <figure className="basket-child-img">
-              <img src={item.myCoffee.img} alt="logo" />
-            </figure>
-            <p className="checkout-summary-child__info">
-              <span>{item.myCoffee.text}</span>
-              <br />
-              <span>{item.counter} items</span>
-              <br />
-              <span>Comments :{item.comment}</span>
-            </p>
-          </div>
+        {order.map(({ counter, comment, myCoffee, id }) => (
+          <CheckItem
+            key={`${myCoffee.id}.${id}`}
+            counter={counter}
+            comment={comment}
+            myCoffee={myCoffee}
+          />
         ))}
         <div className="checkout-summary-price">
           <div>
@@ -100,6 +87,7 @@ const Checkout = ({ setAllOrders, order, totalPrice }) => {
         <div className="checkout-payment__cash">
           <LocalAtmIcon sx={{ color: 'orange', fontSize: '25px' }} />
           <Payment />
+          <KeyboardArrowDownIcon />
         </div>
         <div className="checkout-payment__total">Total: $ {+thisShop.deliv + +totalPrice}</div>
       </section>

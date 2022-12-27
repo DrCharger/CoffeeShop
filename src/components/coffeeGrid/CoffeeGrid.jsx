@@ -10,7 +10,7 @@ const CoffeeGrid = ({ discount, allList, itemId, shop = 'starbucks' }) => {
           .find(el => el.id === itemId)
           .prods.map(el => (
             <Grid key={el.id} item xs={6}>
-              <RecItem el={el} shop={shop} menuId={itemId} url={el.url_name} discount={discount} />
+              <RecItem el={el} shop={shop} discount={discount} />
             </Grid>
           ))}
       </Grid>

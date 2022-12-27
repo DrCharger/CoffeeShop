@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-
-const options = ['Normal', 'More Sugar', 'Less Sugar'];
+import { sugarLevel } from '../../data/sugarLevel';
 
 const SugarLevel = ({ item, onItemChange }) => {
   const [sugLev, setSugLev] = useState(item.level);
@@ -13,7 +12,9 @@ const SugarLevel = ({ item, onItemChange }) => {
       <div className="quantity">
         <button
           onClick={() => {
-            setQuantity(quantity - 1), onItemChange(item.id, quantity - 1, sugLev);
+            quantity <= 1
+              ? null
+              : (setQuantity(quantity - 1), onItemChange(item.id, quantity - 1, sugLev));
           }}
         >
           -
@@ -29,7 +30,7 @@ const SugarLevel = ({ item, onItemChange }) => {
       </div>
 
       <Autocomplete
-        options={options}
+        options={sugarLevel}
         id="controlled-demo"
         value={sugLev}
         sx={{ width: 150 }}

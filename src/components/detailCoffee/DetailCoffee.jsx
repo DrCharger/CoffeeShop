@@ -1,16 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Button } from '@mui/material';
-import ArrowBackIosNewTwoToneIcon from '@mui/icons-material/ArrowBackIosNewTwoTone';
-import { allList } from '../../data/recs';
+import StyledButton from '../styled/StyledButton';
+import StyledSnackbar from '../styled/StyledSnackbar';
+import { finder } from '../../data/utilits';
+import { sugarLevel } from '../../data/sugarLevel.js';
 import './detailsCoffee.scss';
-import { connect } from 'react-redux';
-import { getOrderInfo } from '../../usersStore/users.actions';
-import Snackbar from '@mui/material/Snackbar';
-import MuiAlert from '@mui/material/Alert';
-const Alert = React.forwardRef(function Alert(props, ref) {
-  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-});
 
 const DetailCoffee = ({ getOrder, discount }) => {
   let navigate = useNavigate();
@@ -19,19 +13,12 @@ const DetailCoffee = ({ getOrder, discount }) => {
   const [counter, setCounter] = useState(1);
   const [comment, setComment] = useState('');
   const [open, setOpen] = useState(false);
-  const sugarLevel = ['Normal', 'Less Sugar'];
-
-  const myCoffee = allList
-    .find(item => item.id === params.id)
-    .prods.find(el => el.url_name === params.coffee);
-
-  let newPriceText = myCoffee.price;
-  if (discount !== 0) {
-    newPriceText = myCoffee.price - myCoffee.price * discount;
-  }
+  const myCoffee = finder(params);
+  let newPriceText;
+  const { text, price, img } = myCoffee;
+  discount !== 0 ? (newPriceText = price * (1 - discount)) : (newPriceText = price);
 
   const toTheBasket = () => {
-    setOpen(true);
     const toBasket = {
       shop: params.shop,
       level,
@@ -41,42 +28,22 @@ const DetailCoffee = ({ getOrder, discount }) => {
       newPriceText,
       id: Math.floor(Math.random() * 1000000),
     };
+    setOpen(true);
     getOrder(toBasket);
-  };
-  const handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
-      return;
-    }
-
-    setOpen(false);
   };
 
   return (
     <div className="details-main">
       <div className="details-main__img">
-        <img src={myCoffee.img} alt="logo" className="details-main__img-url" />
+        <img src={img} alt="logo" className="details-main__img-url" />
         <div>
-          <Button
-            variant="contained"
-            startIcon={<ArrowBackIosNewTwoToneIcon />}
-            sx={{
-              color: '#543820',
-              borderRadius: '50%',
-              minWidth: 35,
-              height: 35,
-              padding: 0,
-              marginLeft: '5%',
-              opacity: 0.7,
-              paddingLeft: '9px',
-            }}
-            onClick={() => navigate(-1)}
-          />
+          <StyledButton navigate={navigate} />
         </div>
       </div>
       <div className="details-coffee">
         <div className="details-coffee-container">
-          <h3 className="details-coffee-header">{myCoffee.text}</h3>
-          <h5>{myCoffee.text}</h5>
+          <h3 className="details-coffee-header">{text}</h3>
+          <h5>{text}</h5>
         </div>
         <div className="details-coffee-price">$ {newPriceText}</div>
       </div>
@@ -103,7 +70,7 @@ const DetailCoffee = ({ getOrder, discount }) => {
           <button
             className="details-description__counter-btn"
             onClick={() => {
-              counter <= 1 ? setCounter(counter) : setCounter(counter - 1);
+              counter <= 1 ? null : setCounter(counter - 1);
             }}
           >
             -
@@ -119,18 +86,10 @@ const DetailCoffee = ({ getOrder, discount }) => {
         <button className="details-description__order-btn" onClick={toTheBasket}>
           ADD TO BUSKET
         </button>
-        <Snackbar open={open} autoHideDuration={1000} onClose={handleClose}>
-          <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-            {counter} items added to the shopping cart!
-          </Alert>
-        </Snackbar>
+        <StyledSnackbar open={open} setOpen={setOpen} counter={counter} />
       </div>
     </div>
   );
 };
 
-const mapDispatch = {
-  getOrder: getOrderInfo,
-};
-
-export default connect(null, mapDispatch)(DetailCoffee);
+export default DetailCoffee;

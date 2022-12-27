@@ -1,8 +1,8 @@
 import React from 'react';
-import { shops } from '../../../data/shops';
 import { Link } from 'react-router-dom';
-import './shop.scss';
 import ShopInfo from './info/ShopInfo';
+import { shops } from '../../../data/shops';
+import './shop.scss';
 
 const Shop = () => {
   return (

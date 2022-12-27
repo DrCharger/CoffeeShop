@@ -1,44 +1,43 @@
 import React from 'react';
 import RecItem from './RecItem';
+import Grid from '@mui/material/Grid';
 import { recomended } from '../../../data/recs';
-import { reducer, findMax, reccomend } from '../../../data/utilits';
+import { reducer, findMax, prods } from '../../../data/utilits';
 
 const Recomended = ({ forYou, discount }) => {
   let recsArr = [];
   let objCoffeeItem = reducer(forYou.map(el => el.orderedCoffee));
-  let maxCountShop = findMax(reducer(forYou.map(el => el.shop)));
+  let maxItemShop = findMax(reducer(forYou.map(el => el.shop)));
+
   if (Object.keys(objCoffeeItem).length < 2) {
     recsArr = recomended;
-    maxCountShop = 'starbucks';
+    maxItemShop = 'starbucks';
   } else {
-    const max = findMax(objCoffeeItem);
-    const objAfterMax = Object.entries(objCoffeeItem).filter(el => !el.includes(max));
-    const newA = Object.assign({}, objCoffeeItem);
-    newA[max] = 0;
-    const max2 = findMax(
+    const maxItemIndex = findMax(objCoffeeItem);
+    const objAfterMax = Object.entries(objCoffeeItem).filter(el => !el.includes(maxItemIndex));
+    const newRecsArr = Object.assign({}, objCoffeeItem);
+    newRecsArr[maxItemIndex] = 0;
+    const max2ItemIndex = findMax(
       objCoffeeItem,
-      newA,
+      newRecsArr,
       objAfterMax.map(el => el[1]),
     );
     recsArr.push(
-      reccomend.find(el => el.text === max),
-      reccomend.find(el => el.text === max2),
+      prods.find(el => el.text === maxItemIndex),
+      prods.find(el => el.text === max2ItemIndex),
     );
   }
   return (
     <section className="recomended">
       <h4 className="recomended-head">Recomended for you</h4>
       <div className="recomended-products">
-        {recsArr.map(el => (
-          <RecItem
-            discount={discount}
-            key={el.id}
-            el={el}
-            shop={maxCountShop.toLowerCase()}
-            menuId={el.parentId}
-            url={el.url_name}
-          />
-        ))}
+        <Grid container spacing={2}>
+          {recsArr.map(el => (
+            <Grid key={el.id} item xs={6}>
+              <RecItem discount={discount} el={el} shop={maxItemShop.toLowerCase()} />
+            </Grid>
+          ))}
+        </Grid>
       </div>
     </section>
   );

@@ -1,4 +1,7 @@
-import * as React from 'react';
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { setPayment } from '../../../usersStore/users.actions';
+import { paymentSelector } from '../../../usersStore/users.selectors';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -9,15 +12,10 @@ import InputLabel from '@mui/material/InputLabel';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { connect } from 'react-redux';
-import { setPayment } from '../../../usersStore/users.actions';
 
 const Payment = ({ setPayment, method }) => {
-  const [value, setValue] = React.useState(method);
-  const [open, setOpen] = React.useState(false);
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+  const [value, setValue] = useState(method);
+  const [open, setOpen] = useState(false);
 
   const handleClose = (event, reason) => {
     if (reason !== 'backdropClick') {
@@ -33,7 +31,7 @@ const Payment = ({ setPayment, method }) => {
   };
   return (
     <div>
-      <Button onClick={handleClickOpen} sx={{ color: '#000' }}>
+      <Button onClick={() => setOpen(true)} sx={{ color: '#000' }}>
         {value}
       </Button>
       <Dialog disableEscapeKeyDown open={open} onClose={handleClose}>
@@ -70,7 +68,7 @@ const Payment = ({ setPayment, method }) => {
 
 const mapState = state => {
   return {
-    method: state.usersList.payment,
+    method: paymentSelector(state),
   };
 };
 

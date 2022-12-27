@@ -1,7 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { brands } from '../../../data/brands';
 import './brands.scss';
-import { Link } from 'react-router-dom';
 
 const PopularBrand = () => {
   return (

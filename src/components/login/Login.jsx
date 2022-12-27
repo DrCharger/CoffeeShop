@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CoffeeSymbol } from '../coffeeSymbol/CoffeeSymbol';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import {
   getUsersList,
@@ -15,10 +15,10 @@ import Forgot from './forgot/Forgot';
 
 const Login = ({ setAllOrders, getUsers, users, setUser, setFavour, setAdress }) => {
   let navigate = useNavigate();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const {
     register,
-    formState: { errors, isValid },
+    formState: { errors },
     handleSubmit,
     reset,
   } = useForm({
@@ -37,9 +37,8 @@ const Login = ({ setAllOrders, getUsers, users, setUser, setFavour, setAdress })
       setFavour(finded.favourites);
       setAllOrders(finded.Orders);
       navigate('/main');
-      reset;
     } else {
-      reset;
+      reset({ password: '' });
       alert('There is no user!!!');
     }
   };
@@ -74,13 +73,13 @@ const Login = ({ setAllOrders, getUsers, users, setUser, setFavour, setAdress })
         <div className="login-main-forgot" onClick={() => setOpen(true)}>
           Forgot Password?
         </div>
-        <input type="submit" className="login-main-input__submit" disabled={!isValid} />
+        <input type="submit" className="login-main-input__submit" />
         <div className="login-main-text">
           <span className="login-main-text__center">
-            Don't have an account?{' '}
-            <Link to="/register">
-              <span className="login-main-text__register">Register</span>
-            </Link>
+            Don't have an account?
+            <span className="login-main-text__register" onClick={() => navigate('/register')}>
+              Register
+            </span>
           </span>
         </div>
       </form>

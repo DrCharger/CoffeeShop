@@ -1,32 +1,28 @@
 import React from 'react';
-import Header from './header/Header';
-import MainImg from './mainimg/MainImg';
-import Recomended from './recomended/Recomended';
-import PopularBrand from './popularBrand/PopularBrand';
-import Shop from './shop/Shop';
-import './mainPage.scss';
-import Navbar from './navbar/Navbar';
 import { Routes, Route } from 'react-router-dom';
+import Navbar from './navbar/Navbar';
 import DetailShop from '../detailShop/DetailShop';
 import Search from '../search/Search';
 import ProfileRouter from '../profile/ProfileRouter';
 import Favourites from '../favourites/Favourites';
 import Orders from '../orders/Orders';
+import './mainPage.scss';
+import MainPage from './mainPage/MainPage';
 
-const MainPage = ({ myUser, order, location, discount, setDiscount, allOrders, liked }) => {
+const MainPageRouter = ({ myUser, order, location, discount, setDiscount, allOrders, liked }) => {
   return (
     <div className="main-shop__page">
       <Routes>
         <Route
           path="*"
           element={
-            <>
-              <Header fullname={myUser.fullname} loc={location} liked={liked.length} />
-              <MainImg />
-              <Recomended forYou={myUser.Orders} discount={discount} />
-              <PopularBrand />
-              <Shop />
-            </>
+            <MainPage
+              fullname={myUser.fullname}
+              location={location}
+              discount={discount}
+              count={liked.length}
+              orders={myUser.Orders}
+            />
           }
         />
         <Route path={`:shop`} element={<DetailShop discount={discount} />} />
@@ -43,4 +39,4 @@ const MainPage = ({ myUser, order, location, discount, setDiscount, allOrders, l
   );
 };
 
-export default MainPage;
+export default MainPageRouter;

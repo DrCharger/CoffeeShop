@@ -8,7 +8,7 @@ export const CoffeeSymbol = ({ text }) => {
   const ruleHome = text === 'home';
   const ruleFlex = text === 'flex';
   return (
-    <div className="coffee__symbol ">
+    <div className="coffee__symbol">
       <Link to={'/login'}>
         <div
           className={classNames('coffee__symbol-container', { home: ruleHome }, { flex: ruleFlex })}

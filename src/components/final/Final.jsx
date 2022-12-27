@@ -1,16 +1,13 @@
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import Raiting from './Raiting';
 import finalImg from '../../img/checkout/yeah.png';
 import './final.scss';
-import Raiting from './Raiting';
 
-const Final = ({ myUser, finalOrder, getNewOrder, setDiscount, updateRait, getRaiting }) => {
-  let navigate = useNavigate();
-
+const Final = props => {
   useEffect(() => {
-    finalOrder(myUser.id);
-    getNewOrder([]);
-    setDiscount(0);
+    props.finalOrder(props.myUser.id);
+    props.getNewOrder([]);
+    props.setDiscount(0);
   }, []);
 
   return (
@@ -22,12 +19,12 @@ const Final = ({ myUser, finalOrder, getNewOrder, setDiscount, updateRait, getRa
       <p className="final-text">
         Your items has been placed and is on it is way to being processed
       </p>
-      <Raiting updateRait={updateRait} email={myUser.email} />
+      <Raiting updateRait={props.updateRait} email={props.myUser.email} />
       <button
         className="final-btn homer"
         onClick={() => {
-          getRaiting();
-          navigate('/main');
+          props.getRaiting();
+          props.navigate('/main');
         }}
       >
         Back To Home

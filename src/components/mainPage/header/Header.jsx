@@ -1,13 +1,10 @@
 import React from 'react';
+import Badge from '@mui/material/Badge';
 import location from '../../../img/Location.png';
 import heart from '../../../img/heart.png';
 import time from '../../../img/time.png';
-import { useNavigate } from 'react-router-dom';
-import Badge from '@mui/material/Badge';
 
-const Header = ({ fullname, loc, liked }) => {
-  let navigate = useNavigate();
-
+const Header = ({ fullname, loc, liked, navigate }) => {
   return (
     <div className="header">
       <div className="header-container">

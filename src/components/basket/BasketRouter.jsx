@@ -1,43 +1,39 @@
 import React, { useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
-import Checkout from '../checkout/Checkout';
-import Basket from './Basket';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
-import {
-  setAllOrders,
-  updateAdminRaiting,
-  updateOrderInfo,
-  updateRaiting,
-  updateUsersList,
-} from '../../usersStore/users.actions';
+import * as actions from '../../usersStore/users.actions';
+import { locationSelector, orderSelector } from '../../usersStore/users.selectors';
+import Basket from './Basket';
+import Checkout from '../checkout/Checkout';
 import Final from '../final/Final';
 
-const BasketRouter = ({
-  setAllOrders,
-  setDiscount,
-  order,
-  getNewOrder,
-  myUser,
-  finalOrder,
-  updateRait,
-  getRaiting,
-}) => {
+const BasketRouter = props => {
   const [totalPrice, setTotal] = useState('0');
+  let navigate = useNavigate();
 
   return (
     <Routes>
       <Route
         path="/*"
-        element={<Basket order={order} getNewOrder={getNewOrder} setTotal={setTotal} />}
+        element={
+          <Basket
+            navigate={navigate}
+            order={props.order}
+            getNewOrder={props.getNewOrder}
+            setTotal={setTotal}
+          />
+        }
       />
       <Route
         path="checkout"
         element={
           <Checkout
-            setAllOrders={setAllOrders}
-            order={order}
-            myUser={myUser}
+            setAllOrders={props.setAllOrders}
+            order={props.order}
+            myUser={props.myUser}
             totalPrice={totalPrice}
+            navigate={navigate}
+            location={props.location}
           />
         }
       />
@@ -45,12 +41,13 @@ const BasketRouter = ({
         path="checkout/super"
         element={
           <Final
-            myUser={myUser}
-            getNewOrder={getNewOrder}
-            finalOrder={finalOrder}
-            setDiscount={setDiscount}
-            updateRait={updateRait}
-            getRaiting={getRaiting}
+            myUser={props.myUser}
+            getNewOrder={props.getNewOrder}
+            finalOrder={props.finalOrder}
+            setDiscount={props.setDiscount}
+            updateRait={props.updateRait}
+            getRaiting={props.getRaiting}
+            navigate={navigate}
           />
         }
       />
@@ -59,16 +56,17 @@ const BasketRouter = ({
 };
 const mapState = state => {
   return {
-    order: state.usersList.order,
+    order: orderSelector(state),
+    location: locationSelector(state),
   };
 };
 
 const mapDispatch = {
-  getNewOrder: updateOrderInfo,
-  finalOrder: updateUsersList,
-  setAllOrders: setAllOrders,
-  getRaiting: updateAdminRaiting,
-  updateRait: updateRaiting,
+  getNewOrder: actions.updateOrderInfo,
+  finalOrder: actions.updateUsersList,
+  setAllOrders: actions.setAllOrders,
+  getRaiting: actions.updateAdminRaiting,
+  updateRait: actions.updateRaiting,
 };
 
 export default connect(mapState, mapDispatch)(BasketRouter);

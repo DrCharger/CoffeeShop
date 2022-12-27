@@ -1,19 +1,18 @@
 import React from 'react';
-import { CoffeeSymbol } from '../coffeeSymbol/CoffeeSymbol';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
-import * as userActions from '../../usersStore/users.actions';
 import { useForm } from 'react-hook-form';
+import { CoffeeSymbol } from '../coffeeSymbol/CoffeeSymbol';
 import { pass, email } from '../../data/valid';
+import * as userActions from '../../usersStore/users.actions';
 
 const Registration = ({ createUser }) => {
   let navigate = useNavigate();
 
   const {
     register,
-    formState: { errors, isValid },
+    formState: { errors },
     handleSubmit,
-    reset,
   } = useForm({
     mode: 'onChange',
   });
@@ -21,7 +20,6 @@ const Registration = ({ createUser }) => {
   const onSubmit = data => {
     createUser(data);
     navigate('/login');
-    reset;
   };
 
   return (
@@ -64,7 +62,7 @@ const Registration = ({ createUser }) => {
             minLength: 13,
           })}
         />
-        <div className="error">{errors?.number && <p>Invalid Phone-number</p>}</div>
+        <div className="error">{errors?.number && <p>Phone-number is required</p>}</div>
 
         <div className="login-main-text">Password(don't use your real password please)</div>
         <input
@@ -72,7 +70,7 @@ const Registration = ({ createUser }) => {
           className="login-main-input"
           placeholder="********"
           {...register('password', {
-            required: 'Type password',
+            required: 'Password is required',
             pattern: pass,
           })}
         />
@@ -84,13 +82,13 @@ const Registration = ({ createUser }) => {
             </p>
           )}
         </div>
-        <input type="submit" className="login-main-input__submit" disabled={!isValid} />
+        <input type="submit" className="login-main-input__submit" />
         <div className="login-main-text">
           <span className="login-main-text__center">
-            Already have an account?{' '}
-            <Link to="/login">
-              <span className="login-main-text__register">Login</span>
-            </Link>
+            Already have an account?
+            <span className="login-main-text__register" onClick={() => navigate('/login')}>
+              Login
+            </span>
           </span>
         </div>
       </form>

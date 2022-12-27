@@ -1,14 +1,13 @@
-import { Button } from '@mui/material';
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { shops } from '../../data/shops';
-import ShopInfo from '../mainPage/shop/info/ShopInfo';
-import ArrowBackIosNewTwoToneIcon from '@mui/icons-material/ArrowBackIosNewTwoTone';
-import { menu } from '../../data/menu';
-import './details.scss';
 import classNames from 'classnames';
-import { allList } from '../../data/recs';
 import CoffeeGrid from '../coffeeGrid/CoffeeGrid';
+import StyledButton from '../styled/StyledButton';
+import ShopInfo from '../mainPage/shop/info/ShopInfo';
+import { shops } from '../../data/shops';
+import { menu } from '../../data/menu';
+import { allList } from '../../data/recs';
+import './details.scss';
 
 const DetailShop = ({ discount }) => {
   const [menuId, setMenuId] = useState('01');
@@ -16,26 +15,13 @@ const DetailShop = ({ discount }) => {
   let navigate = useNavigate();
 
   const myShop = shops.find(({ url }) => url === shop);
+
   return (
     <div className="details-main">
       <div className="details-main__img">
         <img src={myShop.bigImg} alt="logo" className="details-main__img-url" />
         <div>
-          <Button
-            variant="contained"
-            startIcon={<ArrowBackIosNewTwoToneIcon />}
-            sx={{
-              color: '#543820',
-              borderRadius: '50%',
-              minWidth: 35,
-              height: 35,
-              padding: 0,
-              marginLeft: '5%',
-              opacity: 0.7,
-              paddingLeft: '9px',
-            }}
-            onClick={() => navigate(-1)}
-          />
+          <StyledButton navigate={navigate} />
         </div>
       </div>{' '}
       <div className="details-main-info">
