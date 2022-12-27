@@ -10,16 +10,17 @@ import loc from '../../img/checkout/Location.png';
 import deliv from '../../img/checkout/moped.png';
 import { shops } from '../../data/shops';
 import './checkout.scss';
+import { pricer } from '../../data/utilits';
 
-const Checkout = ({ location, setAllOrders, order, totalPrice, navigate }) => {
-  console.log(location);
+const Checkout = ({ location, setAllOrders, order, navigate }) => {
+  const itemPrice = pricer(order);
   const thisShop = shops.find(el => el.name.toLowerCase() === order[0].shop.toLowerCase());
   const handleClick = () => {
     const ordered = order.map(el => el.myCoffee.text);
     const newOrder = {
       shop: thisShop.name,
       time: moment(new Date()).format('MMMM Do YYYY, h:mm:ss a'),
-      totalPrice: +thisShop.deliv + +totalPrice,
+      itemPrice: +thisShop.deliv + +itemPrice,
       orderedCoffee: [ordered],
     };
     setAllOrders(newOrder);
@@ -74,7 +75,7 @@ const Checkout = ({ location, setAllOrders, order, totalPrice, navigate }) => {
         <div className="checkout-summary-price">
           <div>
             <span>Subtotal</span>
-            <span className="checkout-summary-price-text">$ {totalPrice}</span>
+            <span className="checkout-summary-price-text">$ {itemPrice}</span>
           </div>
           <div>
             <span>Delivery</span>
@@ -89,7 +90,7 @@ const Checkout = ({ location, setAllOrders, order, totalPrice, navigate }) => {
           <Payment />
           <KeyboardArrowDownIcon />
         </div>
-        <div className="checkout-payment__total">Total: $ {+thisShop.deliv + +totalPrice}</div>
+        <div className="checkout-payment__total">Total: $ {+thisShop.deliv + +itemPrice}</div>
       </section>
       <button className="basket__order-btn margin" onClick={handleClick}>
         Place Order

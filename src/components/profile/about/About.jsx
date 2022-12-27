@@ -1,27 +1,14 @@
 import React from 'react';
-import { Button } from '@mui/material';
-import ArrowBackIosNewTwoToneIcon from '@mui/icons-material/ArrowBackIosNewTwoTone';
 import { skills } from '../../../data/skills';
+import StyledBackwards from '../../styled/StyledBackwards';
 
 const About = ({ navigate }) => {
   return (
     <div>
+      <StyledBackwards navigate={navigate} />
       <div>
-        <Button
-          variant="contained"
-          startIcon={<ArrowBackIosNewTwoToneIcon />}
-          sx={{
-            color: '#fff',
-            backgroundColor: '#543820',
-            marginTop: '-35%',
-            paddingLeft: '9px',
-          }}
-          onClick={() => navigate(-1)}
-        >
-          Back
-        </Button>
+        <strong>Coffee Shop Project on React-Redux</strong>
       </div>
-      <strong>Coffee Shop Project on React-Redux</strong>
       <p>
         Current Website:{' '}
         <a

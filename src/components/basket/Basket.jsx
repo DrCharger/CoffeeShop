@@ -4,7 +4,7 @@ import { changer, pricer } from '../../data/utilits';
 import StyledButton from '../styled/StyledButton';
 import './basket.scss';
 
-const Basket = ({ order, getNewOrder, setTotal, navigate }) => {
+const Basket = ({ order, getNewOrder, navigate }) => {
   const [orderEdited, setItemDelete] = useState(order);
   const itemPrice = pricer(orderEdited);
 
@@ -44,7 +44,7 @@ const Basket = ({ order, getNewOrder, setTotal, navigate }) => {
         <button
           className="basket__order-btn"
           onClick={() => {
-            orderEdited.length === 0 ? null : (navigate('checkout'), setTotal(itemPrice));
+            orderEdited.length === 0 ? null : navigate('checkout');
           }}
         >
           <div className="basket__order-btn__quantity">{orderEdited.length}</div>

@@ -1,5 +1,4 @@
 .profile {
-  width: 100%;
   background-color: #fff;
   min-height: 100vh;
   padding: 10% 5%;
@@ -10,6 +9,7 @@
     align-items: center;
     & h5 {
       margin-top: 10px;
+      font-size: 18px;
     }
   }
   &__tools {
@@ -17,7 +17,6 @@
 
     &-container {
       margin-top: 15px;
-      width: 100%;
       display: flex;
       align-items: center;
       &__bg {
@@ -26,11 +25,10 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 5px;
+        padding: 10px;
       }
       & span {
         margin-left: 15px;
-        font-size: 14px;
         line-height: 21px;
         color: #2d2d2d;
         flex-grow: 1;

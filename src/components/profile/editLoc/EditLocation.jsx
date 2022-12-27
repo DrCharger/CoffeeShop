@@ -38,7 +38,9 @@ const EditLocation = ({ user, adress, update, nav, updateServer }) => {
             })}
           />
         </div>
-        <div onClick={() => handleChange('country')}>Change</div>
+        <button className="btn-margin" onClick={() => handleChange('country')}>
+          Change
+        </button>
       </div>
       <div className="edit__account">
         <div>
@@ -50,7 +52,9 @@ const EditLocation = ({ user, adress, update, nav, updateServer }) => {
             })}
           />
         </div>
-        <div onClick={() => handleChange('city')}>Change</div>
+        <button className="btn-margin" onClick={() => handleChange('city')}>
+          Change
+        </button>
       </div>
       <div className="edit__account">
         <div>
@@ -62,7 +66,9 @@ const EditLocation = ({ user, adress, update, nav, updateServer }) => {
             })}
           />
         </div>
-        <div onClick={() => handleChange('street')}>Change</div>
+        <button className="btn-margin" onClick={() => handleChange('street')}>
+          Change
+        </button>
       </div>
       <div className="edit__account">
         <div>
@@ -74,7 +80,9 @@ const EditLocation = ({ user, adress, update, nav, updateServer }) => {
             })}
           />
         </div>
-        <div onClick={() => handleChange('house')}>Change</div>
+        <button className="btn-margin" onClick={() => handleChange('house')}>
+          Change
+        </button>
       </div>
       <button
         className="login-main-input__submit"

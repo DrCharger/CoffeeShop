@@ -11,7 +11,7 @@ const Orders = ({ allOrders }) => {
     <div className="orders">
       <div className="orders-container">
         <StyledButton navigate={navigate} />
-        <h2 className="rewards__header">Orders</h2>
+        <h2 className="orders__header">Orders</h2>
       </div>
       <Grid container spacing={2}>
         {allOrders.map(el => (

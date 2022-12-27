@@ -12,7 +12,7 @@ const Favourites = ({ liked }) => {
     <div className="favourites">
       <div className="orders-container">
         <StyledButton navigate={navigate} />
-        <h2 className="rewards__header">Favourites</h2>
+        <h2 className="orders__header">Favourites</h2>
       </div>
       <Grid container spacing={2}>
         {liked.map(el => (

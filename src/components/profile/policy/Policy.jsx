@@ -1,26 +1,11 @@
 import React from 'react';
+import StyledBackwards from '../../styled/StyledBackwards';
 import './policy.scss';
-import { Button } from '@mui/material';
-import ArrowBackIosNewTwoToneIcon from '@mui/icons-material/ArrowBackIosNewTwoTone';
 
 const Policy = ({ navigate }) => {
   return (
     <div className="policy__container">
-      <div>
-        <Button
-          variant="contained"
-          startIcon={<ArrowBackIosNewTwoToneIcon />}
-          sx={{
-            color: '#fff',
-            backgroundColor: '#543820',
-            marginTop: '-35%',
-            paddingLeft: '9px',
-          }}
-          onClick={() => navigate(-1)}
-        >
-          Back
-        </Button>
-      </div>
+      <StyledBackwards navigate={navigate} />
       <h2 className="policy__header">Privacy Policy</h2>{' '}
       <p>
         DrCharger built the Coffee Now app as a Free app. This SERVICE is provided by DrCharger at

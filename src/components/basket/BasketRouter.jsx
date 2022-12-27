@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../../usersStore/users.actions';
@@ -8,21 +8,13 @@ import Checkout from '../checkout/Checkout';
 import Final from '../final/Final';
 
 const BasketRouter = props => {
-  const [totalPrice, setTotal] = useState('0');
   let navigate = useNavigate();
 
   return (
     <Routes>
       <Route
         path="/*"
-        element={
-          <Basket
-            navigate={navigate}
-            order={props.order}
-            getNewOrder={props.getNewOrder}
-            setTotal={setTotal}
-          />
-        }
+        element={<Basket navigate={navigate} order={props.order} getNewOrder={props.getNewOrder} />}
       />
       <Route
         path="checkout"
@@ -31,7 +23,6 @@ const BasketRouter = props => {
             setAllOrders={props.setAllOrders}
             order={props.order}
             myUser={props.myUser}
-            totalPrice={totalPrice}
             navigate={navigate}
             location={props.location}
           />

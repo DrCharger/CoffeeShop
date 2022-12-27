@@ -41,12 +41,12 @@ const EditAccount = ({ user, update, updateServer, nav }) => {
           />
           <div className="error">{errors?.fullname && <p>Invalid Name</p>}</div>
         </div>
-        <div onClick={() => handleChange('fullname')}>Change</div>
+        <button onClick={() => handleChange('fullname')}>Change</button>
       </div>
       <div className="edit__account">
         <div>
           <span>
-            Current number: <b>{user.number}</b>
+            Phone-number: <b>{user.number}</b>
           </span>
           <div className="edit__flex">
             <input
@@ -60,7 +60,7 @@ const EditAccount = ({ user, update, updateServer, nav }) => {
           </div>
           <div className="error">{errors?.number && <p>Invalid Phone-number</p>}</div>
         </div>
-        <div onClick={() => handleChange('number')}>Change</div>
+        <button onClick={() => handleChange('number')}>Change</button>
       </div>
       <div className="edit__account">
         <div>
@@ -79,7 +79,7 @@ const EditAccount = ({ user, update, updateServer, nav }) => {
             {errors?.email && <p>{errors?.email?.message || 'Invalid Email'}</p>}
           </div>
         </div>
-        <div onClick={() => handleChange('email')}>Change</div>
+        <button onClick={() => handleChange('email')}>Change</button>
       </div>
       <button
         className="login-main-input__submit"
