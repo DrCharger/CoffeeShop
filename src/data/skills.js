@@ -1,0 +1,18 @@
+export const skills = [
+  'HTML5',
+  'CSS3',
+  'JavaScript',
+  'Http server',
+  'Local Storage',
+  'Sass (Scss)',
+  'BEM methodology',
+  'React',
+  ' FlexBox',
+  'React Hooks',
+  'React-DatePicker',
+  'Redux',
+  'WebPack',
+  'Babel',
+  'moments',
+  'PropTypes',
+];

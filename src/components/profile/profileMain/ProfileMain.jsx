@@ -1,4 +1,5 @@
 import React from 'react';
+import { profileArr } from '../../../data/profile';
 import BorderColorOutlinedIcon from '@mui/icons-material/BorderColorOutlined';
 import RoomOutlinedIcon from '@mui/icons-material/RoomOutlined';
 import DiscountOutlinedIcon from '@mui/icons-material/DiscountOutlined';
@@ -7,8 +8,6 @@ import NotesIcon from '@mui/icons-material/Notes';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
 import Button from '@mui/material/Button';
-
-import { profileArr } from '../../../data/profile';
 
 const ProfileMain = ({ nav, reset }) => {
   const handleClick = () => {

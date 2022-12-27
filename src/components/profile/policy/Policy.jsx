@@ -2,10 +2,8 @@ import React from 'react';
 import './policy.scss';
 import { Button } from '@mui/material';
 import ArrowBackIosNewTwoToneIcon from '@mui/icons-material/ArrowBackIosNewTwoTone';
-import { useNavigate } from 'react-router-dom';
 
-const Policy = () => {
-  let navigate = useNavigate();
+const Policy = ({ navigate }) => {
   return (
     <div className="policy__container">
       <div>
@@ -23,7 +21,7 @@ const Policy = () => {
           Back
         </Button>
       </div>
-      <strong>Privacy Policy</strong>{' '}
+      <h2 className="policy__header">Privacy Policy</h2>{' '}
       <p>
         DrCharger built the Coffee Now app as a Free app. This SERVICE is provided by DrCharger at
         no cost and is intended for use as is.

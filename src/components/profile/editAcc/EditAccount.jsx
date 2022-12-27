@@ -1,7 +1,7 @@
 import React from 'react';
-import './edit.scss';
 import { useForm } from 'react-hook-form';
 import { email } from '../../../data/valid';
+import './edit.scss';
 
 const EditAccount = ({ user, update, updateServer, nav }) => {
   const {

@@ -1,5 +1,3 @@
-import { createSelector } from 'reselect';
-
 export const userSelector = state => state.usersList.user;
 export const orderSelector = state => state.usersList.order;
 export const locationSelector = state => state.usersList.location;

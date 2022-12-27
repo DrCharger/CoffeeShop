@@ -1,29 +1,9 @@
 import React from 'react';
 import { Button } from '@mui/material';
 import ArrowBackIosNewTwoToneIcon from '@mui/icons-material/ArrowBackIosNewTwoTone';
-import { useNavigate } from 'react-router-dom';
+import { skills } from '../../../data/skills';
 
-const skills = [
-  'HTML5',
-  'CSS3',
-  'JavaScript',
-  'Http server',
-  'Local Storage',
-  'Sass (Scss)',
-  'BEM methodology',
-  'React',
-  ' FlexBox',
-  'React Hooks',
-  'React-DatePicker',
-  'Redux',
-  'WebPack',
-  'Babel',
-  'moments',
-  'PropTypes',
-];
-
-const About = () => {
-  let navigate = useNavigate();
+const About = ({ navigate }) => {
   return (
     <div>
       <div>

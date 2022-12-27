@@ -1,11 +1,15 @@
 import React from 'react';
 import { rewardArr } from '../../../data/reward';
+import StyledButton from '../../styled/StyledButton';
 import './rewards.scss';
 
 const Rewards = ({ navigate, setDiscount }) => {
   return (
     <div className="rewards">
-      <h2 className="rewards__header">Rewards</h2>
+      <div className="orders-container">
+        <StyledButton navigate={navigate} />
+        <h2 className="rewards__header">Rewards</h2>
+      </div>
       <p className="rewards__paragraph">
         Now there is <span>{rewardArr.length} reward</span> for you:
       </p>
