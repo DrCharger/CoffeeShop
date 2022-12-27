@@ -1,12 +1,19 @@
 import React from 'react';
-import Grid from '@mui/material/Grid';
+import { useNavigate } from 'react-router-dom';
 import RecItem from '../mainPage/recomended/RecItem';
+import StyledButton from '../styled/StyledButton';
+import Grid from '@mui/material/Grid';
 import './favourites.scss';
 
 const Favourites = ({ liked }) => {
+  const navigate = useNavigate();
+
   return (
     <div className="favourites">
-      <h2 className="rewards__header">Favourites</h2>
+      <div className="orders-container">
+        <StyledButton navigate={navigate} />
+        <h2 className="rewards__header">Favourites</h2>
+      </div>
       <Grid container spacing={2}>
         {liked.map(el => (
           <Grid key={el.id} item xs={6}>

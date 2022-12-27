@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import { setItem, getItem } from '../../data/local';
+import { useSearchParams } from 'react-router-dom';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import HistoryIcon from '@mui/icons-material/History';
-import './search.scss';
-import { menu } from '../../data/menu';
-import { useSearchParams } from 'react-router-dom';
 import SearchedItem from './SearchedItem';
+import { setItem, getItem } from '../../data/local';
+import { menu } from '../../data/menu';
+import './search.scss';
 
 const Search = ({ discount }) => {
   const [value, setValue] = useState('');
   const [open, setOpen] = useState(false);
+  const [toggle, setToggle] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   let list = getItem('searched') || [];
   let newList = list;
@@ -34,9 +35,11 @@ const Search = ({ discount }) => {
       'searched',
       list.filter(item => item !== elem),
     );
+    setToggle(!toggle);
   };
   const handleDeleteAll = () => {
     setItem('searched', []);
+    setToggle(!toggle);
   };
 
   return (

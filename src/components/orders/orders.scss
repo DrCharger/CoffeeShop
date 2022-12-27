@@ -1,5 +1,10 @@
 .orders {
   padding: 5%;
+  &-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   &-box {
     padding: 5%;
     background-color: #fff;

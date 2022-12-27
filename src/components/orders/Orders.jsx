@@ -2,11 +2,17 @@ import React from 'react';
 import Grid from '@mui/material/Grid';
 import './orders.scss';
 import { shops } from '../../data/shops';
+import StyledButton from '../styled/StyledButton';
+import { useNavigate } from 'react-router-dom';
 
 const Orders = ({ allOrders }) => {
+  const navigate = useNavigate();
   return (
     <div className="orders">
-      <h2 className="rewards__header">Orders</h2>
+      <div className="orders-container">
+        <StyledButton navigate={navigate} />
+        <h2 className="rewards__header">Orders</h2>
+      </div>
       <Grid container spacing={2}>
         {allOrders.map(el => (
           <Grid key={el.time} item xs={12}>
