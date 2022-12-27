@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import moment from 'moment/moment';
 import StyledButton from '../styled/StyledButton';
 import Payment from '../profile/payment/Payment';
@@ -6,14 +6,15 @@ import CheckItem from './CheckItem';
 import LocalAtmIcon from '@mui/icons-material/LocalAtm';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
-import loc from '../../img/checkout/Location.png';
-import deliv from '../../img/checkout/moped.png';
 import { shops } from '../../data/shops';
-import './checkout.scss';
 import { pricer } from '../../data/utilits';
+import { deliveryType } from '../../data/delivery';
+import loc from '../../img/checkout/Location.png';
+import './checkout.scss';
 
 const Checkout = ({ location, setAllOrders, order, navigate }) => {
   const itemPrice = pricer(order);
+  const [click, setClick] = useState(0);
   const thisShop = shops.find(el => el.name.toLowerCase() === order[0].shop.toLowerCase());
   const handleClick = () => {
     const ordered = order.map(el => el.myCoffee.text);
@@ -22,6 +23,7 @@ const Checkout = ({ location, setAllOrders, order, navigate }) => {
       time: moment(new Date()).format('MMMM Do YYYY, h:mm:ss a'),
       itemPrice: +thisShop.deliv + +itemPrice,
       orderedCoffee: [ordered],
+      delivery: deliveryType[click].text,
     };
     setAllOrders(newOrder);
     navigate('checkout/super');
@@ -57,9 +59,13 @@ const Checkout = ({ location, setAllOrders, order, navigate }) => {
           />
         </div>
         <div className="checkout-delivery-container bottom">
-          <img src={deliv} alt="loc" />
-          <p>Delivery</p>
-          <span>Change Options</span>
+          {deliveryType[click].img}
+          <p>{deliveryType[click].text}</p>
+          <span
+            onClick={() => (click === deliveryType.length - 1 ? setClick(0) : setClick(click + 1))}
+          >
+            Change Options
+          </span>
         </div>
       </section>
       <div className="checkout-text">Order Summary:</div>
