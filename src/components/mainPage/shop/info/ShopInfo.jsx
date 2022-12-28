@@ -10,7 +10,13 @@ const ShopInfo = ({ info }) => {
   const { shop } = useParams();
   const { name, loc, way, rait, likes, deliv, delStart, delFinish, id, img } = info;
   return (
-    <li className={classNames('shops__list-items', { last: id === '06' })}>
+    <li
+      className={classNames(
+        'shops__list-items',
+        { last: id === '06' && shop === undefined },
+        { 'shops__list-InShop': shop !== undefined },
+      )}
+    >
       <div className="shops__list-items__logo">
         <img src={img} alt="logo" />
       </div>

@@ -10,6 +10,9 @@
     display: flex;
     flex-direction: column;
     padding: 0;
+    &-InShop {
+      margin-bottom: 0 !important;
+    }
     &-items {
       width: 100%;
       height: 90px;
@@ -44,5 +47,5 @@
 }
 
 .last {
-  margin-bottom: 80px;
+  margin-bottom: 60px;
 }

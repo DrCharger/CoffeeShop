@@ -29,7 +29,13 @@ const Orders = ({ allOrders }) => {
                   Order: <strong>{el.orderedCoffee.join(', ')}</strong>
                 </span>
                 <span>
-                  TotalPrice: <strong>$ {el.totalPrice}</strong>
+                  TotalPrice: <strong>$ {el.itemPrice}</strong>
+                </span>
+                <span>
+                  Paid: <strong>{el.payment}</strong>
+                </span>
+                <span>
+                  Delivery: <strong>{el.delivery}</strong>
                 </span>
                 <span>
                   Date: <strong>{el.time}</strong>

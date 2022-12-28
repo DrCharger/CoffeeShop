@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../../usersStore/users.actions';
-import { locationSelector, orderSelector } from '../../usersStore/users.selectors';
+import * as selectors from '../../usersStore/users.selectors';
 import Basket from './Basket';
 import Checkout from '../checkout/Checkout';
 import Final from '../final/Final';
@@ -25,6 +25,7 @@ const BasketRouter = props => {
             myUser={props.myUser}
             navigate={navigate}
             location={props.location}
+            payment={props.payment}
           />
         }
       />
@@ -47,8 +48,9 @@ const BasketRouter = props => {
 };
 const mapState = state => {
   return {
-    order: orderSelector(state),
-    location: locationSelector(state),
+    order: selectors.orderSelector(state),
+    location: selectors.locationSelector(state),
+    payment: selectors.paymentSelector(state),
   };
 };
 

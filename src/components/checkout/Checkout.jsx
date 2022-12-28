@@ -12,10 +12,11 @@ import { deliveryType } from '../../data/delivery';
 import loc from '../../img/checkout/Location.png';
 import './checkout.scss';
 
-const Checkout = ({ location, setAllOrders, order, navigate }) => {
+const Checkout = ({ location, setAllOrders, order, navigate, payment }) => {
   const itemPrice = pricer(order);
   const [click, setClick] = useState(0);
-  const thisShop = shops.find(el => el.name.toLowerCase() === order[0].shop.toLowerCase());
+  const thisShop = shops.find(el => el.url.toLowerCase() === order[0].shop.toLowerCase());
+
   const handleClick = () => {
     const ordered = order.map(el => el.myCoffee.text);
     const newOrder = {
@@ -24,6 +25,7 @@ const Checkout = ({ location, setAllOrders, order, navigate }) => {
       itemPrice: +thisShop.deliv + +itemPrice,
       orderedCoffee: [ordered],
       delivery: deliveryType[click].text,
+      payment: payment,
     };
     setAllOrders(newOrder);
     navigate('checkout/super');
