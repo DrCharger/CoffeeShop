@@ -18,7 +18,6 @@ const DetailCoffee = ({ getOrder, discount, order, updateOrderInfo }) => {
   const { text, price, img, dop, dopPlus } = myCoffee;
   discount !== 0 ? (newPriceText = price * (1 - discount)) : (newPriceText = price);
   level === 'More' ? (newPriceText = +newPriceText + +dopPlus) : newPriceText;
-  level === 'Less' ? (newPriceText = newPriceText - dopPlus) : newPriceText;
 
   const toTheBasket = () => {
     let included = order.find(item => item.myCoffee.id.includes(myCoffee.id));

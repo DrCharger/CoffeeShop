@@ -16,11 +16,10 @@ export const finder = param =>
 export const pricer = data =>
   data.map(item => Number(item.newPriceText) * item.counter).reduce((acc, el) => acc + el, 0);
 
-export const changer = (array, id, quantity, newLevel) =>
+export const changer = (array, id, quantity) =>
   array.map(el => {
     if (el.id === id) {
       el.counter = quantity;
-      el.level = newLevel;
     }
     return el;
   });

@@ -15,8 +15,8 @@ const Basket = ({ order, getNewOrder, navigate }) => {
     getNewOrder(filtered);
   };
 
-  const onItemChange = (id, quantity, newLevel) => {
-    getNewOrder(changer(orderEdited, id, quantity, newLevel));
+  const onItemChange = (id, quantity) => {
+    getNewOrder(changer(orderEdited, id, quantity));
   };
 
   return (
