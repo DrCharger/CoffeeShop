@@ -11,7 +11,9 @@ const MainPage = ({ fullname, location, count, discount, orders }) => {
   return (
     <>
       <Header fullname={fullname} loc={location} liked={count} navigate={navigate} />
-      <MainImg navigate={navigate} />
+      <div className="help">
+        <MainImg navigate={navigate} />
+      </div>
       <Recomended forYou={orders} discount={discount} />
       <PopularBrand />
       <Shop />

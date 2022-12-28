@@ -8,7 +8,7 @@
   justify-content: space-between;
   font-size: 18px;
   font-weight: 700;
-  margin: 5% 10% 0;
+  margin: 5% 10%;
   &-container {
     display: flex;
     flex-direction: column;
@@ -42,14 +42,13 @@
 .container-img {
   position: relative;
   color: #ffffff;
-  &-cup {
-    width: 100%;
-  }
+  border-radius: 20px;
+  overflow: hidden;
   &-line {
     &__start {
       position: absolute;
-      top: 14px;
-      left: 30px;
+      top: 0px;
+      left: 10px;
       font-weight: 400;
       font-size: 18px;
       line-height: 29px;
@@ -60,8 +59,8 @@
     }
     &__next {
       position: absolute;
-      left: 30px;
-      top: 70px;
+      left: 10px;
+      top: 40px;
       font-size: 12px;
       margin-top: 15px;
     }
@@ -70,8 +69,8 @@
       font-weight: 400;
       font-size: 24px;
       line-height: 43px;
-      left: 30px;
-      top: 84px;
+      left: 10px;
+      top: 60px;
       color: #ff9314;
       margin: 5px 0;
     }
@@ -99,4 +98,8 @@ a:-webkit-any-link {
   max-height: 120px;
   width: 100%;
   height: 60%;
+}
+
+.help {
+  margin: 0 5%;
 }
