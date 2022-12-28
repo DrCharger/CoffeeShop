@@ -3,6 +3,7 @@ import SugarLevel from './SugarLevel';
 import { changer, pricer } from '../../data/utilits';
 import StyledButton from '../styled/StyledButton';
 import './basket.scss';
+import classNames from 'classnames';
 
 const Basket = ({ order, getNewOrder, navigate }) => {
   const [orderEdited, setItemDelete] = useState(order);
@@ -25,8 +26,13 @@ const Basket = ({ order, getNewOrder, navigate }) => {
           <StyledButton navigate={navigate} />
           <h4 className="basket-header">My Basket</h4>
         </div>
-        {orderEdited.map(item => (
-          <div key={`${item.myCoffee.id}.${item.id}`} className="basket-child">
+        {orderEdited.map((item, index) => (
+          <div
+            key={`${item.myCoffee.id}.${item.id}`}
+            className={classNames('basket-child', {
+              lastCoffee: index === orderEdited.length - 1,
+            })}
+          >
             <figure className="basket-child-img">
               <img src={item.myCoffee.img} alt="logo" />
             </figure>

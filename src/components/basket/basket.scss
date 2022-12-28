@@ -4,7 +4,8 @@
   align-items: center;
   position: relative;
   min-height: 100vh;
-  padding-bottom: 70px;
+  padding-bottom: 10px;
+
   &-first {
     width: 90%;
     display: flex;
@@ -63,7 +64,7 @@
     color: #fff;
     height: 45px;
     position: absolute;
-    top: 90%;
+    bottom: 2%;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -94,4 +95,8 @@
     border: none;
     border-radius: 20px;
   }
+}
+
+.lastCoffee {
+  margin-bottom: 60px !important;
 }
