@@ -36,6 +36,12 @@
       margin-bottom: 10px;
       font-size: 20px;
       color: #000000;
+      & span {
+        margin-left: 5px;
+        font-size: 17px;
+        font-weight: 400;
+        color: #939393;
+      }
     }
     &-container {
       display: flex;

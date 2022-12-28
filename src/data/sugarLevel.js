@@ -1,1 +1,1 @@
-export const sugarLevel = ['Less Sugar', 'Normal', 'More Sugar'];
+export const sugarLevel = ['Less', 'Normal', 'More'];

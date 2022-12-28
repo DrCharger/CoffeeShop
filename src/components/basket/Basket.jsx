@@ -55,7 +55,7 @@ const Basket = ({ order, getNewOrder, navigate }) => {
         >
           <div className="basket__order-btn__quantity">{orderEdited.length}</div>
           Go to Checkout
-          <div className="basket__order-btn__price">$ {itemPrice}</div>
+          <div className="basket__order-btn__price">$ {itemPrice.toFixed(2)}</div>
         </button>
       </div>
     </>
