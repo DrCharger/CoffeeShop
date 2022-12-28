@@ -6,7 +6,7 @@ import { finder } from '../../data/utilits';
 import { sugarLevel } from '../../data/sugarLevel.js';
 import './detailsCoffee.scss';
 
-const DetailCoffee = ({ getOrder, discount }) => {
+const DetailCoffee = ({ getOrder, discount, order, updateOrderInfo }) => {
   let navigate = useNavigate();
   let params = useParams();
   const [level, setLevel] = useState('Normal');
@@ -19,17 +19,26 @@ const DetailCoffee = ({ getOrder, discount }) => {
   discount !== 0 ? (newPriceText = price * (1 - discount)) : (newPriceText = price);
 
   const toTheBasket = () => {
-    const toBasket = {
-      shop: params.shop,
-      level,
-      counter,
-      comment,
-      myCoffee,
-      newPriceText,
-      id: Math.floor(Math.random() * 1000000),
-    };
+    let included = order.find(item => item.myCoffee.id.includes(myCoffee.id));
+    if (included === undefined) {
+      const toBasket = {
+        shop: params.shop,
+        level,
+        counter,
+        comment,
+        myCoffee,
+        newPriceText,
+        id: Math.floor(Math.random() * 1000000),
+      };
+      getOrder(toBasket);
+    } else {
+      const newOrder = order.map(el =>
+        el.myCoffee.id !== myCoffee.id ? el : { ...el, counter: el.counter + counter },
+      );
+      updateOrderInfo(newOrder);
+    }
+
     setOpen(true);
-    getOrder(toBasket);
   };
 
   return (

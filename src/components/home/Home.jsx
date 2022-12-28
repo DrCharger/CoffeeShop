@@ -10,9 +10,9 @@ import { connect } from 'react-redux';
 import coffee from '../../img/coffee.png';
 import * as selectors from '../../usersStore/users.selectors';
 import './home.scss';
-import { getOrderInfo } from '../../usersStore/users.actions';
+import { getOrderInfo, updateOrderInfo } from '../../usersStore/users.actions';
 
-const Home = ({ getOrder, myUser, order, location, allOrders, liked }) => {
+const Home = ({ getOrder, myUser, order, location, allOrders, liked, updateOrderInfo }) => {
   const [discount, setDiscount] = useState(0);
 
   return (
@@ -48,7 +48,14 @@ const Home = ({ getOrder, myUser, order, location, allOrders, liked }) => {
         />
         <Route
           path={`/details/:shop/:id/:coffee`}
-          element={<DetailCoffee discount={discount} getOrder={getOrder} />}
+          element={
+            <DetailCoffee
+              discount={discount}
+              getOrder={getOrder}
+              order={order}
+              updateOrderInfo={updateOrderInfo}
+            />
+          }
         />
         <Route
           path="/basket/*"
@@ -71,6 +78,7 @@ const mapState = state => {
 
 const mapDispatch = {
   getOrder: getOrderInfo,
+  updateOrderInfo: updateOrderInfo,
 };
 
 export default connect(mapState, mapDispatch)(Home);
