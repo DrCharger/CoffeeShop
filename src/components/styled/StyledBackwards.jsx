@@ -12,6 +12,10 @@ const StyledBackwards = ({ navigate }) => {
         backgroundColor: '#543820',
         marginTop: '-35%',
         paddingLeft: '9px',
+        ':hover': {
+          color: '#fff',
+          backgroundColor: '#543820',
+        },
       }}
       onClick={() => navigate(-1)}
     >
