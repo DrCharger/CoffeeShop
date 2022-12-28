@@ -44,6 +44,9 @@
   color: #ffffff;
   border-radius: 20px;
   overflow: hidden;
+  & img {
+    width: 100%;
+  }
   &-line {
     &__start {
       position: absolute;
@@ -90,6 +93,7 @@ figure {
   overflow: hidden;
   position: relative;
   height: 180px;
+  max-width: 200px;
 }
 
 a:-webkit-any-link {
