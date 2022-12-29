@@ -32,7 +32,7 @@ const SearchedItem = ({ param, discount }) => {
   }
   if (isProd !== undefined) {
     return (
-      <div>
+      <div className="isProd">
         <img
           src={isProd.img}
           alt=""
