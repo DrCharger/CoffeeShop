@@ -17,6 +17,7 @@
   }
   &-child {
     display: flex;
+    align-items: center;
     width: 90%;
     background-color: #fff;
     margin: 10px 0;
@@ -94,6 +95,16 @@
     color: #fff;
     border: none;
     border-radius: 20px;
+  }
+  &__level {
+    font-size: 12px;
+    line-height: 18px;
+    color: #939393;
+    margin: 5px 0;
+    & span {
+      color: #ff9314;
+      font-size: 14px;
+    }
   }
 }
 

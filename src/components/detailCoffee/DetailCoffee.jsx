@@ -16,15 +16,18 @@ const DetailCoffee = ({ getOrder, discount, order, updateOrderInfo }) => {
   const myCoffee = finder(params);
   let newPriceText;
   const { text, price, img, dop, dopPlus } = myCoffee;
-  discount !== 0 ? (newPriceText = price * (1 - discount)) : (newPriceText = price);
-  level === 'More' ? (newPriceText = +newPriceText + +dopPlus) : newPriceText;
+  discount !== 0 ? (newPriceText = (price * (1 - discount)).toFixed(2)) : (newPriceText = price);
+  level === 'More' ? (newPriceText = (+newPriceText + +dopPlus).toFixed(2)) : newPriceText;
 
   const toTheBasket = () => {
-    let included = order.find(item => item.myCoffee.id.includes(myCoffee.id));
+    let included = order.find(
+      item => item.myCoffee.id.includes(myCoffee.id) && item.level.includes(level),
+    );
     if (included === undefined) {
       const toBasket = {
         shop: params.shop,
         level,
+        dop,
         counter,
         comment,
         myCoffee,
@@ -34,7 +37,9 @@ const DetailCoffee = ({ getOrder, discount, order, updateOrderInfo }) => {
       getOrder(toBasket);
     } else {
       const newOrder = order.map(el =>
-        el.myCoffee.id !== myCoffee.id ? el : { ...el, counter: el.counter + counter },
+        el.myCoffee.id === myCoffee.id && el.level === level
+          ? { ...el, counter: el.counter + counter }
+          : el,
       );
       updateOrderInfo(newOrder);
     }

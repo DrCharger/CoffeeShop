@@ -16,6 +16,7 @@ const Checkout = ({ location, setAllOrders, order, navigate, payment }) => {
   const itemPrice = pricer(order);
   const [click, setClick] = useState(0);
   const thisShop = shops.find(el => el.url.toLowerCase() === order[0].shop.toLowerCase());
+  let delivPrice = thisShop.deliv.toFixed(2);
 
   const handleClick = () => {
     const ordered = order.map(el => el.myCoffee.text);
@@ -31,6 +32,12 @@ const Checkout = ({ location, setAllOrders, order, navigate, payment }) => {
     navigate('checkout/super');
   };
 
+  if (
+    deliveryType[click].text === 'Pick it myself' ||
+    deliveryType[click].text === 'In restorant'
+  ) {
+    delivPrice = (0).toFixed(2);
+  }
   return (
     <div className="checkout-relative">
       <section className="checkout">
@@ -83,11 +90,11 @@ const Checkout = ({ location, setAllOrders, order, navigate, payment }) => {
         <div className="checkout-summary-price">
           <div>
             <span>Subtotal</span>
-            <span className="checkout-summary-price-text">$ {itemPrice}</span>
+            <span className="checkout-summary-price-text">$ {itemPrice.toFixed(2)}</span>
           </div>
           <div>
             <span>Delivery</span>
-            <span>$ {thisShop.deliv}</span>
+            <span>$ {delivPrice}</span>
           </div>
         </div>
       </section>
@@ -98,7 +105,9 @@ const Checkout = ({ location, setAllOrders, order, navigate, payment }) => {
           <Payment />
           <KeyboardArrowDownIcon />
         </div>
-        <div className="checkout-payment__total">Total: $ {+thisShop.deliv + +itemPrice}</div>
+        <div className="checkout-payment__total">
+          Total: $ {(+delivPrice + +itemPrice).toFixed(2)}
+        </div>
       </section>
       <button className="basket__order-btn margin" onClick={handleClick}>
         Place Order

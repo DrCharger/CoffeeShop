@@ -33,7 +33,7 @@ const ShopInfo = ({ info }) => {
         </div>
         <div className={classNames({ 'shops__list-items__text': shop === undefined }, 'else-text')}>
           <img src={deliver} alt="deliv" />
-          <span>$ {deliv}.00</span>
+          <span>$ {deliv.toFixed(2)}</span>
           <img src={clock} alt="clock" />
           <span>
             {delStart}.00 - {delFinish}.00

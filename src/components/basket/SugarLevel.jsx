@@ -22,6 +22,12 @@ const SugarLevel = ({ item, onItemChange }) => {
           +
         </button>
       </div>
+      <p className="quantity__level">
+        {item.dop}: <span>{item.level}</span>
+      </p>
+      <p className="quantity__level">
+        Price for one item: <span>$ {item.newPriceText}</span>
+      </p>
     </>
   );
 };
