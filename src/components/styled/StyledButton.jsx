@@ -8,6 +8,7 @@ const StyledButton = ({ navigate }) => {
       variant="contained"
       startIcon={<ArrowBackIosNewTwoToneIcon />}
       sx={{
+        position: 'fixed',
         color: '#543820',
         borderRadius: '50%',
         minWidth: 35,
@@ -16,6 +17,7 @@ const StyledButton = ({ navigate }) => {
         marginLeft: '5%',
         opacity: 0.7,
         paddingLeft: '9px',
+        zIndex: '999',
       }}
       onClick={() => navigate(-1)}
     />

@@ -29,7 +29,7 @@ const Orders = ({ allOrders }) => {
                   Order: <strong>{el.orderedCoffee.join(', ')}</strong>
                 </span>
                 <span>
-                  TotalPrice: <strong>$ {el.itemPrice}</strong>
+                  TotalPrice: <strong>$ {el.itemPrice.toFixed(2)}</strong>
                 </span>
                 <span>
                   Paid: <strong>{el.payment}</strong>
