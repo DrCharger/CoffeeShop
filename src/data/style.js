@@ -2,7 +2,7 @@ export const style = {
   width: '90vw',
   borderRadius: '10px',
   position: 'fixed',
-  top: '92vh',
+  top: '90vh',
   left: '5vw',
   backgroundColor: '#543820',
   opacity: 1,
