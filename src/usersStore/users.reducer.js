@@ -13,6 +13,7 @@ import {
   ALL_ORDERS,
   RESET,
   UPDATE_RAIT,
+  FIRST_TIME,
 } from './users.actions';
 
 const initialState = {
@@ -25,6 +26,7 @@ const initialState = {
   payment: 'Cash',
   allOrders: [],
   rait: '',
+  firstTime: true,
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -100,6 +102,12 @@ const usersReducer = (state = initialState, action) => {
         ...state,
         payment: action.payload.method,
       };
+    case FIRST_TIME: {
+      return {
+        ...state,
+        firstTime: false,
+      };
+    }
     default:
       return state;
   }

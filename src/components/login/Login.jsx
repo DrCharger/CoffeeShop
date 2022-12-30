@@ -25,7 +25,8 @@ const Login = ({ getUsers, users }) => {
   const onSubmit = data => {
     const finded = users.find(user => user.email === data.email && user.password === data.password);
     if (finded !== undefined) {
-      setItem('user', finded);
+      setItem('email', data.email);
+      setItem('password', data.password);
       navigate('/main');
     } else {
       reset({ password: '' });

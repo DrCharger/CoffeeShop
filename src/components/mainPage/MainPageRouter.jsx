@@ -1,5 +1,5 @@
-import React from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import Navbar from './navbar/Navbar';
 import DetailShop from '../detailShop/DetailShop';
 import Search from '../search/Search';
@@ -9,7 +9,6 @@ import Orders from '../orders/Orders';
 import './mainPage.scss';
 import MainPage from './mainPage/MainPage';
 import { getItem } from '../../data/local';
-import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../usersStore/users.actions';
 import * as selectors from '../../usersStore/users.selectors';
@@ -28,31 +27,25 @@ const MainPageRouter = ({
   setAllOrders,
   getUsers,
   usersList,
-  allInfo,
+  firstTime,
+  setFirstTime,
 }) => {
-  let navigate = useNavigate();
-
+  const finded = usersList.find(
+    user => user.email === getItem('email') && user.password === getItem('password'),
+  );
   useEffect(() => {
-    debugger;
-    console.log(allInfo);
     if (usersList.length === 0) {
       getUsers();
     }
-    if (getItem('user') === null || getItem('user').location === undefined) {
-      return navigate('/login');
+    if (finded !== undefined && firstTime) {
+      console.log('render');
+      setUser(finded);
+      setAdress(finded.location);
+      setFavour(finded.favourites);
+      setAllOrders(finded.Orders);
+      setFirstTime();
     }
-    setUser(getItem('user'));
-    console.log(allInfo);
-
-    setAdress(getItem('user').location);
-    console.log(allInfo);
-
-    setFavour(getItem('user').favourites);
-    console.log(allInfo);
-
-    setAllOrders(getItem('user').Orders);
-    console.log(allInfo);
-  }, []);
+  }, [finded]);
   if (myUser.location === undefined) {
     return null;
   }
@@ -91,7 +84,7 @@ const mapState = state => {
     allOrders: selectors.allOrdersSelector(state),
     liked: selectors.likedSelector(state),
     usersList: selectors.allUsersSelector(state),
-    allInfo: state.usersList,
+    firstTime: selectors.firstTimeSelector(state),
   };
 };
 
@@ -100,6 +93,7 @@ const mapDispatch = {
   setFavour: actions.setFavourites,
   setAdress: actions.setAdress,
   setAllOrders: actions.setAllOrders,
+  setFirstTime: actions.setFirstTime,
 };
 
 export default connect(mapState, mapDispatch)(MainPageRouter);

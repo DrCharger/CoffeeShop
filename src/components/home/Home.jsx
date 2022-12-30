@@ -12,7 +12,7 @@ import * as selectors from '../../usersStore/users.selectors';
 import * as actions from '../../usersStore/users.actions';
 import './home.scss';
 
-const Home = ({ getOrder, myUser, order, updateOrderInfo, users, getUsers, createUser }) => {
+const Home = props => {
   const [discount, setDiscount] = useState(0);
 
   return (
@@ -30,17 +30,17 @@ const Home = ({ getOrder, myUser, order, updateOrderInfo, users, getUsers, creat
             </div>
           }
         />
-        <Route path="/login" element={<Login users={users} getUsers={getUsers} />} />
-        <Route path="/register" element={<Registration createUser={createUser} />} />
+        <Route path="/login" element={<Login users={props.users} getUsers={props.getUsers} />} />
+        <Route path="/register" element={<Registration createUser={props.createUser} />} />
         <Route
           path="/main/*"
           element={
             <MainPageRouter
-              order={order}
+              order={props.order}
               discount={discount}
               setDiscount={setDiscount}
-              myUser={myUser}
-              getUsers={getUsers}
+              myUser={props.myUser}
+              getUsers={props.getUsers}
             />
           }
         />
@@ -49,15 +49,15 @@ const Home = ({ getOrder, myUser, order, updateOrderInfo, users, getUsers, creat
           element={
             <DetailCoffee
               discount={discount}
-              getOrder={getOrder}
-              order={order}
-              updateOrderInfo={updateOrderInfo}
+              getOrder={props.getOrder}
+              order={props.order}
+              updateOrderInfo={props.updateOrderInfo}
             />
           }
         />
         <Route
           path="/basket/*"
-          element={<BasketRouter myUser={myUser} setDiscount={setDiscount} />}
+          element={<BasketRouter myUser={props.myUser} setDiscount={setDiscount} />}
         />
       </Routes>
     </div>
