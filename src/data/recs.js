@@ -234,7 +234,7 @@ export const allList = [
         url_name: 'cheese',
         price: '1.20',
         parentId: '05',
-        dop: 'Sous',
+        dop: 'Sauce',
         dopPlus: '0.35',
       },
       {
@@ -244,7 +244,7 @@ export const allList = [
         url_name: 'chicken',
         price: '1.30',
         parentId: '05',
-        dop: 'Sous',
+        dop: 'Sauce',
         dopPlus: '0.35',
       },
       {
@@ -254,7 +254,7 @@ export const allList = [
         url_name: 'big',
         price: '1.50',
         parentId: '05',
-        dop: 'Sous',
+        dop: 'Sauce',
         dopPlus: '0.35',
       },
       {
@@ -264,7 +264,7 @@ export const allList = [
         url_name: 'giant',
         price: '3.50',
         parentId: '05',
-        dop: 'Sous',
+        dop: 'Sauce',
         dopPlus: '0.35',
       },
     ],

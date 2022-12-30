@@ -16,6 +16,7 @@ export const PAYMENT = 'PAYMENT';
 export const ALL_ORDERS = 'ALL_ORDERS';
 export const RESET = 'RESET';
 export const UPDATE_RAIT = 'UPDATE_RAIT';
+export const FIRST_TIME = 'FIRST_TIME';
 
 export const setUserInfo = user => {
   return {
@@ -56,6 +57,11 @@ export const setPayment = method => {
     payload: {
       method,
     },
+  };
+};
+export const setFirstTime = () => {
+  return {
+    type: FIRST_TIME,
   };
 };
 

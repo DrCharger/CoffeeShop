@@ -9,9 +9,10 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
 import Button from '@mui/material/Button';
 
-const ProfileMain = ({ nav, reset }) => {
+const ProfileMain = ({ nav, reset, setUser }) => {
   const handleClick = () => {
     reset();
+    setUser({});
     nav('/login');
   };
   return (

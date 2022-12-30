@@ -9,10 +9,10 @@ import BasketRouter from '../basket/BasketRouter';
 import { connect } from 'react-redux';
 import coffee from '../../img/coffee.png';
 import * as selectors from '../../usersStore/users.selectors';
+import * as actions from '../../usersStore/users.actions';
 import './home.scss';
-import { getOrderInfo, updateOrderInfo } from '../../usersStore/users.actions';
 
-const Home = ({ getOrder, myUser, order, location, allOrders, liked, updateOrderInfo }) => {
+const Home = props => {
   const [discount, setDiscount] = useState(0);
 
   return (
@@ -30,19 +30,17 @@ const Home = ({ getOrder, myUser, order, location, allOrders, liked, updateOrder
             </div>
           }
         />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Registration />} />
+        <Route path="/login" element={<Login users={props.users} getUsers={props.getUsers} />} />
+        <Route path="/register" element={<Registration createUser={props.createUser} />} />
         <Route
           path="/main/*"
           element={
             <MainPageRouter
-              myUser={myUser}
-              order={order}
-              location={location}
+              order={props.order}
               discount={discount}
               setDiscount={setDiscount}
-              allOrders={allOrders}
-              liked={liked}
+              myUser={props.myUser}
+              getUsers={props.getUsers}
             />
           }
         />
@@ -51,15 +49,15 @@ const Home = ({ getOrder, myUser, order, location, allOrders, liked, updateOrder
           element={
             <DetailCoffee
               discount={discount}
-              getOrder={getOrder}
-              order={order}
-              updateOrderInfo={updateOrderInfo}
+              getOrder={props.getOrder}
+              order={props.order}
+              updateOrderInfo={props.updateOrderInfo}
             />
           }
         />
         <Route
           path="/basket/*"
-          element={<BasketRouter myUser={myUser} setDiscount={setDiscount} />}
+          element={<BasketRouter myUser={props.myUser} setDiscount={setDiscount} />}
         />
       </Routes>
     </div>
@@ -70,15 +68,15 @@ const mapState = state => {
   return {
     myUser: selectors.userSelector(state),
     order: selectors.orderSelector(state),
-    location: selectors.locationSelector(state),
-    allOrders: selectors.allOrdersSelector(state),
-    liked: selectors.likedSelector(state),
+    users: selectors.allUsersSelector(state),
   };
 };
 
 const mapDispatch = {
-  getOrder: getOrderInfo,
-  updateOrderInfo: updateOrderInfo,
+  getOrder: actions.getOrderInfo,
+  updateOrderInfo: actions.updateOrderInfo,
+  getUsers: actions.getUsersList,
+  createUser: actions.createUsersList,
 };
 
 export default connect(mapState, mapDispatch)(Home);

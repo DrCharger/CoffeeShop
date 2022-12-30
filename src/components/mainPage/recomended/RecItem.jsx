@@ -24,7 +24,6 @@ const RecItem = ({ discount = 0, el, shop, getLiked, liked, minusLiked, updater,
     minusLiked(id);
     updater(myUser.id);
   };
-
   return (
     <figure>
       <img src={el.img} alt="coffee" className="figure-img" />
