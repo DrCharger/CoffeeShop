@@ -1,19 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { CoffeeSymbol } from '../coffeeSymbol/CoffeeSymbol';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import {
-  getUsersList,
-  setAdress,
-  setAllOrders,
-  setFavourites,
-  setUserInfo,
-} from '../../usersStore/users.actions';
-import { connect } from 'react-redux';
-import './login.scss';
 import Forgot from './forgot/Forgot';
+import { setItem } from '../../data/local';
+import { CoffeeSymbol } from '../coffeeSymbol/CoffeeSymbol';
+import './login.scss';
 
-const Login = ({ setAllOrders, getUsers, users, setUser, setFavour, setAdress }) => {
+const Login = ({ getUsers, users }) => {
   let navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const {
@@ -32,10 +25,7 @@ const Login = ({ setAllOrders, getUsers, users, setUser, setFavour, setAdress })
   const onSubmit = data => {
     const finded = users.find(user => user.email === data.email && user.password === data.password);
     if (finded !== undefined) {
-      setUser(finded);
-      setAdress(finded.location);
-      setFavour(finded.favourites);
-      setAllOrders(finded.Orders);
+      setItem('user', finded);
       navigate('/main');
     } else {
       reset({ password: '' });
@@ -88,18 +78,4 @@ const Login = ({ setAllOrders, getUsers, users, setUser, setFavour, setAdress })
   );
 };
 
-const mapState = state => {
-  return {
-    users: state.usersList.usersList,
-  };
-};
-
-const mapDispatch = {
-  getUsers: getUsersList,
-  setUser: setUserInfo,
-  setFavour: setFavourites,
-  setAdress: setAdress,
-  setAllOrders: setAllOrders,
-};
-
-export default connect(mapState, mapDispatch)(Login);
+export default Login;

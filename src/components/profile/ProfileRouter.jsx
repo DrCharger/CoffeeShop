@@ -24,7 +24,10 @@ const ProfileRouter = ({ myUser, ...props }) => {
         <h5>{myUser.fullname}</h5>
       </div>
       <Routes>
-        <Route path="*" element={<ProfileMain nav={navigate} reset={props.reset} />} />
+        <Route
+          path="*"
+          element={<ProfileMain nav={navigate} reset={props.reset} setUser={props.setUser} />}
+        />
         <Route
           path="pencil"
           element={
@@ -65,6 +68,7 @@ const mapState = state => {
 };
 
 const mapDispatch = {
+  setUser: actions.setUserInfo,
   update: actions.updateUserInfo,
   updateServer: actions.updateUsersList,
   updateAdress: actions.updateAdressInfo,

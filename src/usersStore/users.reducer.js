@@ -16,15 +16,7 @@ import {
 } from './users.actions';
 
 const initialState = {
-  user: {
-    fullname: 'Adam Dor',
-    id: 'test',
-    email: 'test@test.com',
-    number: '+380934651111',
-    password: 'test',
-    Orders: [],
-    favourites: [],
-  },
+  user: {},
   coffeeId: '01',
   order: [],
   usersList: [],

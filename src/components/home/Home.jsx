@@ -9,10 +9,10 @@ import BasketRouter from '../basket/BasketRouter';
 import { connect } from 'react-redux';
 import coffee from '../../img/coffee.png';
 import * as selectors from '../../usersStore/users.selectors';
+import * as actions from '../../usersStore/users.actions';
 import './home.scss';
-import { getOrderInfo, updateOrderInfo } from '../../usersStore/users.actions';
 
-const Home = ({ getOrder, myUser, order, location, allOrders, liked, updateOrderInfo }) => {
+const Home = ({ getOrder, myUser, order, updateOrderInfo, users, getUsers, createUser }) => {
   const [discount, setDiscount] = useState(0);
 
   return (
@@ -30,19 +30,17 @@ const Home = ({ getOrder, myUser, order, location, allOrders, liked, updateOrder
             </div>
           }
         />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Registration />} />
+        <Route path="/login" element={<Login users={users} getUsers={getUsers} />} />
+        <Route path="/register" element={<Registration createUser={createUser} />} />
         <Route
           path="/main/*"
           element={
             <MainPageRouter
-              myUser={myUser}
               order={order}
-              location={location}
               discount={discount}
               setDiscount={setDiscount}
-              allOrders={allOrders}
-              liked={liked}
+              myUser={myUser}
+              getUsers={getUsers}
             />
           }
         />
@@ -70,15 +68,15 @@ const mapState = state => {
   return {
     myUser: selectors.userSelector(state),
     order: selectors.orderSelector(state),
-    location: selectors.locationSelector(state),
-    allOrders: selectors.allOrdersSelector(state),
-    liked: selectors.likedSelector(state),
+    users: selectors.allUsersSelector(state),
   };
 };
 
 const mapDispatch = {
-  getOrder: getOrderInfo,
-  updateOrderInfo: updateOrderInfo,
+  getOrder: actions.getOrderInfo,
+  updateOrderInfo: actions.updateOrderInfo,
+  getUsers: actions.getUsersList,
+  createUser: actions.createUsersList,
 };
 
 export default connect(mapState, mapDispatch)(Home);

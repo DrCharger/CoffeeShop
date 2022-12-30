@@ -1,10 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { connect } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { CoffeeSymbol } from '../coffeeSymbol/CoffeeSymbol';
 import { pass, email } from '../../data/valid';
-import * as userActions from '../../usersStore/users.actions';
 
 const Registration = ({ createUser }) => {
   let navigate = useNavigate();
@@ -96,8 +94,4 @@ const Registration = ({ createUser }) => {
   );
 };
 
-const mapDispatch = {
-  createUser: userActions.createUsersList,
-};
-
-export default connect(null, mapDispatch)(Registration);
+export default Registration;

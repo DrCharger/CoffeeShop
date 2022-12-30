@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../../../usersStore/users.actions';
 import * as selectors from '../../../usersStore/users.selectors';
 import cart from '../../../img/korzina.png';
 import like from '../../../img/Like.png';
+import { setItem } from '../../../data/local';
 
 const RecItem = ({ discount = 0, el, shop, getLiked, liked, minusLiked, updater, myUser }) => {
   let navigate = useNavigate();
@@ -24,6 +25,10 @@ const RecItem = ({ discount = 0, el, shop, getLiked, liked, minusLiked, updater,
     minusLiked(id);
     updater(myUser.id);
   };
+
+  useEffect(() => {
+    setItem('user', myUser);
+  }, [myUser]);
 
   return (
     <figure>

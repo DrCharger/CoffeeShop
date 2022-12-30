@@ -8,10 +8,13 @@ import NotesIcon from '@mui/icons-material/Notes';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
 import Button from '@mui/material/Button';
+import { setItem } from '../../../data/local';
 
-const ProfileMain = ({ nav, reset }) => {
+const ProfileMain = ({ nav, reset, setUser }) => {
   const handleClick = () => {
     reset();
+    setItem('user', null);
+    setUser({});
     nav('/login');
   };
   return (
