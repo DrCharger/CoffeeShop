@@ -38,7 +38,6 @@ const MainPageRouter = ({
       getUsers();
     }
     if (finded !== undefined && firstTime) {
-      console.log('render');
       setUser(finded);
       setAdress(finded.location);
       setFavour(finded.favourites);
