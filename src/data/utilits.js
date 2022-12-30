@@ -23,3 +23,6 @@ export const changer = (array, id, quantity) =>
     }
     return el;
   });
+
+export const findUser = (arr, email, pass) =>
+  arr.find(user => user.email === email && user.password === pass);
