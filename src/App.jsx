@@ -1,5 +1,5 @@
 import React from 'react';
-import Home from './components/home/Home';
+import HomeRouter from './components/home/HomeRouter';
 import { Provider } from 'react-redux';
 import store from './store';
 import { BrowserRouter } from 'react-router-dom';
@@ -21,7 +21,7 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Provider store={store}>
-          <Home />
+          <HomeRouter />
         </Provider>
       </BrowserRouter>
     </ThemeProvider>

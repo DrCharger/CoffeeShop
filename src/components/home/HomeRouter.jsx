@@ -1,35 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { CoffeeSymbol } from '../coffeeSymbol/CoffeeSymbol';
 import Login from '../login/Login';
 import Registration from '../registration/Registration';
 import MainPageRouter from '../mainPage/MainPageRouter';
 import DetailCoffee from '../detailCoffee/DetailCoffee';
 import BasketRouter from '../basket/BasketRouter';
 import { connect } from 'react-redux';
-import coffee from '../../img/coffee.png';
 import * as selectors from '../../usersStore/users.selectors';
 import * as actions from '../../usersStore/users.actions';
 import './home.scss';
+import HomeLoad from './load/HomeLoad';
+import HomeMain from './main/HomeMain';
 
-const Home = props => {
+const HomeRouter = props => {
   const [discount, setDiscount] = useState(0);
+
+  useEffect(() => {
+    props.getUsers();
+  }, []);
 
   return (
     <div className="main">
       <Routes>
-        <Route
-          path="/"
-          element={
-            <div>
-              <figure className="main-img">
-                <img src={coffee} alt="coffee" />
-              </figure>
-              <CoffeeSymbol text="home" />
-              <h1 className="main-text">Coffee Now</h1>
-            </div>
-          }
-        />
+        <Route path="/" element={<HomeMain text="home" />} />
+        <Route path="/homeload" element={<HomeLoad users={props.users} />} />
         <Route path="/login" element={<Login users={props.users} getUsers={props.getUsers} />} />
         <Route path="/register" element={<Registration createUser={props.createUser} />} />
         <Route
@@ -79,4 +73,4 @@ const mapDispatch = {
   createUser: actions.createUsersList,
 };
 
-export default connect(mapState, mapDispatch)(Home);
+export default connect(mapState, mapDispatch)(HomeRouter);

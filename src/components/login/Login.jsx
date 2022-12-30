@@ -5,8 +5,9 @@ import Forgot from './forgot/Forgot';
 import { setItem } from '../../data/local';
 import { CoffeeSymbol } from '../coffeeSymbol/CoffeeSymbol';
 import './login.scss';
+import { findUser } from '../../data/utilits';
 
-const Login = ({ getUsers, users }) => {
+const Login = ({ users }) => {
   let navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const {
@@ -18,12 +19,8 @@ const Login = ({ getUsers, users }) => {
     mode: 'onBlur',
   });
 
-  useEffect(() => {
-    getUsers();
-  }, []);
-
   const onSubmit = data => {
-    const finded = users.find(user => user.email === data.email && user.password === data.password);
+    const finded = findUser(users, data.email, data.password);
     if (finded !== undefined) {
       setItem('email', data.email);
       setItem('password', data.password);

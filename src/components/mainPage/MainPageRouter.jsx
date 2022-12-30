@@ -12,6 +12,7 @@ import { getItem } from '../../data/local';
 import { connect } from 'react-redux';
 import * as actions from '../../usersStore/users.actions';
 import * as selectors from '../../usersStore/users.selectors';
+import { findUser } from '../../data/utilits';
 
 const MainPageRouter = ({
   myUser,
@@ -30,9 +31,8 @@ const MainPageRouter = ({
   firstTime,
   setFirstTime,
 }) => {
-  const finded = usersList.find(
-    user => user.email === getItem('email') && user.password === getItem('password'),
-  );
+  const finded = findUser(usersList, getItem('email'), getItem('password'));
+
   useEffect(() => {
     if (usersList.length === 0) {
       getUsers();
