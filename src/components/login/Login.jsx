@@ -7,7 +7,7 @@ import { CoffeeSymbol } from '../coffeeSymbol/CoffeeSymbol';
 import './login.scss';
 import { findUser } from '../../data/utilits';
 
-const Login = ({ users }) => {
+const Login = ({ users, getUsers }) => {
   let navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const {
@@ -30,6 +30,12 @@ const Login = ({ users }) => {
       alert('There is no user!!!');
     }
   };
+
+  useEffect(() => {
+    getUsers();
+  }, []);
+
+  console.log(users);
   return (
     <div className="login-main">
       <CoffeeSymbol text="flex" />
