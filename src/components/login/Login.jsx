@@ -35,7 +35,6 @@ const Login = ({ users, getUsers }) => {
     getUsers();
   }, []);
 
-  console.log(users);
   return (
     <div className="login-main">
       <CoffeeSymbol text="flex" />

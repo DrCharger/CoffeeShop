@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="manifest" href="manifest.json" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -26,6 +25,10 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <script>
+      navigator.serviceWorker.register('CoffeeShop/node_modules/moment/locale/sw.js');
+    </script>
+    <link rel="manifest" href="CoffeeShop/src/manifest.json" />
     <title>Coffee Now</title>
   </head>
   <body>
