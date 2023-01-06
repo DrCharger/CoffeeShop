@@ -1,0 +1,22 @@
+{
+  "background_color": "#ffffff",
+  "description": "Coffee Now App",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "gilded-kringle-ac60d9.netlify",
+  "orientation": "portrait",
+  "scope": "/",
+  "short_name": "gilded-kringle-ac60d9.netlify",
+  "start_url": "/",
+  "theme_color": "#ffffff",
+  "categories": ["food", "lifestyle", "shopping"],
+  "screenshots": [],
+  "icons": [
+    {
+      "src": "AppImages/icons.json",
+      "type": "image/x-icon"
+    }
+  ],
+  "shortcuts": [],
+  "lang": "en"
+}

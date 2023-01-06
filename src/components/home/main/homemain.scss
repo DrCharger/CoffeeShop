@@ -1,0 +1,16 @@
+.none {
+  display: none;
+}
+
+.animationUP {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  animation: up 2.5s linear;
+  animation-fill-mode: forwards;
+}
+@keyframes up {
+  to {
+    top: -650px;
+  }
+}
