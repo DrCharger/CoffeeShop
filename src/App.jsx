@@ -16,6 +16,8 @@ const theme = createTheme({
   },
 });
 
+const a = 1;
+
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
